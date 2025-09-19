@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TibuTec - Soluciones Tecnológicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: whait;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header y navegación */
+        header {
+            background: whait;
+            color: black;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            margin-top: 70px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        /* Secciones generales */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Servicios - Tarjetas */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--primary), #4a6491);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Estilos para la tarjeta interactiva (tu versión) */
+        .interactive-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s ease;
+            padding: 30px;
+            position: relative;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+        
+        .interactive-card.expanded {
+            padding: 30px;
+        }
+        
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .card-content {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+        
+        .photo-container {
+            position: relative;
+            margin-right: 0;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .photo-container {
+                margin-right: 40px;
+                margin-bottom: 0;
+            }
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 5px solid #2c3e50;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .interactive-card.expanded .profile-img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 15px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .interactive-card.expanded .name {
+            opacity: 1;
+        }
+        
+        .info-container {
+            flex: 1;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .interactive-card.expanded .info-container {
+            opacity: 1;
+            max-height: 1000px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .card-subtitle {
+            color: #2c3e50;
+            margin: 25px 0 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .card-subtitle-sm {
+            color: #2c3e50;
+            margin: 15px 0 10px;
+            font-size: 16px;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        
+        .location i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: #e74c3c;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .skill {
+            background: #e8f4fc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .backend {
+            background: #e8f4fc;
+            border-left: 4px solid #3498db;
+        }
+        
+        .frontend {
+            background: #fff4e6;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .database {
+            background: #e6f7ee;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .other {
+            background: #f9e6f7;
+            border-left: 4px solid #9b59b6;
+        }
+        
+        .card-section {
+            margin-bottom: 25px;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .card-btn {
+            flex: 1;
+            padding: 12px 20px;
+            text-align: center;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+        
+        .card-btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #c0392b;
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+        
+        .icon-list {
+            list-style: none;
+        }
+        
+        .icon-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon-list i {
+            margin-right: 10px;
+            width: 25px;
+            color: #3498db;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .whatsapp-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-info i {
+            color: #25D366;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .instruction {
+            text-align: center;
+            margin-top: 15px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        /* Conócenos */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: var(--primary);
+                width: 80%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
+                <h1>TibuTec</h1>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#equipo">Nuestro Equipo</a></li>
+                <li><a href="#conocenos">Conócenos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h2>Soluciones Tecnológicas para tu Negocio</h2>
+        <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</p>
+        <a href="#servicios" class="btn">Nuestros Servicios</a>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios">
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+            <p>Ofrecemos soluciones tecnológicas completas para potenciar tu presencia digital</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Tarjeta 1 -->
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Desarrollo Web</h3>
+                </div>
+                <div class="card-body">
+                    <p>Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando las últimas tecnologías del mercado.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Diseño personalizado</li>
+                        <li><i class="fas fa-check"></i> Desarrollo a medida</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO</li>
+                        <li><i class="fas fa-check"></i> Integración con redes sociales</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 2 -->
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Branding Digital</h3>
+                </div>
+                <div class="card-body">
+                    <p>Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en el entorno digital.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Diseño de identidad visual</li>
+                        <li><i class="fas fa-check"></i> Estrategias de contenido</li>
+                        <li><i class="fas fa-check"></i> Gestión de redes sociales</li>
+                        <li><i class="fas fa-check"></i> Campañas publicitarias</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 3 -->
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Base de Datos</h3>
+                </div>
+                <div class="card-body">
+                    <p>Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la información de tu negocio.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Diseño de bases de datos</li>
+                        <li><i class="fas fa-check"></i> Optimización de consultas</li>
+                        <li><i class="fas fa-check"></i> Respaldo y recuperación</li>
+                        <li><i class="fas fa-check"></i> Seguridad de datos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Equipo -->
+    <section id="equipo">
+        <div class="section-title">
+            <h2>Nuestro Equipo</h2>
+            <p>Conoce a nuestro talentoso equipo de profesionales</p>
+        </div>
+        
+        <!-- Tarjeta interactiva (tu versión) -->
+        <div class="interactive-card" id="profileCard">
+            <div class="card-content">
+                <div class="photo-container">
+                    <img src="https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png" alt="JHORMAN CASTELLANOS" class="profile-img" id="profileImg">
+                    <h1 class="name">JHORMAN JESÚS CASTELLANOS MORALES</h1>
+                </div>
+                
+                <div class="info-container" id="infoContainer">
+                    <h2 class="card-title">Desarrollador FullStack Junior</h2>
+                    
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tibú, Norte de Santander</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/Jhormancastella" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://jhormancastella.github.io/portafolio/" target="_blank"><i class="fas fa-briefcase"></i></a>
+                        <a href="https://wa.me/573223762998" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    
+                    <div class="card-section">
+                        <h3 class="card-subtitle">Habilidades Técnicas</h3>
+                        
+                        <h4 class="card-subtitle-sm">Lenguajes de Programación</h4>
+                        <div class="skills">
+                            <span class="skill backend">Java</span>
+                            <span class="skill backend">PHP</span>
+                            <span class="skill frontend">JavaScript</span>
+                            <span class="skill frontend">HTML</span>
+                            <span class="skill frontend">CSS</span>
+                        </div>
+                        
+                        <h4 class="card-subtitle-sm">Bases de Datos</h4>
+                        <div class="skills">
+                            <span class="skill database">MySQL</span>
+                            <span class="skill database">PostgreSQL</span>
+                        </div>
+                        
+                        <h4 class="card-subtitle-sm">Otras Habilidades</h4>
+                        <div class="skills">
+                            <span class="skill other">Fotografía</span>
+                            <span class="skill other">Edición</span>
+                            <span class="skill other">Resolución de Problemas</span>
+                            <span class="skill other">Técnico en Sistemas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-section">
+                        <h3 class="card-subtitle">Formación</h3>
+                        <ul class="icon-list">
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> - Campusland Tibu (2025)</li>
+                            <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
+                            <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <h3 class="card-subtitle">Acerca de mí</h3>
+                        <p>Soy un desarrollador junior fullstack con formación en <span class="highlight">Campusland Tibu</span>. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico en sistemas.</p>
+                        <p>Me destaco por mi capacidad para <span class="highlight">resolver problemas</span> y mi pasión por aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el backend, creando soluciones completas y funcionales.</p>
+                    </div>
+                    
+                    <div class="buttons">
+                        <a href="https://github.com/Jhormancastella" target="_blank" class="card-btn btn-primary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://jhormancastella.github.io/portafolio/" target="_blank" class="card-btn btn-secondary">
+                            <i class="fas fa-briefcase"></i> Portafolio
+                        </a>
+                        <a href="https://wa.me/573223762998" target="_blank" class="card-btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <p>¿Interesado en trabajar juntos? ¡Contáctame!</p>
+                        <div class="whatsapp-info">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+57 322 376 2998</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="instruction" id="instruction">Haz clic en la foto para ver mi información</p>
+        </div>
+    </section>
+
+    <!-- Sección Conócenos -->
+    <section id="conocenos">
+        <div class="section-title">
+            <h2>Conócenos</h2>
+            <p>Descubre más sobre TibuTec y nuestro equipo de expertos</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Tu socio tecnológico en Tibú</h3>
+                <p>En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</p>
+                <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</p>
+                <p>Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo de TibuTec">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
+                </div>
+                <p>Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#equipo">Nuestro Equipo</a></li>
+                    <li><a href="#conocenos">Conócenos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Tibú, Norte de Santander</li>
+                    <li><i class="fas fa-phone"></i> +57 322 376 2998</li>
+                    <li><i class="fas fa-envelope"></i> info@tibutec.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 TibuTec - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menú Hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Cambiar ícono
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Funcionalidad de la tarjeta interactiva
+        const profileCard = document.getElementById('profileCard');
+        const profileImg = document.getElementById('profileImg');
+        const infoContainer = document.getElementById('infoContainer');
+        const instruction = document.getElementById('instruction');
+        
+        profileImg.addEventListener('click', function() {
+            profileCard.classList.toggle('expanded');
+            
+            if (profileCard.classList.contains('expanded')) {
+                instruction.textContent = "Haz clic en la foto para ocultar la información";
+            } else {
+                instruction.textContent = "Haz clic en la foto para ver mi información";
+            }
+        });
+    </script>
+</body>
+</html>
