@@ -93,26 +93,78 @@
             font-size: 1.5rem;
         }
         
-        /* Hero Section */
+        /* Hero Section con Carrusel */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             color: white;
             text-align: center;
             padding: 8rem 2rem 5rem;
             margin-top: 70px;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+        }
+        
+        .carousel-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
         }
         
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
             margin: 0 auto 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
         
         .btn {
@@ -467,6 +519,8 @@
         
         .footer-logo {
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
         
         .footer-logo img {
@@ -567,6 +621,11 @@
                 grid-template-columns: 1fr;
             }
             
+            .hero {
+                min-height: 60vh;
+                padding: 6rem 1.5rem 4rem;
+            }
+            
             .hero h2 {
                 font-size: 2rem;
             }
@@ -600,6 +659,17 @@
                 justify-content: center;
             }
         }
+        
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 50vh;
+                padding: 5rem 1rem 3rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -625,11 +695,22 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section con Carrusel -->
     <section class="hero" id="inicio">
-        <h2>Soluciones Tecnológicas para tu Negocio</h2>
-        <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</p>
-        <a href="#servicios" class="btn">Nuestros Servicios</a>
+        <div class="hero-carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h2>Soluciones Tecnológicas para tu Negocio</h2>
+            <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</p>
+            <a href="#servicios" class="btn">Nuestros Servicios</a>
+        </div>
     </section>
 
     <!-- Sección de Servicios -->
@@ -796,7 +877,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Tu socio tecnológico en Tibú</h3>
-                <p>En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</p>
+                <p>En TibuTec nos especializamos en offrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</p>
                 <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</p>
                 <p>Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</p>
             </div>
@@ -845,7 +926,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 TibuTec - Todos los derechos reservados</p>
+            <p>&copy; 2023 TibuTec - Todos los derechos reservados</p>
         </div>
     </footer>
 
@@ -901,6 +982,26 @@
         
         // Asegurar que esté colapsado inicialmente
         profileCard.classList.remove('expanded');
+        
+        // Carrusel automático para el hero
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            let currentItem = 0;
+            
+            function showNextItem() {
+                // Ocultar el item actual
+                carouselItems[currentItem].classList.remove('active');
+                
+                // Avanzar al siguiente item
+                currentItem = (currentItem + 1) % carouselItems.length;
+                
+                // Mostrar el nuevo item
+                carouselItems[currentItem].classList.add('active');
+            }
+            
+            // Cambiar imagen cada 5 segundos
+            setInterval(showNextItem, 5000);
+        });
     </script>
 </body>
 </html>
