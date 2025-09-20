@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TibuTec - Soluciones Tecnológicas</title>
-      <link rel="icon" href="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/">
+    <link rel="icon" href="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables y reset */
@@ -27,14 +27,14 @@
         }
         
         body {
-            background-color: whait;
+            background-color: white;
             color: var(--text);
             line-height: 1.6;
         }
         
         /* Header y navegación */
         header {
-            background: whait;
+            background: white;
             color: black;
             padding: 1rem 2rem;
             position: relative;
@@ -186,118 +186,70 @@
             padding: 1.5rem;
         }
         
-        /* Estilos para la tarjeta interactiva (tu versión) */
+        /* Tarjeta interactiva optimizada */
         .interactive-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.5s ease;
-            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 950px;
             position: relative;
-            margin: 0 auto;
-            max-width: 900px;
-        }
-        
-        .interactive-card.expanded {
-            padding: 30px;
+            overflow: hidden;
         }
         
         .card-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-        }
-        
-        @media (min-width: 768px) {
-            .card-content {
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
-            }
         }
         
         .photo-container {
-            position: relative;
-            margin-right: 0;
-            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.5s ease;
-        }
-        
-        @media (min-width: 768px) {
-            .photo-container {
-                margin-right: 40px;
-                margin-bottom: 0;
-            }
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.4s ease;
         }
         
         .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #2c3e50;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .interactive-card.expanded .profile-img {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 15px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
         }
         
         .name {
             font-size: 24px;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--primary);
             margin-top: 15px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .interactive-card.expanded .name {
-            opacity: 1;
+            text-align: center;
         }
         
         .info-container {
-            flex: 1;
-            opacity: 0;
             max-height: 0;
+            opacity: 0;
             overflow: hidden;
             transition: all 0.5s ease;
+            width: 100%;
         }
         
         .interactive-card.expanded .info-container {
+            max-height: 1500px;
             opacity: 1;
-            max-height: 1000px;
         }
         
         .card-title {
             font-size: 20px;
-            color: #e74c3c;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        .card-subtitle {
-            color: #2c3e50;
-            margin: 25px 0 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #3498db;
-        }
-        
-        .card-subtitle-sm {
-            color: #2c3e50;
-            margin: 15px 0 10px;
-            font-size: 16px;
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 15px;
         }
         
         .location {
@@ -310,7 +262,7 @@
         
         .location i {
             margin-right: 10px;
-            color: #3498db;
+            color: var(--accent);
         }
         
         .social-links {
@@ -323,19 +275,40 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
-            background: #3498db;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
             color: white;
             border-radius: 50%;
             margin: 0 10px;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 18px;
         }
         
         .social-links a:hover {
             transform: translateY(-5px);
-            background: #e74c3c;
+            background: var(--secondary);
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 25px 0;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card-subtitle {
+            color: var(--primary);
+            margin: 20px 0 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent);
+            font-size: 18px;
         }
         
         .skills {
@@ -353,43 +326,21 @@
             font-weight: 500;
         }
         
-        .backend {
-            background: #e8f4fc;
-            border-left: 4px solid #3498db;
+        .icon-list {
+            list-style: none;
+            padding: 0;
         }
         
-        .frontend {
-            background: #fff4e6;
-            border-left: 4px solid #f39c12;
+        .icon-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         
-        .database {
-            background: #e6f7ee;
-            border-left: 4px solid #2ecc71;
-        }
-        
-        .other {
-            background: #f9e6f7;
-            border-left: 4px solid #9b59b6;
-        }
-        
-        .card-section {
-            margin-bottom: 25px;
-        }
-        
-        .highlight {
-            color: #e74c3c;
-            font-weight: 600;
-        }
-        
-        .quote {
-            font-style: italic;
-            color: #7f8c8d;
-            text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
+        .icon-list i {
+            margin-right: 10px;
+            width: 25px;
+            color: var(--accent);
         }
         
         .buttons {
@@ -401,8 +352,7 @@
         }
         
         .card-btn {
-            flex: 1;
-            padding: 12px 20px;
+            padding: 12px 25px;
             text-align: center;
             border-radius: 30px;
             text-decoration: none;
@@ -411,7 +361,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 150px;
+            min-width: 160px;
         }
         
         .card-btn i {
@@ -419,7 +369,7 @@
         }
         
         .btn-primary {
-            background: #3498db;
+            background: var(--accent);
             color: white;
         }
         
@@ -428,7 +378,7 @@
         }
         
         .btn-secondary {
-            background: #e74c3c;
+            background: var(--secondary);
             color: white;
         }
         
@@ -445,26 +395,10 @@
             background: #128C7E;
         }
         
-        .icon-list {
-            list-style: none;
-        }
-        
-        .icon-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .icon-list i {
-            margin-right: 10px;
-            width: 25px;
-            color: #3498db;
-        }
-        
         .contact-info {
-            margin-top: 20px;
+            margin-top: 25px;
             background: #f8f9fa;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
             text-align: center;
         }
@@ -485,8 +419,9 @@
         .instruction {
             text-align: center;
             margin-top: 15px;
-            color: #7f8c8d;
+            color: var(--text-light);
             font-style: italic;
+            font-size: 15px;
         }
         
         /* Conócenos */
@@ -536,12 +471,14 @@
         
         .footer-logo img {
             height: 50px;
+            margin-right: 10px;
         }
         
         .footer-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            justify-content: center;
         }
         
         .social-icon {
@@ -573,6 +510,13 @@
         
         .footer-links li {
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links i {
+            margin-right: 10px;
+            width: 20px;
         }
         
         .footer-links a {
@@ -629,6 +573,31 @@
             
             .hero p {
                 font-size: 1rem;
+            }
+            
+            .interactive-card {
+                padding: 20px;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .info-column {
+                min-width: 100%;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .card-btn {
+                width: 100%;
+            }
+            
+            .footer-social {
+                justify-content: center;
             }
         }
     </style>
@@ -728,10 +697,10 @@
             <p>Conoce a nuestro talentoso equipo de profesionales</p>
         </div>
         
-        <!-- Tarjeta interactiva (tu versión) -->
+        <!-- Tarjeta interactiva optimizada -->
         <div class="interactive-card" id="profileCard">
             <div class="card-content">
-                <div class="photo-container">
+                <div class="photo-container" id="photoContainer">
                     <img src="https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png" alt="JHORMAN CASTELLANOS" class="profile-img" id="profileImg">
                     <h1 class="name">JHORMAN JESÚS CASTELLANOS MORALES</h1>
                 </div>
@@ -750,46 +719,46 @@
                         <a href="https://wa.me/573223762998" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     
-                    <div class="card-section">
-                        <h3 class="card-subtitle">Habilidades Técnicas</h3>
-                        
-                        <h4 class="card-subtitle-sm">Lenguajes de Programación</h4>
-                        <div class="skills">
-                            <span class="skill backend">Java</span>
-                            <span class="skill backend">PHP</span>
-                            <span class="skill frontend">JavaScript</span>
-                            <span class="skill frontend">HTML</span>
-                            <span class="skill frontend">CSS</span>
+                    <div class="info-columns">
+                        <div class="info-column">
+                            <h3 class="card-subtitle">Habilidades Técnicas</h3>
+                            
+                            <h4 class="card-subtitle">Lenguajes de Programación</h4>
+                            <div class="skills">
+                                <span class="skill">Java</span>
+                                <span class="skill">PHP</span>
+                                <span class="skill">JavaScript</span>
+                                <span class="skill">HTML</span>
+                                <span class="skill">CSS</span>
+                            </div>
+                            
+                            <h4 class="card-subtitle">Bases de Datos</h4>
+                            <div class="skills">
+                                <span class="skill">MySQL</span>
+                                <span class="skill">PostgreSQL</span>
+                            </div>
+                            
+                            <h4 class="card-subtitle">Otras Habilidades</h4>
+                            <div class="skills">
+                                <span class="skill">Fotografía</span>
+                                <span class="skill">Edición</span>
+                                <span class="skill">Resolución de Problemas</span>
+                                <span class="skill">Técnico en Sistemas</span>
+                            </div>
                         </div>
                         
-                        <h4 class="card-subtitle-sm">Bases de Datos</h4>
-                        <div class="skills">
-                            <span class="skill database">MySQL</span>
-                            <span class="skill database">PostgreSQL</span>
+                        <div class="info-column">
+                            <h3 class="card-subtitle">Formación</h3>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> - Campusland Tibu (2025)</li>
+                                <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
+                                <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
+                            </ul>
+                            
+                            <h3 class="card-subtitle">Acerca de mí</h3>
+                            <p>Soy un desarrollador junior fullstack con formación en <strong>Campusland Tibu</strong>. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico en sistemas.</p>
+                            <p>Me destaco por mi capacidad para <strong>resolver problemas</strong> y mi pasión por aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el backend, creando soluciones completas y funcionales.</p>
                         </div>
-                        
-                        <h4 class="card-subtitle-sm">Otras Habilidades</h4>
-                        <div class="skills">
-                            <span class="skill other">Fotografía</span>
-                            <span class="skill other">Edición</span>
-                            <span class="skill other">Resolución de Problemas</span>
-                            <span class="skill other">Técnico en Sistemas</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <h3 class="card-subtitle">Formación</h3>
-                        <ul class="icon-list">
-                            <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> - Campusland Tibu (2025)</li>
-                            <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
-                            <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card-section">
-                        <h3 class="card-subtitle">Acerca de mí</h3>
-                        <p>Soy un desarrollador junior fullstack con formación en <span class="highlight">Campusland Tibu</span>. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico en sistemas.</p>
-                        <p>Me destaco por mi capacidad para <span class="highlight">resolver problemas</span> y mi pasión por aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el backend, creando soluciones completas y funcionales.</p>
                     </div>
                     
                     <div class="buttons">
@@ -843,6 +812,7 @@
             <div class="footer-info">
                 <div class="footer-logo">
                     <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
+                    <h3>TibuTec</h3>
                 </div>
                 <p>Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</p>
                 <div class="footer-social">
@@ -875,7 +845,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 TibuTec - Todos los derechos reservados</p>
+            <p>&copy; 2025 TibuTec - Todos los derechos reservados</p>
         </div>
     </footer>
 
@@ -910,10 +880,12 @@
         // Funcionalidad de la tarjeta interactiva
         const profileCard = document.getElementById('profileCard');
         const profileImg = document.getElementById('profileImg');
+        const photoContainer = document.getElementById('photoContainer');
         const infoContainer = document.getElementById('infoContainer');
         const instruction = document.getElementById('instruction');
         
-        profileImg.addEventListener('click', function() {
+        // Función para expandir/colapsar
+        const toggleCard = function() {
             profileCard.classList.toggle('expanded');
             
             if (profileCard.classList.contains('expanded')) {
@@ -921,7 +893,14 @@
             } else {
                 instruction.textContent = "Haz clic en la foto para ver mi información";
             }
-        });
+        };
+        
+        // Event listeners para la foto
+        photoContainer.addEventListener('click', toggleCard);
+        profileImg.addEventListener('click', toggleCard);
+        
+        // Asegurar que esté colapsado inicialmente
+        profileCard.classList.remove('expanded');
     </script>
 </body>
 </html>
