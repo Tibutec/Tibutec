@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,20 +19,20 @@
             --text: #333;
             --text-light: #7f8c8d;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: white;
             color: var(--text);
             line-height: 1.6;
         }
-        
+
         /* Header y navegación */
         header {
             background: white;
@@ -43,7 +44,7 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -51,48 +52,48 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             height: 50px;
             margin-right: 10px;
         }
-        
+
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 700;
         }
-        
+
         .nav-menu {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-menu li {
             margin-left: 1.5rem;
         }
-        
+
         .nav-menu a {
             color: black;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         .nav-menu a:hover {
             color: var(--secondary);
         }
-        
+
         .hamburger {
             display: none;
             cursor: pointer;
             font-size: 1.5rem;
         }
-        
+
         /* Hero Section con Carrusel */
         .hero {
             position: relative;
@@ -106,7 +107,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -115,13 +116,13 @@
             height: 100%;
             z-index: -1;
         }
-        
+
         .carousel-inner {
             width: 100%;
             height: 100%;
             position: relative;
         }
-        
+
         .carousel-item {
             position: absolute;
             top: 0;
@@ -134,11 +135,11 @@
             background-position: center;
             background-repeat: no-repeat;
         }
-        
+
         .carousel-item.active {
             opacity: 1;
         }
-        
+
         .carousel-item::after {
             content: '';
             position: absolute;
@@ -148,25 +149,25 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
         }
-        
+
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin: 0 auto 2rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
-        
+
         .btn {
             display: inline-block;
             background: var(--secondary);
@@ -177,43 +178,43 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-        
+
         .btn:hover {
             background: #c0392b;
             transform: translateY(-3px);
         }
-        
+
         /* Secciones generales */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .section-title h2 {
             font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-        
+
         .section-title p {
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         /* Servicios - Tarjetas */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+
         .service-card {
             background: white;
             border-radius: 15px;
@@ -221,23 +222,23 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .card-header {
             background: linear-gradient(to right, var(--primary), #4a6491);
             color: white;
             padding: 1.5rem;
             text-align: center;
         }
-        
+
         .card-body {
             padding: 1.5rem;
         }
-        
+
         /* Tarjeta interactiva optimizada */
         .interactive-card {
             background: white;
@@ -245,18 +246,18 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             transition: all 0.4s ease;
             padding: 25px;
-            margin: 20px auto;
-            max-width: 950px;
+            margin: 20px 0;
+            max-width: 350px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .card-content {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .photo-container {
             display: flex;
             flex-direction: column;
@@ -265,7 +266,11 @@
             cursor: pointer;
             transition: all 0.4s ease;
         }
-        
+
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
+
         .profile-img {
             width: 180px;
             height: 180px;
@@ -275,7 +280,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             transition: all 0.4s ease;
         }
-        
+
         .name {
             font-size: 24px;
             font-weight: 700;
@@ -283,7 +288,7 @@
             margin-top: 15px;
             text-align: center;
         }
-        
+
         .info-container {
             max-height: 0;
             opacity: 0;
@@ -291,19 +296,19 @@
             transition: all 0.5s ease;
             width: 100%;
         }
-        
+
         .interactive-card.expanded .info-container {
             max-height: 1500px;
             opacity: 1;
         }
-        
+
         .card-title {
             font-size: 20px;
             color: var(--secondary);
             text-align: center;
             margin-bottom: 15px;
         }
-        
+
         .location {
             display: flex;
             align-items: center;
@@ -311,18 +316,18 @@
             margin: 15px 0;
             font-size: 18px;
         }
-        
+
         .location i {
             margin-right: 10px;
             color: var(--accent);
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             margin: 20px 0;
         }
-        
+
         .social-links a {
             display: inline-flex;
             justify-content: center;
@@ -337,24 +342,24 @@
             transition: all 0.3s ease;
             font-size: 18px;
         }
-        
+
         .social-links a:hover {
             transform: translateY(-5px);
             background: var(--secondary);
         }
-        
+
         .info-columns {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             margin: 25px 0;
         }
-        
+
         .info-column {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .card-subtitle {
             color: var(--primary);
             margin: 20px 0 12px;
@@ -362,14 +367,14 @@
             border-bottom: 2px solid var(--accent);
             font-size: 18px;
         }
-        
+
         .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin: 15px 0;
         }
-        
+
         .skill {
             background: #e8f4fc;
             padding: 8px 15px;
@@ -377,24 +382,24 @@
             font-size: 14px;
             font-weight: 500;
         }
-        
+
         .icon-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .icon-list li {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
-        
+
         .icon-list i {
             margin-right: 10px;
             width: 25px;
             color: var(--accent);
         }
-        
+
         .buttons {
             display: flex;
             gap: 15px;
@@ -402,7 +407,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .card-btn {
             padding: 12px 25px;
             text-align: center;
@@ -415,38 +420,38 @@
             justify-content: center;
             min-width: 160px;
         }
-        
+
         .card-btn i {
             margin-right: 8px;
         }
-        
+
         .btn-primary {
             background: var(--accent);
             color: white;
         }
-        
+
         .btn-primary:hover {
             background: #2980b9;
         }
-        
+
         .btn-secondary {
             background: var(--secondary);
             color: white;
         }
-        
+
         .btn-secondary:hover {
             background: #c0392b;
         }
-        
+
         .btn-whatsapp {
             background: #25D366;
             color: white;
         }
-        
+
         .btn-whatsapp:hover {
             background: #128C7E;
         }
-        
+
         .contact-info {
             margin-top: 25px;
             background: #f8f9fa;
@@ -454,20 +459,20 @@
             border-radius: 10px;
             text-align: center;
         }
-        
+
         .whatsapp-info {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 10px;
         }
-        
+
         .whatsapp-info i {
             color: #25D366;
             margin-right: 10px;
             font-size: 20px;
         }
-        
+
         .instruction {
             text-align: center;
             margin-top: 15px;
@@ -475,7 +480,7 @@
             font-style: italic;
             font-size: 15px;
         }
-        
+
         /* Conócenos */
         .about-content {
             display: grid;
@@ -483,23 +488,23 @@
             gap: 3rem;
             align-items: center;
         }
-        
+
         .about-text h3 {
             font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
-        
+
         .about-text p {
             margin-bottom: 1.5rem;
         }
-        
+
         .about-image img {
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -507,7 +512,7 @@
             padding: 3rem 2rem;
             text-align: center;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -516,25 +521,25 @@
             gap: 2rem;
             text-align: left;
         }
-        
+
         .footer-logo {
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
         }
-        
+
         .footer-logo img {
             height: 50px;
             margin-right: 10px;
         }
-        
+
         .footer-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
             justify-content: center;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -547,42 +552,42 @@
             text-decoration: none;
             transition: all 0.3s;
         }
-        
+
         .social-icon:hover {
             background: var(--secondary);
             transform: translateY(-3px);
         }
-        
+
         .footer-links h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
         }
-        
+
         .footer-links ul {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
         }
-        
+
         .footer-links i {
             margin-right: 10px;
             width: 20px;
         }
-        
+
         .footer-links a {
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: var(--secondary);
         }
-        
+
         .footer-bottom {
             max-width: 1200px;
             margin: 2rem auto 0;
@@ -590,13 +595,23 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
-        
+
+        /* Grid para las tarjetas del equipo */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-content: center;
+            /* Centra las tarjetas si no llenan toda la fila */
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
             }
-            
+
             .nav-menu {
                 position: fixed;
                 top: 70px;
@@ -608,70 +623,75 @@
                 padding: 2rem;
                 transition: right 0.3s;
             }
-            
+
             .nav-menu.active {
                 right: 0;
             }
-            
+
             .nav-menu li {
                 margin: 1.5rem 0;
             }
-            
+
             .about-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .hero {
                 min-height: 60vh;
                 padding: 6rem 1.5rem 4rem;
             }
-            
+
             .hero h2 {
                 font-size: 2rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .interactive-card {
                 padding: 20px;
             }
-            
+
             .profile-img {
                 width: 150px;
                 height: 150px;
             }
-            
+
             .info-column {
                 min-width: 100%;
             }
-            
+
             .buttons {
                 flex-direction: column;
             }
-            
+
             .card-btn {
                 width: 100%;
             }
-            
+
             .footer-social {
                 justify-content: center;
             }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
-        
+
         @media (max-width: 480px) {
             .hero {
                 min-height: 50vh;
                 padding: 5rem 1rem 3rem;
             }
-            
+
             .hero h2 {
                 font-size: 1.8rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header y Navegación -->
     <header>
@@ -680,11 +700,11 @@
                 <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
                 <h1>TibuTec</h1>
             </div>
-            
+
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
-            
+
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -699,16 +719,26 @@
     <section class="hero" id="inicio">
         <div class="hero-carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
-                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
-                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
-                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="carousel-item active"
+                    style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+                </div>
+                <div class="carousel-item"
+                    style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+                </div>
+                <div class="carousel-item"
+                    style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+                </div>
+                <div class="carousel-item"
+                    style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+                </div>
             </div>
         </div>
-        
+
         <div class="hero-content">
             <h2>Soluciones Tecnológicas para tu Negocio</h2>
-            <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</p>
+            <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a
+                empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.
+            </p>
             <a href="#servicios" class="btn">Nuestros Servicios</a>
         </div>
     </section>
@@ -719,7 +749,7 @@
             <h2>Nuestros Servicios</h2>
             <p>Ofrecemos soluciones tecnológicas completas para potenciar tu presencia digital</p>
         </div>
-        
+
         <div class="services-grid">
             <!-- Tarjeta 1 -->
             <div class="service-card">
@@ -727,7 +757,8 @@
                     <h3>Desarrollo Web</h3>
                 </div>
                 <div class="card-body">
-                    <p>Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando las últimas tecnologías del mercado.</p>
+                    <p>Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando
+                        las últimas tecnologías del mercado.</p>
                     <ul class="icon-list">
                         <li><i class="fas fa-check"></i> Diseño personalizado</li>
                         <li><i class="fas fa-check"></i> Desarrollo a medida</li>
@@ -736,14 +767,15 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Tarjeta 2 -->
             <div class="service-card">
                 <div class="card-header">
                     <h3>Branding Digital</h3>
                 </div>
                 <div class="card-body">
-                    <p>Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en el entorno digital.</p>
+                    <p>Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en
+                        el entorno digital.</p>
                     <ul class="icon-list">
                         <li><i class="fas fa-check"></i> Diseño de identidad visual</li>
                         <li><i class="fas fa-check"></i> Estrategias de contenido</li>
@@ -752,14 +784,15 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Tarjeta 3 -->
             <div class="service-card">
                 <div class="card-header">
                     <h3>Base de Datos</h3>
                 </div>
                 <div class="card-body">
-                    <p>Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la información de tu negocio.</p>
+                    <p>Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la
+                        información de tu negocio.</p>
                     <ul class="icon-list">
                         <li><i class="fas fa-check"></i> Diseño de bases de datos</li>
                         <li><i class="fas fa-check"></i> Optimización de consultas</li>
@@ -777,94 +810,271 @@
             <h2>Nuestro Equipo</h2>
             <p>Conoce a nuestro talentoso equipo de profesionales</p>
         </div>
-        
-        <!-- Tarjeta interactiva optimizada -->
-        <div class="interactive-card" id="profileCard">
-            <div class="card-content">
-                <div class="photo-container" id="photoContainer">
-                    <img src="https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png" alt="JHORMAN CASTELLANOS" class="profile-img" id="profileImg">
-                    <h1 class="name">JHORMAN JESÚS CASTELLANOS MORALES</h1>
-                </div>
-                
-                <div class="info-container" id="infoContainer">
-                    <h2 class="card-title">Desarrollador FullStack Junior</h2>
-                    
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Tibú, Norte de Santander</span>
+
+        <!-- Grid de tarjetas interactivas -->
+        <div class="team-grid">
+            <!-- Tarjeta 1 -->
+            <div class="interactive-card" id="profileCard1">
+                <div class="card-content">
+                    <div class="photo-container" id="photoContainer1">
+                        <img src="https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png"
+                            alt="JHORMAN CASTELLANOS" class="profile-img" id="profileImg1">
+                        <h1 class="name">JHORMAN JESÚS CASTELLANOS MORALES</h1>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/Jhormancastella" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://jhormancastella.github.io/portafolio/" target="_blank"><i class="fas fa-briefcase"></i></a>
-                        <a href="https://wa.me/573223762998" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                    
-                    <div class="info-columns">
-                        <div class="info-column">
-                            <h3 class="card-subtitle">Habilidades Técnicas</h3>
-                            
-                            <h4 class="card-subtitle">Lenguajes de Programación</h4>
-                            <div class="skills">
-                                <span class="skill">Java</span>
-                                <span class="skill">PHP</span>
-                                <span class="skill">JavaScript</span>
-                                <span class="skill">HTML</span>
-                                <span class="skill">CSS</span>
+
+                    <div class="info-container" id="infoContainer1">
+                        <h2 class="card-title">Desarrollador FullStack Junior</h2>
+
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tibú, Norte de Santander</span>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/Jhormancastella" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://jhormancastella.github.io/portafolio/" target="_blank"><i
+                                    class="fas fa-briefcase"></i></a>
+                            <a href="https://wa.me/573223762998" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
+
+                                <h4 class="card-subtitle">Lenguajes de Programación</h4>
+                                <div class="skills">
+                                    <span class="skill">Java</span>
+                                    <span class="skill">PHP</span>
+                                    <span class="skill">JavaScript</span>
+                                    <span class="skill">HTML</span>
+                                    <span class="skill">CSS</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Bases de Datos</h4>
+                                <div class="skills">
+                                    <span class="skill">MySQL</span>
+                                    <span class="skill">PostgreSQL</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Otras Habilidades</h4>
+                                <div class="skills">
+                                    <span class="skill">Fotografía</span>
+                                    <span class="skill">Edición</span>
+                                    <span class="skill">Resolución de Problemas</span>
+                                    <span class="skill">Técnico en Sistemas</span>
+                                </div>
                             </div>
-                            
-                            <h4 class="card-subtitle">Bases de Datos</h4>
-                            <div class="skills">
-                                <span class="skill">MySQL</span>
-                                <span class="skill">PostgreSQL</span>
-                            </div>
-                            
-                            <h4 class="card-subtitle">Otras Habilidades</h4>
-                            <div class="skills">
-                                <span class="skill">Fotografía</span>
-                                <span class="skill">Edición</span>
-                                <span class="skill">Resolución de Problemas</span>
-                                <span class="skill">Técnico en Sistemas</span>
+
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Formación</h3>
+                                <ul class="icon-list">
+                                    <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> -
+                                        Campusland Tibu (2025)</li>
+                                    <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
+                                    <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
+                                </ul>
+
+                                <h3 class="card-subtitle">Acerca de mí</h3>
+                                <p>Soy un desarrollador junior fullstack con formación en <strong>Campusland
+                                        Tibu</strong>. Combino mis habilidades técnicas con mi creatividad como
+                                    fotógrafo y mi experiencia como técnico en sistemas.</p>
+                                <p>Me destaco por mi capacidad para <strong>resolver problemas</strong> y mi pasión por
+                                    aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el
+                                    backend, creando soluciones completas y funcionales.</p>
                             </div>
                         </div>
-                        
-                        <div class="info-column">
-                            <h3 class="card-subtitle">Formación</h3>
-                            <ul class="icon-list">
-                                <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> - Campusland Tibu (2025)</li>
-                                <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
-                                <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
-                            </ul>
-                            
-                            <h3 class="card-subtitle">Acerca de mí</h3>
-                            <p>Soy un desarrollador junior fullstack con formación en <strong>Campusland Tibu</strong>. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico en sistemas.</p>
-                            <p>Me destaco por mi capacidad para <strong>resolver problemas</strong> y mi pasión por aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el backend, creando soluciones completas y funcionales.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="buttons">
-                        <a href="https://github.com/Jhormancastella" target="_blank" class="card-btn btn-primary">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="https://jhormancastella.github.io/portafolio/" target="_blank" class="card-btn btn-secondary">
-                            <i class="fas fa-briefcase"></i> Portafolio
-                        </a>
-                        <a href="https://wa.me/573223762998" target="_blank" class="card-btn btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <p>¿Interesado en trabajar juntos? ¡Contáctame!</p>
-                        <div class="whatsapp-info">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>+57 322 376 2998</span>
+
+                        <div class="buttons">
+                            <a href="https://github.com/Jhormancastella" target="_blank" class="card-btn btn-primary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://jhormancastella.github.io/portafolio/" target="_blank"
+                                class="card-btn btn-secondary">
+                                <i class="fas fa-briefcase"></i> Portafolio
+                            </a>
+                            <a href="https://wa.me/573223762998" target="_blank" class="card-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <p class="instruction" id="instruction">Haz clic en la foto para ver mi información</p>
+            <!-- Tarjeta 2 -->
+            <div class="interactive-card" id="profileCard2">
+                <div class="card-content">
+                    <div class="photo-container" id="photoContainer2">
+                        <img src="https://avatars.githubusercontent.com/u/160280037?v=4"
+                            alt="MARÍA GONZÁLEZ" class="profile-img" id="profileImg2">
+                        <h1 class="name">Erick</h1>
+                    </div>
+
+                    <div class="info-container" id="infoContainer2">
+                        <h2 class="card-title">Diseñadora UX/UI</h2>
+
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Cúcuta, Norte de Santander</span>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/ErickJarias" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://mariagonzalez.design/" target="_blank"><i class="fas fa-briefcase"></i></a>
+                            <a href="https://wa.me/573123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
+
+                                <h4 class="card-subtitle">Herramientas de Diseño</h4>
+                                <div class="skills">
+                                    <span class="skill">Figma</span>
+                                    <span class="skill">Adobe XD</span>
+                                    <span class="skill">Sketch</span>
+                                    <span class="skill">Photoshop</span>
+                                    <span class="skill">Illustrator</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Bases de Datos</h4>
+                                <div class="skills">
+                                    <span class="skill">MongoDB</span>
+                                    <span class="skill">Firebase</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Otras Habilidades</h4>
+                                <div class="skills">
+                                    <span class="skill">Diseño Responsivo</span>
+                                    <span class="skill">Prototipado</span>
+                                    <span class="skill">Investigación UX</span>
+                                    <span class="skill">Testing</span>
+                                </div>
+                            </div>
+
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Formación</h3>
+                                <ul class="icon-list">
+                                    <li><i class="fas fa-graduation-cap"></i> <strong>Diseñadora UX/UI</strong> - Platzi
+                                        (2024)</li>
+                                    <li><i class="fas fa-palette"></i> <strong>Diseñadora Gráfica</strong></li>
+                                    <li><i class="fas fa-mobile-alt"></i> <strong>Especialista en Mobile Design</strong>
+                                    </li>
+                                </ul>
+
+                                <h3 class="card-subtitle">Acerca de mí</h3>
+                                <p>Soy una diseñadora UX/UI apasionada por crear experiencias digitales intuitivas y
+                                    atractivas. Me especializo en investigación de usuarios y diseño centrado en el ser
+                                    humano.</p>
+                                <p>Me encanta transformar ideas complejas en interfaces simples y funcionales que los
+                                    usuarios disfruten utilizando.</p>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://github.com/mariagonzalez" target="_blank" class="card-btn btn-primary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://mariagonzalez.design/" target="_blank" class="card-btn btn-secondary">
+                                <i class="fas fa-briefcase"></i> Portafolio
+                            </a>
+                            <a href="https://wa.me/573123456789" target="_blank" class="card-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="interactive-card" id="profileCard3">
+                <div class="card-content">
+                    <div class="photo-container" id="photoContainer3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                            alt="CARLOS MENDOZA" class="profile-img" id="profileImg3">
+                        <h1 class="name">Adrian PÉREZ</h1>
+                    </div>
+
+                    <div class="info-container" id="infoContainer3">
+                        <h2 class="card-title">Ingeniero de Backend</h2>
+
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ocaña, Norte de Santander</span>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/carlosmendoza" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://carlosmendoza.dev/" target="_blank"><i class="fas fa-briefcase"></i></a>
+                            <a href="https://wa.me/573987654321" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
+
+                                <h4 class="card-subtitle">Lenguajes de Programación</h4>
+                                <div class="skills">
+                                    <span class="skill">Python</span>
+                                    <span class="skill">Node.js</span>
+                                    <span class="skill">Java</span>
+                                    <span class="skill">Go</span>
+                                    <span class="skill">TypeScript</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Bases de Datos</h4>
+                                <div class="skills">
+                                    <span class="skill">PostgreSQL</span>
+                                    <span class="skill">MongoDB</span>
+                                    <span class="skill">Redis</span>
+                                    <span class="skill">Elasticsearch</span>
+                                </div>
+
+                                <h4 class="card-subtitle">Otras Habilidades</h4>
+                                <div class="skills">
+                                    <span class="skill">Microservicios</span>
+                                    <span class="skill">Docker</span>
+                                    <span class="skill">Kubernetes</span>
+                                    <span class="skill">AWS</span>
+                                    <span class="skill">CI/CD</span>
+                                </div>
+                            </div>
+
+                            <div class="info-column">
+                                <h3 class="card-subtitle">Formación</h3>
+                                <ul class="icon-list">
+                                    <li><i class="fas fa-graduation-cap"></i> <strong>Ingeniero de Sistemas</strong> -
+                                        Universidad Industrial (2023)</li>
+                                    <li><i class="fas fa-server"></i> <strong>Especialista en Cloud Computing</strong>
+                                    </li>
+                                    <li><i class="fas fa-shield-alt"></i> <strong>Certificado en Seguridad
+                                            Informática</strong></li>
+                                </ul>
+
+                                <h3 class="card-subtitle">Acerca de mí</h3>
+                                <p>Soy un ingeniero de backend especializado en arquitecturas escalables y sistemas de
+                                    alto rendimiento. Me apasiona optimizar procesos y crear soluciones robustas.</p>
+                                <p>Disfruto enfrentando desafíos técnicos complejos y encontrando soluciones innovadoras
+                                    que impulsen el crecimiento de los proyectos.</p>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://github.com/carlosmendoza" target="_blank" class="card-btn btn-primary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://carlosmendoza.dev/" target="_blank" class="card-btn btn-secondary">
+                                <i class="fas fa-briefcase"></i> Portafolio
+                            </a>
+                            <a href="https://wa.me/573987654321" target="_blank" class="card-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="instruction" id="instruction3">Haz clic en el nombre para ver mi información</p>
+        </div>
         </div>
     </section>
 
@@ -877,12 +1087,17 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Tu socio tecnológico en Tibú</h3>
-                <p>En TibuTec nos especializamos en offrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</p>
-                <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</p>
-                <p>Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</p>
+                <p>En TibuTec nos especializamos en offrecer soluciones digitales completas para empresas y
+                    emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.
+                </p>
+                <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer
+                    resultados de calidad que impulsen el crecimiento de tu negocio.</p>
+                <p>Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión
+                    digital en realidad.</p>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo de TibuTec">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Equipo de TibuTec">
             </div>
         </div>
     </section>
@@ -892,7 +1107,8 @@
         <div class="footer-content">
             <div class="footer-info">
                 <div class="footer-logo">
-                    <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
+                    <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/"
+                        alt="TibuTec Logo">
                     <h3>TibuTec</h3>
                 </div>
                 <p>Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</p>
@@ -903,7 +1119,7 @@
                     <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
@@ -914,7 +1130,7 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-links">
                 <h3>Contacto</h3>
                 <ul>
@@ -924,7 +1140,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 TibuTec - Todos los derechos reservados</p>
         </div>
@@ -934,10 +1150,10 @@
         // Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        
+
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            
+
             // Cambiar ícono
             const icon = hamburger.querySelector('i');
             if (navMenu.classList.contains('active')) {
@@ -948,7 +1164,7 @@
                 icon.classList.add('fa-bars');
             }
         });
-        
+
         // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
@@ -957,51 +1173,58 @@
                 hamburger.querySelector('i').classList.add('fa-bars');
             });
         });
-        
-        // Funcionalidad de la tarjeta interactiva
-        const profileCard = document.getElementById('profileCard');
-        const profileImg = document.getElementById('profileImg');
-        const photoContainer = document.getElementById('photoContainer');
-        const infoContainer = document.getElementById('infoContainer');
-        const instruction = document.getElementById('instruction');
-        
-        // Función para expandir/colapsar
-        const toggleCard = function() {
-            profileCard.classList.toggle('expanded');
-            
-            if (profileCard.classList.contains('expanded')) {
-                instruction.textContent = "Haz clic en la foto para ocultar la información";
-            } else {
-                instruction.textContent = "Haz clic en la foto para ver mi información";
-            }
-        };
-        
-        // Event listeners para la foto
-        photoContainer.addEventListener('click', toggleCard);
-        profileImg.addEventListener('click', toggleCard);
-        
-        // Asegurar que esté colapsado inicialmente
-        profileCard.classList.remove('expanded');
-        
+
+        // Funcionalidad de las tarjetas interactivas
+        function setupCard(cardId) {
+            const profileCard = document.getElementById(cardId);
+            const photoContainer = document.getElementById(`photoContainer${cardId.slice(-1)}`);
+            const profileImg = document.getElementById(`profileImg${cardId.slice(-1)}`);
+            const instruction = document.getElementById(`instruction${cardId.slice(-1)}`);
+
+            // Función para expandir/colapsar
+            const toggleCard = function () {
+                profileCard.classList.toggle('expanded');
+
+                if (profileCard.classList.contains('expanded')) {
+                    instruction.textContent = "Haz clic en la foto para ocultar la información";
+                } else {
+                    instruction.textContent = "Haz clic en la foto para ver mi información";
+                }
+            };
+
+            // Event listeners para la foto
+            photoContainer.addEventListener('click', toggleCard);
+            profileImg.addEventListener('click', toggleCard);
+
+            // Asegurar que esté colapsado inicialmente
+            profileCard.classList.remove('expanded');
+        }
+
+        // Configurar cada tarjeta
+        setupCard('profileCard1');
+        setupCard('profileCard2');
+        setupCard('profileCard3');
+
         // Carrusel automático para el hero
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const carouselItems = document.querySelectorAll('.carousel-item');
             let currentItem = 0;
-            
+
             function showNextItem() {
                 // Ocultar el item actual
                 carouselItems[currentItem].classList.remove('active');
-                
+
                 // Avanzar al siguiente item
                 currentItem = (currentItem + 1) % carouselItems.length;
-                
+
                 // Mostrar el nuevo item
                 carouselItems[currentItem].classList.add('active');
             }
-            
+
             // Cambiar imagen cada 5 segundos
             setInterval(showNextItem, 5000);
         });
     </script>
 </body>
+
 </html>
