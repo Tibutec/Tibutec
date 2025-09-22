@@ -606,6 +606,99 @@
             /* Centra las tarjetas si no llenan toda la fila */
         }
 
+        /* Galería de proyectos */
+        .projects-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: var(--secondary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #e8f4fc;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
@@ -677,6 +770,139 @@
             .team-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Agregando estilos para la galería de proyectos */
+            /* Estilos para la galería de proyectos */
+            .projects-gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+                padding: 2rem 0;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .project-card {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .project-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            }
+
+            .project-image {
+                position: relative;
+                height: 250px;
+                overflow: hidden;
+            }
+
+            .project-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .project-card:hover .project-image img {
+                transform: scale(1.1);
+            }
+
+            .project-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(44, 62, 80, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .project-card:hover .project-overlay {
+                opacity: 1;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .project-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                background: var(--accent);
+                color: white;
+                border-radius: 50%;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-size: 1.2rem;
+            }
+
+            .project-link:hover {
+                background: var(--secondary);
+                transform: scale(1.1);
+            }
+
+            .project-info {
+                padding: 1.5rem;
+            }
+
+            .project-info h3 {
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+                font-size: 1.3rem;
+                font-weight: 600;
+            }
+
+            .project-info p {
+                color: var(--text-light);
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .project-tech {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .tech-tag {
+                background: var(--light);
+                color: var(--primary);
+                padding: 0.3rem 0.8rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+
+            /* Responsive para proyectos */
+            @media (max-width: 768px) {
+                .projects-gallery {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                    padding: 1rem;
+                }
+                
+                .project-card {
+                    margin: 0 1rem;
+                }
+                
+                .project-image {
+                    height: 200px;
+                }
+            }
         }
 
         @media (max-width: 480px) {
@@ -709,6 +935,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#equipo">Nuestro Equipo</a></li>
+                <li><a href="#proyectos">Nuestros Proyectos</a></li>
                 <li><a href="#conocenos">Conócenos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -1074,17 +1301,169 @@
 
         </div>
         <p class="instruction" id="instruction3">Haz clic en el nombre para ver mi información</p>
-        </div>
-        </div>
     </section>
+
     <!-- Sección proyectos  -->
     <section id="proyectos">
         <div class="section-title">
-            <h2>proyectos</h2>
-            <p> proyextos en lo que enos trabajo </p>
+            <h2>Nuestros Proyectos</h2>
+            <p>Explora algunos de los proyectos en los que hemos trabajado</p>
+        </div>
+        
+        <!-- Galería completa de proyectos con imágenes y detalles -->
+        <div class="projects-gallery">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Empresarial">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Dashboard Empresarial</h3>
+                    <p>Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-bebda4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Platform">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Plataforma E-commerce</h3>
+                    <p>Tienda online completa con carrito de compras, pagos integrados y panel de administración.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Móvil">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Aplicación Móvil</h3>
+                    <p>App nativa para gestión de tareas con sincronización en la nube y notificaciones push.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Redux</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sistema CRM">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Sistema CRM</h3>
+                    <p>Plataforma de gestión de relaciones con clientes con automatización de ventas y seguimiento.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog Corporativo">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Blog Corporativo</h3>
+                    <p>Sitio web corporativo con blog integrado, SEO optimizado y panel de administración de contenido.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="API REST">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Ver proyecto">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>API REST Empresarial</h3>
+                    <p>API robusta para integración de sistemas empresariales con documentación completa y autenticación.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    
+
     <!-- Sección Conócenos -->
     <section id="conocenos">
         <div class="section-title">
@@ -1094,7 +1473,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Tu socio tecnológico en Tibú</h3>
-                <p>En TibuTec nos especializamos en offrecer soluciones digitales completas para empresas y
+                <p>En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y
                     emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.
                 </p>
                 <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer
@@ -1133,6 +1512,7 @@
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#equipo">Nuestro Equipo</a></li>
+                    <li><a href="#proyectos">Nuestros Proyectos</a></li>
                     <li><a href="#conocenos">Conócenos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
