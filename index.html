@@ -1752,7 +1752,7 @@
             username: 'Tibutec', // Solo el nombre de usuario, sin URL
             repo: 'Tibutec', // Solo el nombre del repositorio, sin URL
             filePath: 'website-data.json', // Ruta del archivo JSON sin barra inicial
-            token: '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' // Tu token de acceso personal
+            token: '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' // Tu token de acceso personal
         };
 
         // ==================== GESTIÓN DE DATOS ====================
@@ -1781,58 +1781,81 @@
         }
 
         // Guardar datos en GitHub
-        async function saveGitHubData() {
-            try {
-                const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
-                
-                // Obtener el SHA actual si el archivo existe
-                let sha = '';
-                try {
-                    const currentFile = await fetch(url);
-                    if (currentFile.ok) {
-                        const fileData = await currentFile.json();
-                        sha = fileData.sha;
-                    }
-                } catch (e) {
-                    // El archivo no existe aún
+async function saveGitHubData() {
+    try {
+        const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
+        
+        console.log('Intentando guardar en:', url);
+        console.log('Token (primeros 10 caracteres):', GITHUB_CONFIG.token.substring(0, 10) + '...');
+        
+        // Obtener el SHA actual si el archivo existe
+        let sha = '';
+        try {
+            const currentFile = await fetch(url, {
+                headers: {
+                    'Authorization': `token ${GITHUB_CONFIG.token}`
                 }
-                
-                // Preparar los datos para guardar
-                const content = btoa(JSON.stringify(appData, null, 2));
-                const body = {
-                    message: 'Actualizar datos del sitio web',
-                    content: content,
-                    branch: 'main' // o 'master' dependiendo de tu repositorio
-                };
-                
-                if (sha) {
-                    body.sha = sha;
-                }
-                
-                // Enviar los datos a GitHub
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${GITHUB_CONFIG.token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-                
-                if (response.ok) {
-                    console.log('Datos guardados exitosamente en GitHub');
-                    return true;
-                } else {
-                    const errorData = await response.json();
-                    console.error('Error al guardar en GitHub:', errorData);
-                    return false;
-                }
-            } catch (error) {
-                console.error('Error:', error);
+            });
+            
+            if (currentFile.ok) {
+                const fileData = await currentFile.json();
+                sha = fileData.sha;
+                console.log('SHA del archivo actual:', sha);
+            } else if (currentFile.status === 404) {
+                console.log('El archivo no existe aún, se creará uno nuevo');
+            } else {
+                const errorData = await currentFile.json();
+                console.error('Error al obtener el archivo actual:', errorData);
+                alert(`Error al verificar el archivo: ${errorData.message}`);
                 return false;
             }
+        } catch (e) {
+            console.error('Error al verificar el archivo existente:', e);
+            alert('Error al verificar el archivo existente');
+            return false;
         }
-
+        
+        // Preparar los datos para guardar
+        const content = btoa(JSON.stringify(appData, null, 2));
+        const body = {
+            message: 'Actualizar datos del sitio web',
+            content: content,
+            branch: 'main'
+        };
+        
+        if (sha) {
+            body.sha = sha;
+        }
+        
+        console.log('Enviando datos a GitHub...');
+        
+        // Enviar los datos a GitHub
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${GITHUB_CONFIG.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        
+        console.log('Código de respuesta:', response.status);
+        
+        if (response.ok) {
+            console.log('Datos guardados exitosamente en GitHub');
+            return true;
+        } else {
+            const errorData = await response.json();
+            console.error('Error al guardar en GitHub:', errorData);
+            alert(`Error al guardar en GitHub: ${errorData.message}`);
+            return false;
+        }
+    } catch (error) {
+        console.error('Error en saveGitHubData:', error);
+        alert('Error al guardar los datos: ' + error.message);
+        return false;
+    }
+}
         // Exportar datos
         function exportData() {
             const dataStr = JSON.stringify(appData, null, 2);
