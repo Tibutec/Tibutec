@@ -915,6 +915,310 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Estilos del Panel Administrador */
+        #adminPanel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        #adminPanel.active {
+            right: 0;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .admin-toggle:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .admin-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .admin-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-section h3 i {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .admin-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: #2980b9;
+        }
+
+        .admin-btn.secondary {
+            background: var(--secondary);
+        }
+
+        .admin-btn.secondary:hover {
+            background: #c0392b;
+        }
+
+        .skills-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .skills-input input {
+            flex: 1;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: var(--light);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-tag .remove-skill {
+            margin-left: 5px;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            padding: 10px 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            #adminPanel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        /* Estilos del Login */
+        #loginModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #loginModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        #loginModal.active .login-container {
+            transform: translateY(0);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .login-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn.primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .login-btn.primary:hover {
+            background: #2980b9;
+        }
+
+        .login-btn.secondary {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .login-btn.secondary:hover {
+            background: #d5dbdb;
+        }
+
+        .login-error {
+            color: var(--secondary);
+            font-size: 14px;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
     </style>
 </head>
 
@@ -962,8 +1266,8 @@
         </div>
 
         <div class="hero-content">
-            <h2>Soluciones Tecnológicas para tu Negocio</h2>
-            <p>Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a
+            <h2 id="hero-title">Soluciones Tecnológicas para tu Negocio</h2>
+            <p id="hero-description">Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a
                 empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.
             </p>
             <a href="#servicios" class="btn">Nuestros Servicios</a>
@@ -977,57 +1281,8 @@
             <p>Ofrecemos soluciones tecnológicas completas para potenciar tu presencia digital</p>
         </div>
 
-        <div class="services-grid">
-            <!-- Tarjeta 1 -->
-            <div class="service-card">
-                <div class="card-header">
-                    <h3>Desarrollo Web</h3>
-                </div>
-                <div class="card-body">
-                    <p>Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando
-                        las últimas tecnologías del mercado.</p>
-                    <ul class="icon-list">
-                        <li><i class="fas fa-check"></i> Diseño personalizado</li>
-                        <li><i class="fas fa-check"></i> Desarrollo a medida</li>
-                        <li><i class="fas fa-check"></i> Optimización SEO</li>
-                        <li><i class="fas fa-check"></i> Integración con redes sociales</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tarjeta 2 -->
-            <div class="service-card">
-                <div class="card-header">
-                    <h3>Branding Digital</h3>
-                </div>
-                <div class="card-body">
-                    <p>Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en
-                        el entorno digital.</p>
-                    <ul class="icon-list">
-                        <li><i class="fas fa-check"></i> Diseño de identidad visual</li>
-                        <li><i class="fas fa-check"></i> Estrategias de contenido</li>
-                        <li><i class="fas fa-check"></i> Gestión de redes sociales</li>
-                        <li><i class="fas fa-check"></i> Campañas publicitarias</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3 -->
-            <div class="service-card">
-                <div class="card-header">
-                    <h3>Base de Datos</h3>
-                </div>
-                <div class="card-body">
-                    <p>Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la
-                        información de tu negocio.</p>
-                    <ul class="icon-list">
-                        <li><i class="fas fa-check"></i> Diseño de bases de datos</li>
-                        <li><i class="fas fa-check"></i> Optimización de consultas</li>
-                        <li><i class="fas fa-check"></i> Respaldo y recuperación</li>
-                        <li><i class="fas fa-check"></i> Seguridad de datos</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="services-grid" id="services-container">
+            <!-- Las tarjetas de servicios se generarán dinámicamente -->
         </div>
     </section>
 
@@ -1039,268 +1294,10 @@
         </div>
 
         <!-- Grid de tarjetas interactivas -->
-        <div class="team-grid">
-            <!-- Tarjeta 1 -->
-            <div class="interactive-card" id="profileCard1">
-                <div class="card-content">
-                    <div class="photo-container" id="photoContainer1">
-                        <img src="https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png"
-                            alt="JHORMAN CASTELLANOS" class="profile-img" id="profileImg1">
-                        <h1 class="name">JHORMAN JESÚS CASTELLANOS MORALES</h1>
-                    </div>
-
-                    <div class="info-container" id="infoContainer1">
-                        <h2 class="card-title">Desarrollador FullStack Junior</h2>
-
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Tibú, Norte de Santander</span>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="https://github.com/Jhormancastella" target="_blank"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="https://jhormancastella.github.io/portafolio/" target="_blank"><i
-                                    class="fas fa-briefcase"></i></a>
-                            <a href="https://wa.me/573223762998" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-
-                        <div class="info-columns">
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
-
-                                <h4 class="card-subtitle">Lenguajes de Programación</h4>
-                                <div class="skills">
-                                    <span class="skill">Java</span>
-                                    <span class="skill">PHP</span>
-                                    <span class="skill">JavaScript</span>
-                                    <span class="skill">HTML</span>
-                                    <span class="skill">CSS</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Bases de Datos</h4>
-                                <div class="skills">
-                                    <span class="skill">MySQL</span>
-                                    <span class="skill">PostgreSQL</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Otras Habilidades</h4>
-                                <div class="skills">
-                                    <span class="skill">Fotografía</span>
-                                    <span class="skill">Edición</span>
-                                    <span class="skill">Resolución de Problemas</span>
-                                    <span class="skill">Técnico en Sistemas</span>
-                                </div>
-                            </div>
-
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Formación</h3>
-                                <ul class="icon-list">
-                                    <li><i class="fas fa-graduation-cap"></i> <strong>Desarrollador FullStack</strong> -
-                                        Campusland Tibu (2025)</li>
-                                    <li><i class="fas fa-camera"></i> <strong>Fotógrafo</strong></li>
-                                    <li><i class="fas fa-tools"></i> <strong>Técnico en Sistemas</strong></li>
-                                </ul>
-
-                                <h3 class="card-subtitle">Acerca de mí</h3>
-                                <p>Soy un desarrollador junior fullstack con formación en <strong>Campusland
-                                        Tibu</strong>. Combino mis habilidades técnicas con mi creatividad como
-                                    fotógrafo y mi experiencia como técnico en sistemas.</p>
-                                <p>Me destaco por mi capacidad para <strong>resolver problemas</strong> y mi pasión por
-                                    aprender nuevas tecnologías. Disfruto trabajando tanto en el frontend como en el
-                                    backend, creando soluciones completas y funcionales.</p>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <a href="https://github.com/Jhormancastella" target="_blank" class="card-btn btn-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://jhormancastella.github.io/portafolio/" target="_blank"
-                                class="card-btn btn-secondary">
-                                <i class="fas fa-briefcase"></i> Portafolio
-                            </a>
-                            <a href="https://wa.me/573223762998" target="_blank" class="card-btn btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Tarjeta 2 -->
-            <div class="interactive-card" id="profileCard2">
-                <div class="card-content">
-                    <div class="photo-container" id="photoContainer2">
-                        <img src="https://avatars.githubusercontent.com/u/160280037?v=4"
-                            alt="MARÍA GONZÁLEZ" class="profile-img" id="profileImg2">
-                        <h1 class="name">Erick</h1>
-                    </div>
-
-                    <div class="info-container" id="infoContainer2">
-                        <h2 class="card-title">Diseñadora UX/UI</h2>
-
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Cúcuta, Norte de Santander</span>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="https://github.com/ErickJarias" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://mariagonzalez.design/" target="_blank"><i class="fas fa-briefcase"></i></a>
-                            <a href="https://wa.me/573123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-
-                        <div class="info-columns">
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
-
-                                <h4 class="card-subtitle">Herramientas de Diseño</h4>
-                                <div class="skills">
-                                    <span class="skill">Figma</span>
-                                    <span class="skill">Adobe XD</span>
-                                    <span class="skill">Sketch</span>
-                                    <span class="skill">Photoshop</span>
-                                    <span class="skill">Illustrator</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Bases de Datos</h4>
-                                <div class="skills">
-                                    <span class="skill">MongoDB</span>
-                                    <span class="skill">Firebase</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Otras Habilidades</h4>
-                                <div class="skills">
-                                    <span class="skill">Diseño Responsivo</span>
-                                    <span class="skill">Prototipado</span>
-                                    <span class="skill">Investigación UX</span>
-                                    <span class="skill">Testing</span>
-                                </div>
-                            </div>
-
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Formación</h3>
-                                <ul class="icon-list">
-                                    <li><i class="fas fa-graduation-cap"></i> <strong>Diseñadora UX/UI</strong> - Platzi
-                                        (2024)</li>
-                                    <li><i class="fas fa-palette"></i> <strong>Diseñadora Gráfica</strong></li>
-                                    <li><i class="fas fa-mobile-alt"></i> <strong>Especialista en Mobile Design</strong>
-                                    </li>
-                                </ul>
-
-                                <h3 class="card-subtitle">Acerca de mí</h3>
-                                <p>Soy una diseñadora UX/UI apasionada por crear experiencias digitales intuitivas y
-                                    atractivas. Me especializo en investigación de usuarios y diseño centrado en el ser
-                                    humano.</p>
-                                <p>Me encanta transformar ideas complejas en interfaces simples y funcionales que los
-                                    usuarios disfruten utilizando.</p>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <a href="https://github.com/mariagonzalez" target="_blank" class="card-btn btn-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://mariagonzalez.design/" target="_blank" class="card-btn btn-secondary">
-                                <i class="fas fa-briefcase"></i> Portafolio
-                            </a>
-                            <a href="https://wa.me/573123456789" target="_blank" class="card-btn btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Tarjeta 3 -->
-            <div class="interactive-card" id="profileCard3">
-                <div class="card-content">
-                    <div class="photo-container" id="photoContainer3">
-                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                            alt="CARLOS MENDOZA" class="profile-img" id="profileImg3">
-                        <h1 class="name">Adrian PÉREZ</h1>
-                    </div>
-
-                    <div class="info-container" id="infoContainer3">
-                        <h2 class="card-title">Ingeniero de Backend</h2>
-
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Ocaña, Norte de Santander</span>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="https://github.com/carlosmendoza" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://carlosmendoza.dev/" target="_blank"><i class="fas fa-briefcase"></i></a>
-                            <a href="https://wa.me/573987654321" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-
-                        <div class="info-columns">
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Habilidades Técnicas</h3>
-
-                                <h4 class="card-subtitle">Lenguajes de Programación</h4>
-                                <div class="skills">
-                                    <span class="skill">Python</span>
-                                    <span class="skill">Node.js</span>
-                                    <span class="skill">Java</span>
-                                    <span class="skill">Go</span>
-                                    <span class="skill">TypeScript</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Bases de Datos</h4>
-                                <div class="skills">
-                                    <span class="skill">PostgreSQL</span>
-                                    <span class="skill">MongoDB</span>
-                                    <span class="skill">Redis</span>
-                                    <span class="skill">Elasticsearch</span>
-                                </div>
-
-                                <h4 class="card-subtitle">Otras Habilidades</h4>
-                                <div class="skills">
-                                    <span class="skill">Microservicios</span>
-                                    <span class="skill">Docker</span>
-                                    <span class="skill">Kubernetes</span>
-                                    <span class="skill">AWS</span>
-                                    <span class="skill">CI/CD</span>
-                                </div>
-                            </div>
-
-                            <div class="info-column">
-                                <h3 class="card-subtitle">Formación</h3>
-                                <ul class="icon-list">
-                                    <li><i class="fas fa-graduation-cap"></i> <strong>Ingeniero de Sistemas</strong> -
-                                        Universidad Industrial (2023)</li>
-                                    <li><i class="fas fa-server"></i> <strong>Especialista en Cloud Computing</strong>
-                                    </li>
-                                    <li><i class="fas fa-shield-alt"></i> <strong>Certificado en Seguridad
-                                            Informática</strong></li>
-                                </ul>
-
-                                <h3 class="card-subtitle">Acerca de mí</h3>
-                                <p>Soy un ingeniero de backend especializado en arquitecturas escalables y sistemas de
-                                    alto rendimiento. Me apasiona optimizar procesos y crear soluciones robustas.</p>
-                                <p>Disfruto enfrentando desafíos técnicos complejos y encontrando soluciones innovadoras
-                                    que impulsen el crecimiento de los proyectos.</p>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <a href="https://github.com/carlosmendoza" target="_blank" class="card-btn btn-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://carlosmendoza.dev/" target="_blank" class="card-btn btn-secondary">
-                                <i class="fas fa-briefcase"></i> Portafolio
-                            </a>
-                            <a href="https://wa.me/573987654321" target="_blank" class="card-btn btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="team-grid" id="team-container">
+            <!-- Las tarjetas del equipo se generarán dinámicamente -->
         </div>
-        <p class="instruction" id="instruction3">Haz clic en el nombre para ver mi información</p>
+        <p class="instruction">Haz clic en la foto para ver la información</p>
     </section>
 
     <!-- Sección proyectos  -->
@@ -1311,156 +1308,8 @@
         </div>
         
         <!-- Galería completa de proyectos con imágenes y detalles -->
-        <div class="projects-gallery">
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Empresarial">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Dashboard Empresarial</h3>
-                    <p>Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1556742049-bebda4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Platform">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Plataforma E-commerce</h3>
-                    <p>Tienda online completa con carrito de compras, pagos integrados y panel de administración.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">Laravel</span>
-                        <span class="tech-tag">MySQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Móvil">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Aplicación Móvil</h3>
-                    <p>App nativa para gestión de tareas con sincronización en la nube y notificaciones push.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Redux</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sistema CRM">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Sistema CRM</h3>
-                    <p>Plataforma de gestión de relaciones con clientes con automatización de ventas y seguimiento.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog Corporativo">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Blog Corporativo</h3>
-                    <p>Sitio web corporativo con blog integrado, SEO optimizado y panel de administración de contenido.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">WordPress</span>
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">MySQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="API REST">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Ver proyecto">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link" title="Ver código">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>API REST Empresarial</h3>
-                    <p>API robusta para integración de sistemas empresariales con documentación completa y autenticación.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">JWT</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-                </div>
-            </div>
+        <div class="projects-gallery" id="projects-container">
+            <!-- Los proyectos se generarán dinámicamente -->
         </div>
     </section>
 
@@ -1472,18 +1321,18 @@
         </div>
         <div class="about-content">
             <div class="about-text">
-                <h3>Tu socio tecnológico en Tibú</h3>
-                <p>En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y
+                <h3 id="about-title">Tu socio tecnológico en Tibú</h3>
+                <p id="about-description-1">En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y
                     emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.
                 </p>
-                <p>Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer
+                <p id="about-description-2">Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer
                     resultados de calidad que impulsen el crecimiento de tu negocio.</p>
-                <p>Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión
+                <p id="about-description-3">Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión
                     digital en realidad.</p>
             </div>
             <div class="about-image">
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Equipo de TibuTec">
+                    alt="Equipo de TibuTec" id="about-image">
             </div>
         </div>
     </section>
@@ -1494,10 +1343,10 @@
             <div class="footer-info">
                 <div class="footer-logo">
                     <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/"
-                        alt="TibuTec Logo">
+                        alt="TibuTec Logo" id="footer-logo">
                     <h3>TibuTec</h3>
                 </div>
-                <p>Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</p>
+                <p id="footer-description">Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</p>
                 <div class="footer-social">
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -1521,9 +1370,9 @@
             <div class="footer-links">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Tibú, Norte de Santander</li>
-                    <li><i class="fas fa-phone"></i> +57 322 376 2998</li>
-                    <li><i class="fas fa-envelope"></i> contacto.tibutec@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Tibú, Norte de Santander</span></li>
+                    <li><i class="fas fa-phone"></i> <span id="footer-phone">+57 322 376 2998</span></li>
+                    <li><i class="fas fa-envelope"></i> <span id="footer-email">contacto.tibutec@gmail.com</span></li>
                 </ul>
             </div>
         </div>
@@ -1533,67 +1382,1175 @@
         </div>
     </footer>
 
+    <!-- Panel Administrador -->
+    <button class="admin-toggle" id="adminToggle">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <div id="adminPanel">
+        <div class="admin-header">
+            <h2><i class="fas fa-user-cog"></i> Panel Administrador</h2>
+            <button class="admin-btn secondary" id="closeAdmin">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="hero">Inicio</button>
+            <button class="tab-button" data-tab="services">Servicios</button>
+            <button class="tab-button" data-tab="team">Equipo</button>
+            <button class="tab-button" data-tab="projects">Proyectos</button>
+            <button class="tab-button" data-tab="about">Nosotros</button>
+            <button class="tab-button" data-tab="footer">Contacto</button>
+        </div>
+
+        <!-- Pestaña Hero/Inicio -->
+        <div class="tab-content active" id="hero-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-home"></i> Sección Inicio</h3>
+                
+                <div class="form-group">
+                    <label for="admin-hero-title">Título Principal</label>
+                    <input type="text" id="admin-hero-title" value="Soluciones Tecnológicas para tu Negocio">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-hero-description">Descripción</label>
+                    <textarea id="admin-hero-description">Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-hero-image1">Imagen 1 del Carrusel (URL)</label>
+                    <input type="text" id="admin-hero-image1" value="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-hero-image2">Imagen 2 del Carrusel (URL)</label>
+                    <input type="text" id="admin-hero-image2" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-hero-image3">Imagen 3 del Carrusel (URL)</label>
+                    <input type="text" id="admin-hero-image3" value="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-hero-image4">Imagen 4 del Carrusel (URL)</label>
+                    <input type="text" id="admin-hero-image4" value="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                </div>
+                
+                <button class="admin-btn" onclick="saveHeroData()">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestaña Servicios -->
+        <div class="tab-content" id="services-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-concierge-bell"></i> Gestión de Servicios</h3>
+                <p>Aquí puedes agregar, editar o eliminar servicios.</p>
+                
+                <div id="services-list">
+                    <!-- Los servicios se cargarán dinámicamente -->
+                </div>
+                
+                <button class="admin-btn" onclick="addNewService()">
+                    <i class="fas fa-plus"></i> Agregar Servicio
+                </button>
+                
+                <button class="admin-btn" onclick="saveServicesData()">
+                    <i class="fas fa-save"></i> Guardar Servicios
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestaña Equipo -->
+        <div class="tab-content" id="team-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-users"></i> Gestión del Equipo</h3>
+                <p>Administra los miembros de tu equipo.</p>
+                
+                <div id="team-list">
+                    <!-- Los miembros del equipo se cargarán dinámicamente -->
+                </div>
+                
+                <button class="admin-btn" onclick="addNewTeamMember()">
+                    <i class="fas fa-plus"></i> Agregar Miembro
+                </button>
+                
+                <button class="admin-btn" onclick="saveTeamData()">
+                    <i class="fas fa-save"></i> Guardar Equipo
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestaña Proyectos -->
+        <div class="tab-content" id="projects-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-project-diagram"></i> Gestión de Proyectos</h3>
+                <p>Administra los proyectos que se muestran en el portafolio.</p>
+                
+                <div id="projects-list">
+                    <!-- Los proyectos se cargarán dinámicamente -->
+                </div>
+                
+                <button class="admin-btn" onclick="addNewProject()">
+                    <i class="fas fa-plus"></i> Agregar Proyecto
+                </button>
+                
+                <button class="admin-btn" onclick="saveProjectsData()">
+                    <i class="fas fa-save"></i> Guardar Proyectos
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestaña Nosotros -->
+        <div class="tab-content" id="about-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-info-circle"></i> Sección "Conócenos"</h3>
+                
+                <div class="form-group">
+                    <label for="admin-about-title">Título</label>
+                    <input type="text" id="admin-about-title" value="Tu socio tecnológico en Tibú">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-about-description1">Descripción 1</label>
+                    <textarea id="admin-about-description1">En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-about-description2">Descripción 2</label>
+                    <textarea id="admin-about-description2">Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-about-description3">Descripción 3</label>
+                    <textarea id="admin-about-description3">Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-about-image">Imagen (URL)</label>
+                    <input type="text" id="admin-about-image" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                </div>
+                
+                <button class="admin-btn" onclick="saveAboutData()">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestaña Footer/Contacto -->
+        <div class="tab-content" id="footer-tab">
+            <div class="admin-section">
+                <h3><i class="fas fa-address-book"></i> Información de Contacto</h3>
+                
+                <div class="form-group">
+                    <label for="admin-footer-address">Dirección</label>
+                    <input type="text" id="admin-footer-address" value="Tibú, Norte de Santander">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-footer-phone">Teléfono</label>
+                    <input type="text" id="admin-footer-phone" value="+57 322 376 2998">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-footer-email">Email</label>
+                    <input type="text" id="admin-footer-email" value="contacto.tibutec@gmail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-footer-description">Descripción del Footer</label>
+                    <textarea id="admin-footer-description">Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</textarea>
+                </div>
+                
+                <button class="admin-btn" onclick="saveFooterData()">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
+            <p>Importar o exportar la configuración del sitio.</p>
+            
+            <button class="admin-btn" onclick="exportData()">
+                <i class="fas fa-download"></i> Exportar Datos
+            </button>
+            
+            <button class="admin-btn" onclick="importData()">
+                <i class="fas fa-upload"></i> Importar Datos
+            </button>
+            
+            <input type="file" id="importFile" style="display: none;" accept=".json">
+            
+            <button class="admin-btn secondary" onclick="resetToDefault()">
+                <i class="fas fa-undo"></i> Restablecer Valores
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal">
+        <div class="login-container">
+            <div class="login-header">
+                <h2><i class="fas fa-lock"></i> Acceso Administrador</h2>
+                <p>Ingresa la clave para acceder al panel de administración</p>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <input type="password" id="adminPassword" placeholder="Clave de acceso" required>
+                </div>
+                
+                <div class="login-buttons">
+                    <button type="submit" class="login-btn primary">Acceder</button>
+                    <button type="button" class="login-btn secondary" onclick="closeLoginModal()">Cancelar</button>
+                </div>
+                
+                <div class="login-error" id="loginError">
+                    Clave incorrecta. Por favor, intenta nuevamente.
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Menú Hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+        // ==================== DATOS POR DEFECTO ====================
+        const defaultData = {
+            hero: {
+                title: "Soluciones Tecnológicas para tu Negocio",
+                description: "Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.",
+                images: [
+                    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+                ]
+            },
+            services: [
+                {
+                    id: 1,
+                    title: "Desarrollo Web",
+                    description: "Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando las últimas tecnologías del mercado.",
+                    features: ["Diseño personalizado", "Desarrollo a medida", "Optimización SEO", "Integración con redes sociales"]
+                },
+                {
+                    id: 2,
+                    title: "Branding Digital",
+                    description: "Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en el entorno digital.",
+                    features: ["Diseño de identidad visual", "Estrategias de contenido", "Gestión de redes sociales", "Campañas publicitarias"]
+                },
+                {
+                    id: 3,
+                    title: "Base de Datos",
+                    description: "Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la información de tu negocio.",
+                    features: ["Diseño de bases de datos", "Optimización de consultas", "Respaldo y recuperación", "Seguridad de datos"]
+                }
+            ],
+            team: [
+                {
+                    id: 1,
+                    name: "JHORMAN JESÚS CASTELLANOS MORALES",
+                    title: "Desarrollador FullStack Junior",
+                    image: "https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png",
+                    location: "Tibú, Norte de Santander",
+                    github: "https://github.com/Jhormancastella",
+                    portfolio: "https://jhormancastella.github.io/portafolio/",
+                    whatsapp: "573223762998",
+                    skills: ["Java", "PHP", "JavaScript", "HTML", "CSS", "MySQL", "PostgreSQL", "Fotografía", "Edición", "Resolución de Problemas", "Técnico en Sistemas"],
+                    description: "Soy un desarrollador junior fullstack con formación en Campusland Tibu. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico de sistemas. Me destaco por mi capacidad para resolver problemas y mi pasión por aprender nuevas tecnologías."
+                },
+                {
+                    id: 2,
+                    name: "Erick Jarias",
+                    title: "Diseñador UX/UI",
+                    image: "https://avatars.githubusercontent.com/u/160280037?v=4",
+                    location: "Cúcuta, Norte de Santander",
+                    github: "https://github.com/ErickJarias",
+                    portfolio: "https://erickjarias.design/",
+                    whatsapp: "573123456789",
+                    skills: ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator", "MongoDB", "Firebase", "Diseño Responsivo", "Prototipado", "Investigación UX", "Testing"],
+                    description: "Soy un diseñador UX/UI apasionado por crear experiencias digitales intuitivas y atractivas. Me especializo en investigación de usuarios y diseño centrado en el ser humano."
+                },
+                {
+                    id: 3,
+                    name: "Adrian Pérez",
+                    title: "Ingeniero de Backend",
+                    image: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+                    location: "Ocaña, Norte de Santander",
+                    github: "https://github.com/adrianperez",
+                    portfolio: "https://adrianperez.dev/",
+                    whatsapp: "573987654321",
+                    skills: ["Python", "Node.js", "Java", "Go", "TypeScript", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch", "Microservicios", "Docker", "Kubernetes", "AWS", "CI/CD"],
+                    description: "Soy un ingeniero de backend especializado en arquitecturas escalables y sistemas de alto rendimiento. Me apasiona optimizar procesos y crear soluciones robustas."
+                }
+            ],
+            projects: [
+                {
+                    id: 1,
+                    title: "Dashboard Empresarial",
+                    description: "Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.",
+                    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["React", "Node.js", "MongoDB"]
+                },
+                {
+                    id: 2,
+                    title: "Plataforma E-commerce",
+                    description: "Tienda online completa con carrito de compras, pagos integrados y panel de administración.",
+                    image: "https://images.unsplash.com/photo-1556742049-bebda4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["Vue.js", "Laravel", "MySQL"]
+                },
+                {
+                    id: 3,
+                    title: "Aplicación Móvil",
+                    description: "App nativa para gestión de tareas con sincronización en la nube y notificaciones push.",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["React Native", "Firebase", "Redux"]
+                },
+                {
+                    id: 4,
+                    title: "Sistema CRM",
+                    description: "Plataforma de gestión de relaciones con clientes con automatización de ventas y seguimiento.",
+                    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["Angular", "Python", "PostgreSQL"]
+                },
+                {
+                    id: 5,
+                    title: "Blog Corporativo",
+                    description: "Sitio web corporativo con blog integrado, SEO optimizado y panel de administración de contenido.",
+                    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["WordPress", "PHP", "MySQL"]
+                },
+                {
+                    id: 6,
+                    title: "API REST Empresarial",
+                    description: "API robusta para integración de sistemas empresariales con documentación completa y autenticación.",
+                    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["Express.js", "JWT", "Docker"]
+                }
+            ],
+            about: {
+                title: "Tu socio tecnológico en Tibú",
+                description1: "En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.",
+                description2: "Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.",
+                description3: "Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            footer: {
+                address: "Tibú, Norte de Santander",
+                phone: "+57 322 376 2998",
+                email: "contacto.tibutec@gmail.com",
+                description: "Soluciones tecnológicas para potenciar tu negocio en el mundo digital."
+            }
+        };
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+// ==================== CONFIGURACIÓN DE GITHUB ====================
+        const GITHUB_CONFIG = {
+            username: 'Tibutec', // Solo el nombre de usuario, sin URL
+            repo: 'Tibutec', // Solo el nombre del repositorio, sin URL
+            filePath: 'website-data.json', // Ruta del archivo JSON sin barra inicial
+            token: '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' // Tu token de acceso personal
+        };
 
-            // Cambiar ícono
-            const icon = hamburger.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+        // ==================== GESTIÓN DE DATOS ====================
+        let appData = { ...defaultData };
+
+        // Cargar datos desde GitHub
+        async function loadGitHubData() {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const content = JSON.parse(atob(data.content));
+                    appData = content;
+                } else {
+                    // Si no existe el archivo, usar datos por defecto
+                    appData = { ...defaultData };
+                }
+            } catch (error) {
+                console.error('Error cargando datos desde GitHub:', error);
+                appData = { ...defaultData };
+            }
+            
+            renderAllSections();
+        }
+
+        // Guardar datos en GitHub
+        async function saveGitHubData() {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
+                
+                // Obtener el SHA actual si el archivo existe
+                let sha = '';
+                try {
+                    const currentFile = await fetch(url);
+                    if (currentFile.ok) {
+                        const fileData = await currentFile.json();
+                        sha = fileData.sha;
+                    }
+                } catch (e) {
+                    // El archivo no existe aún
+                }
+                
+                // Preparar los datos para guardar
+                const content = btoa(JSON.stringify(appData, null, 2));
+                const body = {
+                    message: 'Actualizar datos del sitio web',
+                    content: content,
+                    branch: 'main' // o 'master' dependiendo de tu repositorio
+                };
+                
+                if (sha) {
+                    body.sha = sha;
+                }
+                
+                // Enviar los datos a GitHub
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                if (response.ok) {
+                    console.log('Datos guardados exitosamente en GitHub');
+                    return true;
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error al guardar en GitHub:', errorData);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                return false;
+            }
+        }
+
+        // Exportar datos
+        function exportData() {
+            const dataStr = JSON.stringify(appData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'tibutec-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        // Importar datos
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        document.getElementById('importFile').addEventListener('change', async function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        appData = importedData;
+                        const success = await saveGitHubData();
+                        if (success) {
+                            renderAllSections();
+                            loadAdminForms();
+                            alert('Datos importados correctamente');
+                        } else {
+                            alert('Error al importar los datos. Por favor, intenta nuevamente.');
+                        }
+                    } catch (error) {
+                        alert('Error al importar los datos: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
             }
         });
 
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.querySelector('i').classList.remove('fa-times');
-                hamburger.querySelector('i').classList.add('fa-bars');
+        // Restablecer a valores por defecto
+        async function resetToDefault() {
+            if (confirm('¿Estás seguro de que quieres restablecer todos los datos a los valores por defecto? Se perderán todos los cambios.')) {
+                appData = { ...defaultData };
+                const success = await saveGitHubData();
+                if (success) {
+                    renderAllSections();
+                    loadAdminForms();
+                    alert('Datos restablecidos correctamente');
+                } else {
+                    alert('Error al restablecer los datos. Por favor, intenta nuevamente.');
+                }
+            }
+        }
+
+        // ==================== RENDERIZADO DE SECCIONES ====================
+        function renderAllSections() {
+            renderHeroSection();
+            renderServicesSection();
+            renderTeamSection();
+            renderProjectsSection();
+            renderAboutSection();
+            renderFooterSection();
+        }
+
+        function renderHeroSection() {
+            document.getElementById('hero-title').textContent = appData.hero.title;
+            document.getElementById('hero-description').textContent = appData.hero.description;
+            
+            // Actualizar imágenes del carrusel
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            carouselItems.forEach((item, index) => {
+                if (appData.hero.images[index]) {
+                    item.style.backgroundImage = `url('${appData.hero.images[index]}')`;
+                }
             });
-        });
+        }
 
-        // Funcionalidad de las tarjetas interactivas
-        function setupCard(cardId) {
+        function renderServicesSection() {
+            const container = document.getElementById('services-container');
+            container.innerHTML = '';
+            
+            appData.services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="card-header">
+                        <h3>${service.title}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>${service.description}</p>
+                        <ul class="icon-list">
+                            ${service.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(serviceCard);
+            });
+        }
+
+        function renderTeamSection() {
+            const container = document.getElementById('team-container');
+            container.innerHTML = '';
+            
+            appData.team.forEach((member, index) => {
+                const cardId = `profileCard${index + 1}`;
+                const card = document.createElement('div');
+                card.className = 'interactive-card';
+                card.id = cardId;
+                card.innerHTML = `
+                    <div class="card-content">
+                        <div class="photo-container" id="photoContainer${index + 1}">
+                            <img src="${member.image}" alt="${member.name}" class="profile-img" id="profileImg${index + 1}">
+                            <h1 class="name">${member.name}</h1>
+                        </div>
+
+                        <div class="info-container" id="infoContainer${index + 1}">
+                            <h2 class="card-title">${member.title}</h2>
+
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${member.location}</span>
+                            </div>
+
+                            <div class="social-links">
+                                <a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="${member.portfolio}" target="_blank"><i class="fas fa-briefcase"></i></a>
+                                <a href="https://wa.me/${member.whatsapp}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+
+                            <div class="info-columns">
+                                <div class="info-column">
+                                    <h3 class="card-subtitle">Habilidades Técnicas</h3>
+                                    <div class="skills">
+                                        ${member.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                                    </div>
+                                </div>
+
+                                <div class="info-column">
+                                    <h3 class="card-subtitle">Acerca de mí</h3>
+                                    <p>${member.description}</p>
+                                </div>
+                            </div>
+
+                            <div class="buttons">
+                                <a href="${member.github}" target="_blank" class="card-btn btn-primary">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <a href="${member.portfolio}" target="_blank" class="card-btn btn-secondary">
+                                    <i class="fas fa-briefcase"></i> Portafolio
+                                </a>
+                                <a href="https://wa.me/${member.whatsapp}" target="_blank" class="card-btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                
+                // Configurar la funcionalidad de expandir/colapsar
+                setupCard(cardId, index + 1);
+            });
+        }
+
+        function renderProjectsSection() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+            
+            appData.projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Ver proyecto">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" title="Ver código">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(projectCard);
+            });
+        }
+
+        function renderAboutSection() {
+            document.getElementById('about-title').textContent = appData.about.title;
+            document.getElementById('about-description-1').textContent = appData.about.description1;
+            document.getElementById('about-description-2').textContent = appData.about.description2;
+            document.getElementById('about-description-3').textContent = appData.about.description3;
+            document.getElementById('about-image').src = appData.about.image;
+        }
+
+        function renderFooterSection() {
+            document.getElementById('footer-address').textContent = appData.footer.address;
+            document.getElementById('footer-phone').textContent = appData.footer.phone;
+            document.getElementById('footer-email').textContent = appData.footer.email;
+            document.getElementById('footer-description').textContent = appData.footer.description;
+        }
+
+        // ==================== FUNCIONALIDAD DE LAS TARJETAS DEL EQUIPO ====================
+        function setupCard(cardId, cardNumber) {
             const profileCard = document.getElementById(cardId);
-            const photoContainer = document.getElementById(`photoContainer${cardId.slice(-1)}`);
-            const profileImg = document.getElementById(`profileImg${cardId.slice(-1)}`);
-            const instruction = document.getElementById(`instruction${cardId.slice(-1)}`);
+            const photoContainer = document.getElementById(`photoContainer${cardNumber}`);
+            const profileImg = document.getElementById(`profileImg${cardNumber}`);
 
-            // Función para expandir/colapsar
             const toggleCard = function () {
                 profileCard.classList.toggle('expanded');
-
-                if (profileCard.classList.contains('expanded')) {
-                    instruction.textContent = "Haz clic en la foto para ocultar la información";
-                } else {
-                    instruction.textContent = "Haz clic en la foto para ver mi información";
-                }
             };
 
-            // Event listeners para la foto
             photoContainer.addEventListener('click', toggleCard);
             profileImg.addEventListener('click', toggleCard);
 
-            // Asegurar que esté colapsado inicialmente
             profileCard.classList.remove('expanded');
         }
 
-        // Configurar cada tarjeta
-        setupCard('profileCard1');
-        setupCard('profileCard2');
-        setupCard('profileCard3');
+        // ==================== PANEL ADMINISTRADOR ====================
+        document.getElementById('adminToggle').addEventListener('click', function() {
+            // Mostrar el modal de login en lugar del panel directamente
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('adminPassword').focus();
+        });
 
-        // Carrusel automático para el hero
-        document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('closeAdmin').addEventListener('click', function() {
+            document.getElementById('adminPanel').classList.remove('active');
+        });
+
+        // Función para mostrar el panel administrador después del login
+        function showAdminPanel() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('adminPanel').classList.add('active');
+            loadAdminForms();
+        }
+
+        // Función para cerrar el modal de login
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('loginError').classList.remove('show');
+        }
+
+        // Manejar el envío del formulario de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('adminPassword').value;
+            const correctPassword = '2895Tibutec';
+            
+            if (password === correctPassword) {
+                showAdminPanel();
+            } else {
+                document.getElementById('loginError').classList.add('show');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+            }
+        });
+
+        // Pestañas del panel
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remover clase active de todos los botones y contenidos
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                this.classList.add('active');
+                
+                // Mostrar el contenido correspondiente
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Cargar formularios del panel
+        function loadAdminForms() {
+            // Hero/Inicio
+            document.getElementById('admin-hero-title').value = appData.hero.title;
+            document.getElementById('admin-hero-description').value = appData.hero.description;
+            document.getElementById('admin-hero-image1').value = appData.hero.images[0] || '';
+            document.getElementById('admin-hero-image2').value = appData.hero.images[1] || '';
+            document.getElementById('admin-hero-image3').value = appData.hero.images[2] || '';
+            document.getElementById('admin-hero-image4').value = appData.hero.images[3] || '';
+            
+            // Servicios
+            renderServicesAdmin();
+            
+            // Equipo
+            renderTeamAdmin();
+            
+            // Proyectos
+            renderProjectsAdmin();
+            
+            // Nosotros
+            document.getElementById('admin-about-title').value = appData.about.title;
+            document.getElementById('admin-about-description1').value = appData.about.description1;
+            document.getElementById('admin-about-description2').value = appData.about.description2;
+            document.getElementById('admin-about-description3').value = appData.about.description3;
+            document.getElementById('admin-about-image').value = appData.about.image;
+            
+            // Footer/Contacto
+            document.getElementById('admin-footer-address').value = appData.footer.address;
+            document.getElementById('admin-footer-phone').value = appData.footer.phone;
+            document.getElementById('admin-footer-email').value = appData.footer.email;
+            document.getElementById('admin-footer-description').value = appData.footer.description;
+        }
+
+        // Renderizar administración de servicios
+        function renderServicesAdmin() {
+            const container = document.getElementById('services-list');
+            container.innerHTML = '';
+            
+            appData.services.forEach((service, index) => {
+                const serviceDiv = document.createElement('div');
+                serviceDiv.className = 'admin-section';
+                serviceDiv.innerHTML = `
+                    <h4>Servicio ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="service-title" value="${service.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="service-description" data-index="${index}">${service.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Características (separadas por coma)</label>
+                        <input type="text" class="service-features" value="${service.features.join(', ')}" data-index="${index}">
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeService(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(serviceDiv);
+            });
+        }
+
+        // Renderizar administración del equipo
+        function renderTeamAdmin() {
+            const container = document.getElementById('team-list');
+            container.innerHTML = '';
+            
+            appData.team.forEach((member, index) => {
+                const memberDiv = document.createElement('div');
+                memberDiv.className = 'admin-section';
+                memberDiv.innerHTML = `
+                    <h4>Miembro ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="team-name" value="${member.name}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="team-title" value="${member.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen (URL)</label>
+                        <input type="text" class="team-image" value="${member.image}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Ubicación</label>
+                        <input type="text" class="team-location" value="${member.location}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub</label>
+                        <input type="text" class="team-github" value="${member.github}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Portafolio</label>
+                        <input type="text" class="team-portfolio" value="${member.portfolio}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp (solo números)</label>
+                        <input type="text" class="team-whatsapp" value="${member.whatsapp}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Habilidades (separadas por coma)</label>
+                        <input type="text" class="team-skills" value="${member.skills.join(', ')}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="team-description" data-index="${index}">${member.description}</textarea>
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeTeamMember(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(memberDiv);
+            });
+        }
+
+        // Renderizar administración de proyectos
+        function renderProjectsAdmin() {
+            const container = document.getElementById('projects-list');
+            container.innerHTML = '';
+            
+            appData.projects.forEach((project, index) => {
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'admin-section';
+                projectDiv.innerHTML = `
+                    <h4>Proyecto ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="project-title" value="${project.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="project-description" data-index="${index}">${project.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen (URL)</label>
+                        <input type="text" class="project-image" value="${project.image}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Tecnologías (separadas por coma)</label>
+                        <input type="text" class="project-technologies" value="${project.technologies.join(', ')}" data-index="${index}">
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeProject(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(projectDiv);
+            });
+        }
+
+        // ==================== FUNCIONES DE GUARDADO ====================
+        async function saveHeroData() {
+            appData.hero.title = document.getElementById('admin-hero-title').value;
+            appData.hero.description = document.getElementById('admin-hero-description').value;
+            appData.hero.images[0] = document.getElementById('admin-hero-image1').value;
+            appData.hero.images[1] = document.getElementById('admin-hero-image2').value;
+            appData.hero.images[2] = document.getElementById('admin-hero-image3').value;
+            appData.hero.images[3] = document.getElementById('admin-hero-image4').value;
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderHeroSection();
+                alert('Datos de la sección Inicio guardados correctamente');
+            } else {
+                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function saveServicesData() {
+            // Recopilar datos de los formularios de servicios
+            const serviceTitles = document.querySelectorAll('.service-title');
+            const serviceDescriptions = document.querySelectorAll('.service-description');
+            const serviceFeatures = document.querySelectorAll('.service-features');
+            
+            appData.services = [];
+            
+            serviceTitles.forEach((input, index) => {
+                const features = serviceFeatures[index].value.split(',').map(f => f.trim()).filter(f => f);
+                
+                appData.services.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: serviceDescriptions[index].value,
+                    features: features
+                });
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderServicesSection();
+                alert('Servicios guardados correctamente');
+            } else {
+                alert('Error al guardar los servicios. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function saveTeamData() {
+            // Recopilar datos de los formularios del equipo
+            const teamNames = document.querySelectorAll('.team-name');
+            const teamTitles = document.querySelectorAll('.team-title');
+            const teamImages = document.querySelectorAll('.team-image');
+            const teamLocations = document.querySelectorAll('.team-location');
+            const teamGithubs = document.querySelectorAll('.team-github');
+            const teamPortfolios = document.querySelectorAll('.team-portfolio');
+            const teamWhatsapps = document.querySelectorAll('.team-whatsapp');
+            const teamSkills = document.querySelectorAll('.team-skills');
+            const teamDescriptions = document.querySelectorAll('.team-description');
+            
+            appData.team = [];
+            
+            teamNames.forEach((input, index) => {
+                const skills = teamSkills[index].value.split(',').map(s => s.trim()).filter(s => s);
+                
+                appData.team.push({
+                    id: index + 1,
+                    name: input.value,
+                    title: teamTitles[index].value,
+                    image: teamImages[index].value,
+                    location: teamLocations[index].value,
+                    github: teamGithubs[index].value,
+                    portfolio: teamPortfolios[index].value,
+                    whatsapp: teamWhatsapps[index].value,
+                    skills: skills,
+                    description: teamDescriptions[index].value
+                });
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderTeamSection();
+                alert('Datos del equipo guardados correctamente');
+            } else {
+                alert('Error al guardar los datos del equipo. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function saveProjectsData() {
+            // Recopilar datos de los formularios de proyectos
+            const projectTitles = document.querySelectorAll('.project-title');
+            const projectDescriptions = document.querySelectorAll('.project-description');
+            const projectImages = document.querySelectorAll('.project-image');
+            const projectTechnologies = document.querySelectorAll('.project-technologies');
+            
+            appData.projects = [];
+            
+            projectTitles.forEach((input, index) => {
+                const technologies = projectTechnologies[index].value.split(',').map(t => t.trim()).filter(t => t);
+                
+                appData.projects.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: projectDescriptions[index].value,
+                    image: projectImages[index].value,
+                    technologies: technologies
+                });
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderProjectsSection();
+                alert('Proyectos guardados correctamente');
+            } else {
+                alert('Error al guardar los proyectos. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function saveAboutData() {
+            appData.about.title = document.getElementById('admin-about-title').value;
+            appData.about.description1 = document.getElementById('admin-about-description1').value;
+            appData.about.description2 = document.getElementById('admin-about-description2').value;
+            appData.about.description3 = document.getElementById('admin-about-description3').value;
+            appData.about.image = document.getElementById('admin-about-image').value;
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderAboutSection();
+                alert('Datos de la sección "Conócenos" guardados correctamente');
+            } else {
+                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function saveFooterData() {
+            appData.footer.address = document.getElementById('admin-footer-address').value;
+            appData.footer.phone = document.getElementById('admin-footer-phone').value;
+            appData.footer.email = document.getElementById('admin-footer-email').value;
+            appData.footer.description = document.getElementById('admin-footer-description').value;
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderFooterSection();
+                alert('Datos de contacto guardados correctamente');
+            } else {
+                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
+            }
+        }
+
+        // ==================== FUNCIONES PARA AGREGAR NUEVOS ELEMENTOS ====================
+        async function addNewService() {
+            appData.services.push({
+                id: appData.services.length + 1,
+                title: "Nuevo Servicio",
+                description: "Descripción del nuevo servicio.",
+                features: ["Característica 1", "Característica 2"]
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderServicesAdmin();
+            } else {
+                alert('Error al agregar el servicio. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function addNewTeamMember() {
+            appData.team.push({
+                id: appData.team.length + 1,
+                name: "Nuevo Miembro",
+                title: "Cargo del nuevo miembro",
+                image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+                location: "Ubicación",
+                github: "https://github.com/",
+                portfolio: "https://ejemplo.com/",
+                whatsapp: "573000000000",
+                skills: ["Habilidad 1", "Habilidad 2"],
+                description: "Descripción del nuevo miembro del equipo."
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderTeamAdmin();
+            } else {
+                alert('Error al agregar el miembro. Por favor, intenta nuevamente.');
+            }
+        }
+
+        async function addNewProject() {
+            appData.projects.push({
+                id: appData.projects.length + 1,
+                title: "Nuevo Proyecto",
+                description: "Descripción del nuevo proyecto.",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                technologies: ["Tecnología 1", "Tecnología 2"]
+            });
+            
+            const success = await saveGitHubData();
+            if (success) {
+                renderProjectsAdmin();
+            } else {
+                alert('Error al agregar el proyecto. Por favor, intenta nuevamente.');
+            }
+        }
+
+        // ==================== FUNCIONES PARA ELIMINAR ELEMENTOS ====================
+        async function removeService(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+                appData.services.splice(index, 1);
+                const success = await saveGitHubData();
+                if (success) {
+                    renderServicesAdmin();
+                    renderServicesSection();
+                } else {
+                    alert('Error al eliminar el servicio. Por favor, intenta nuevamente.');
+                }
+            }
+        }
+
+        async function removeTeamMember(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este miembro del equipo?')) {
+                appData.team.splice(index, 1);
+                const success = await saveGitHubData();
+                if (success) {
+                    renderTeamAdmin();
+                    renderTeamSection();
+                } else {
+                    alert('Error al eliminar el miembro. Por favor, intenta nuevamente.');
+                }
+            }
+        }
+
+        async function removeProject(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
+                appData.projects.splice(index, 1);
+                const success = await saveGitHubData();
+                if (success) {
+                    renderProjectsAdmin();
+                    renderProjectsSection();
+                } else {
+                    alert('Error al eliminar el proyecto. Por favor, intenta nuevamente.');
+                }
+            }
+        }
+
+        // ==================== INICIALIZACIÓN ====================
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Cargar datos desde GitHub
+            await loadGitHubData();
+            
+            // Menú Hamburguesa
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+
+                // Cambiar ícono
+                const icon = hamburger.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                });
+            });
+
+            // Carrusel automático para el hero
             const carouselItems = document.querySelectorAll('.carousel-item');
             let currentItem = 0;
 
