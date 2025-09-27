@@ -1,0 +1,127 @@
+{
+    "hero": {
+        "title": "Soluciones Tecnológicas para tu Negocio",
+        "description": "Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.",
+        "images": [
+            "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+            "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        ]
+    },
+    "services": [
+        {
+            "id": 1,
+            "title": "Desarrollo Web",
+            "description": "Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando las últimas tecnologías del mercado.",
+            "features": ["Diseño personalizado", "Desarrollo a medida", "Optimización SEO", "Integración con redes sociales"]
+        },
+        {
+            "id": 2,
+            "title": "Branding Digital",
+            "description": "Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en el entorno digital.",
+            "features": ["Diseño de identidad visual", "Estrategias de contenido", "Gestión de redes sociales", "Campañas publicitarias"]
+        },
+        {
+            "id": 3,
+            "title": "Base de Datos",
+            "description": "Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la información de tu negocio.",
+            "features": ["Diseño de bases de datos", "Optimización de consultas", "Respaldo y recuperación", "Seguridad de datos"]
+        }
+    ],
+    "team": [
+        {
+            "id": 1,
+            "name": "JHORMAN JESÚS CASTELLANOS MORALES",
+            "title": "Desarrollador FullStack Junior",
+            "image": "https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png",
+            "location": "Tibú, Norte de Santander",
+            "github": "https://github.com/Jhormancastella",
+            "portfolio": "https://jhormancastella.github.io/portafolio/",
+            "whatsapp": "573223762998",
+            "skills": ["Java", "PHP", "JavaScript", "HTML", "CSS", "MySQL", "PostgreSQL", "Fotografía", "Edición", "Resolución de Problemas", "Técnico en Sistemas"],
+            "description": "Soy un desarrollador junior fullstack con formación en Campusland Tibu. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico de sistemas. Me destaco por mi capacidad para resolver problemas y mi pasión por aprender nuevas tecnologías."
+        },
+        {
+            "id": 2,
+            "name": "Erick Jarias",
+            "title": "Diseñador UX/UI",
+            "image": "https://avatars.githubusercontent.com/u/160280037?v=4",
+            "location": "Cúcuta, Norte de Santander",
+            "github": "https://github.com/ErickJarias",
+            "portfolio": "https://erickjarias.design/",
+            "whatsapp": "573123456789",
+            "skills": ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator", "MongoDB", "Firebase", "Diseño Responsivo", "Prototipado", "Investigación UX", "Testing"],
+            "description": "Soy un diseñador UX/UI apasionado por crear experiencias digitales intuitivas y atractivas. Me especializo en investigación de usuarios y diseño centrado en el ser humano."
+        },
+        {
+            "id": 3,
+            "name": "Adrian Pérez",
+            "title": "Ingeniero de Backend",
+            "image": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+            "location": "Ocaña, Norte de Santander",
+            "github": "https://github.com/adrianperez",
+            "portfolio": "https://adrianperez.dev/",
+            "whatsapp": "573987654321",
+            "skills": ["Python", "Node.js", "Java", "Go", "TypeScript", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch", "Microservicios", "Docker", "Kubernetes", "AWS", "CI/CD"],
+            "description": "Soy un ingeniero de backend especializado en arquitecturas escalables y sistemas de alto rendimiento. Me apasiona optimizar procesos y crear soluciones robustas."
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Dashboard Empresarial",
+            "description": "Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.",
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["React", "Node.js", "MongoDB"]
+        },
+        {
+            "id": 2,
+            "title": "Plataforma E-commerce",
+            "description": "Tienda online completa con carrito de compras, pagos integrados y panel de administración.",
+            "image": "https://images.unsplash.com/photo-1556742049-bebda4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["Vue.js", "Laravel", "MySQL"]
+        },
+        {
+            "id": 3,
+            "title": "Aplicación Móvil",
+            "description": "App nativa para gestión de tareas con sincronización en la nube y notificaciones push.",
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["React Native", "Firebase", "Redux"]
+        },
+        {
+            "id": 4,
+            "title": "Sistema CRM",
+            "description": "Plataforma de gestión de relaciones con clientes con automatización de ventas y seguimiento.",
+            "image": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["Angular", "Python", "PostgreSQL"]
+        },
+        {
+            "id": 5,
+            "title": "Blog Corporativo",
+            "description": "Sitio web corporativo con blog integrado, SEO optimizado y panel de administración de contenido.",
+            "image": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["WordPress", "PHP", "MySQL"]
+        },
+        {
+            "id": 6,
+            "title": "API REST Empresarial",
+            "description": "API robusta para integración de sistemas empresariales con documentación completa y autenticación.",
+            "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "technologies": ["Express.js", "JWT", "Docker"]
+        }
+    ],
+    "about": {
+        "title": "Tu socio tecnológico en Tibú",
+        "description1": "En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.",
+        "description2": "Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.",
+        "description3": "Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    },
+    "footer": {
+        "address": "Tibú, Norte de Santander",
+        "phone": "+57 322 376 2998",
+        "email": "contacto.tibutec@gmail.com",
+        "description": "Soluciones tecnológicas para potenciar tu negocio en el mundo digital."
+    }
+}
