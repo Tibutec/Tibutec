@@ -603,7 +603,6 @@
             gap: 2rem;
             margin-top: 2rem;
             justify-content: center;
-            /* Centra las tarjetas si no llenan toda la fila */
         }
 
         /* Galería de proyectos */
@@ -771,137 +770,18 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Agregando estilos para la galería de proyectos */
-            /* Estilos para la galería de proyectos */
             .projects-gallery {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 2rem;
-                padding: 2rem 0;
-                max-width: 1200px;
-                margin: 0 auto;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
             }
-
+            
             .project-card {
-                background: white;
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease;
-                position: relative;
+                margin: 0 1rem;
             }
-
-            .project-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            }
-
+            
             .project-image {
-                position: relative;
-                height: 250px;
-                overflow: hidden;
-            }
-
-            .project-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.3s ease;
-            }
-
-            .project-card:hover .project-image img {
-                transform: scale(1.1);
-            }
-
-            .project-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(44, 62, 80, 0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .project-card:hover .project-overlay {
-                opacity: 1;
-            }
-
-            .project-links {
-                display: flex;
-                gap: 1rem;
-            }
-
-            .project-link {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 50px;
-                height: 50px;
-                background: var(--accent);
-                color: white;
-                border-radius: 50%;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                font-size: 1.2rem;
-            }
-
-            .project-link:hover {
-                background: var(--secondary);
-                transform: scale(1.1);
-            }
-
-            .project-info {
-                padding: 1.5rem;
-            }
-
-            .project-info h3 {
-                color: var(--primary);
-                margin-bottom: 0.5rem;
-                font-size: 1.3rem;
-                font-weight: 600;
-            }
-
-            .project-info p {
-                color: var(--text-light);
-                line-height: 1.6;
-                margin-bottom: 1rem;
-            }
-
-            .project-tech {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-            }
-
-            .tech-tag {
-                background: var(--light);
-                color: var(--primary);
-                padding: 0.3rem 0.8rem;
-                border-radius: 20px;
-                font-size: 0.8rem;
-                font-weight: 500;
-            }
-
-            /* Responsive para proyectos */
-            @media (max-width: 768px) {
-                .projects-gallery {
-                    grid-template-columns: 1fr;
-                    gap: 1.5rem;
-                    padding: 1rem;
-                }
-                
-                .project-card {
-                    margin: 0 1rem;
-                }
-                
-                .project-image {
-                    height: 200px;
-                }
+                height: 200px;
             }
         }
 
@@ -1089,6 +969,60 @@
         }
 
         .tab-content.active {
+            display: block;
+        }
+
+        /* Sección de Token GitHub en el Panel */
+        .token-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .token-section h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .token-section h4 i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .token-help {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+
+        .token-help ol {
+            margin: 8px 0;
+            padding-left: 18px;
+        }
+
+        .token-help li {
+            margin-bottom: 5px;
+        }
+
+        .token-help a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .token-help a:hover {
+            text-decoration: underline;
+        }
+
+        .help-text {
+            color: #6c757d;
+            font-size: 12px;
+            margin-top: 5px;
             display: block;
         }
 
@@ -1572,6 +1506,31 @@
             </div>
         </div>
 
+        <!-- Sección de Token GitHub integrada en el panel -->
+        <div class="token-section">
+            <h4><i class="fab fa-github"></i> Configuración de GitHub</h4>
+            <p>Para guardar los cambios en el repositorio, ingresa tu token de acceso personal:</p>
+            
+            <div class="form-group">
+                <label for="githubToken">Token de Acceso Personal</label>
+                <input type="password" id="githubToken" placeholder="ghp_..." class="form-control">
+                <small class="help-text">El token debe tener permisos de escritura en el repositorio</small>
+            </div>
+            
+            <div class="token-help">
+                <p><strong>¿Cómo obtener el token?</strong></p>
+                <ol>
+                    <li>Ve a <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings → Tokens</a></li>
+                    <li>Crea un nuevo token con permisos <strong>repo</strong></li>
+                    <li>Cópialo y pégalo aquí</li>
+                </ol>
+            </div>
+            
+            <div class="login-error" id="tokenError" style="display: none;">
+                Error al guardar. Verifica tu token e intenta nuevamente.
+            </div>
+        </div>
+
         <div class="admin-section">
             <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
             <p>Importar o exportar la configuración del sitio.</p>
@@ -1747,12 +1706,11 @@
             }
         };
 
-// ==================== CONFIGURACIÓN DE GITHUB ====================
+        // ==================== CONFIGURACIÓN DE GITHUB ====================
         const GITHUB_CONFIG = {
-            username: 'Tibutec', // Solo el nombre de usuario, sin URL
-            repo: 'Tibutec', // Solo el nombre del repositorio, sin URL
-            filePath: 'website-data.json', // Ruta del archivo JSON sin barra inicial
-            token: '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' // Tu token de acceso personal
+            username: 'Tibutec',
+            repo: 'Tibutec', 
+            filePath: 'website-data.json'
         };
 
         // ==================== GESTIÓN DE DATOS ====================
@@ -1781,135 +1739,264 @@
         }
 
         // Guardar datos en GitHub
-async function saveGitHubData() {
-    try {
-        const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
-        
-        console.log('Intentando guardar en:', url);
-        console.log('Token (primeros 10 caracteres):', GITHUB_CONFIG.token.substring(0, 10) + '...');
-        
-        // Obtener el SHA actual si el archivo existe
-        let sha = '';
-        try {
-            const currentFile = await fetch(url, {
-                headers: {
-                    'Authorization': `token ${GITHUB_CONFIG.token}`
+        async function saveGitHubData(token) {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
+                
+                console.log('Intentando guardar en GitHub...');
+                
+                // Obtener el SHA actual si el archivo existe
+                let sha = '';
+                try {
+                    const currentFile = await fetch(url, {
+                        headers: {
+                            'Authorization': `token ${token}`
+                        }
+                    });
+                    
+                    if (currentFile.ok) {
+                        const fileData = await currentFile.json();
+                        sha = fileData.sha;
+                        console.log('SHA del archivo actual:', sha);
+                    } else if (currentFile.status === 404) {
+                        console.log('El archivo no existe aún, se creará uno nuevo');
+                    } else {
+                        const errorData = await currentFile.json();
+                        console.error('Error al obtener el archivo actual:', errorData);
+                        throw new Error(`Error al verificar el archivo: ${errorData.message}`);
+                    }
+                } catch (e) {
+                    console.error('Error al verificar el archivo existente:', e);
+                    throw e;
                 }
+                
+                // Preparar los datos para guardar
+                const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
+                const body = {
+                    message: `Actualización del sitio web - ${new Date().toLocaleString()}`,
+                    content: content,
+                    branch: 'main'
+                };
+                
+                if (sha) {
+                    body.sha = sha;
+                }
+                
+                console.log('Enviando datos a GitHub...');
+                
+                // Enviar los datos a GitHub
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                console.log('Código de respuesta:', response.status);
+                
+                if (response.ok) {
+                    console.log('✅ Datos guardados exitosamente en GitHub');
+                    return true;
+                } else {
+                    const errorData = await response.json();
+                    console.error('❌ Error GitHub:', errorData);
+                    throw new Error(errorData.message || 'Error desconocido de GitHub');
+                }
+            } catch (error) {
+                console.error('💥 Error en saveGitHubData:', error);
+                throw error;
+            }
+        }
+
+        // ==================== MANEJADORES DE FORMULARIOS ====================
+        // Manejar el envío del formulario de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('adminPassword').value;
+            const correctPassword = '2895Tibutec';
+            
+            if (password === correctPassword) {
+                document.getElementById('loginModal').classList.remove('active');
+                document.getElementById('adminPanel').classList.add('active');
+                loadAdminForms();
+            } else {
+                document.getElementById('loginError').classList.add('show');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+            }
+        });
+
+        // ==================== FUNCIONES DE GUARDADO ====================
+        async function saveHeroData() {
+            appData.hero.title = document.getElementById('admin-hero-title').value;
+            appData.hero.description = document.getElementById('admin-hero-description').value;
+            appData.hero.images[0] = document.getElementById('admin-hero-image1').value;
+            appData.hero.images[1] = document.getElementById('admin-hero-image2').value;
+            appData.hero.images[2] = document.getElementById('admin-hero-image3').value;
+            appData.hero.images[3] = document.getElementById('admin-hero-image4').value;
+            
+            await saveWithToken(() => {
+                renderHeroSection();
+                alert('Datos de la sección Inicio guardados correctamente');
+            });
+        }
+
+        async function saveServicesData() {
+            // Recopilar datos de los formularios de servicios
+            const serviceTitles = document.querySelectorAll('.service-title');
+            const serviceDescriptions = document.querySelectorAll('.service-description');
+            const serviceFeatures = document.querySelectorAll('.service-features');
+            
+            appData.services = [];
+            
+            serviceTitles.forEach((input, index) => {
+                const features = serviceFeatures[index].value.split(',').map(f => f.trim()).filter(f => f);
+                
+                appData.services.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: serviceDescriptions[index].value,
+                    features: features
+                });
             });
             
-            if (currentFile.ok) {
-                const fileData = await currentFile.json();
-                sha = fileData.sha;
-                console.log('SHA del archivo actual:', sha);
-            } else if (currentFile.status === 404) {
-                console.log('El archivo no existe aún, se creará uno nuevo');
-            } else {
-                const errorData = await currentFile.json();
-                console.error('Error al obtener el archivo actual:', errorData);
-                alert(`Error al verificar el archivo: ${errorData.message}`);
-                return false;
-            }
-        } catch (e) {
-            console.error('Error al verificar el archivo existente:', e);
-            alert('Error al verificar el archivo existente');
-            return false;
+            await saveWithToken(() => {
+                renderServicesSection();
+                alert('Servicios guardados correctamente');
+            });
         }
-        
-        // Preparar los datos para guardar
-        const content = btoa(JSON.stringify(appData, null, 2));
-        const body = {
-            message: 'Actualizar datos del sitio web',
-            content: content,
-            branch: 'main'
-        };
-        
-        if (sha) {
-            body.sha = sha;
-        }
-        
-        console.log('Enviando datos a GitHub...');
-        
-        // Enviar los datos a GitHub
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Authorization': `token ${GITHUB_CONFIG.token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
-        
-        console.log('Código de respuesta:', response.status);
-        
-        if (response.ok) {
-            console.log('Datos guardados exitosamente en GitHub');
-            return true;
-        } else {
-            const errorData = await response.json();
-            console.error('Error al guardar en GitHub:', errorData);
-            alert(`Error al guardar en GitHub: ${errorData.message}`);
-            return false;
-        }
-    } catch (error) {
-        console.error('Error en saveGitHubData:', error);
-        alert('Error al guardar los datos: ' + error.message);
-        return false;
-    }
-}
-        // Exportar datos
-        function exportData() {
-            const dataStr = JSON.stringify(appData, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+        async function saveTeamData() {
+            // Recopilar datos de los formularios del equipo
+            const teamNames = document.querySelectorAll('.team-name');
+            const teamTitles = document.querySelectorAll('.team-title');
+            const teamImages = document.querySelectorAll('.team-image');
+            const teamLocations = document.querySelectorAll('.team-location');
+            const teamGithubs = document.querySelectorAll('.team-github');
+            const teamPortfolios = document.querySelectorAll('.team-portfolio');
+            const teamWhatsapps = document.querySelectorAll('.team-whatsapp');
+            const teamSkills = document.querySelectorAll('.team-skills');
+            const teamDescriptions = document.querySelectorAll('.team-description');
             
-            const exportFileDefaultName = 'tibutec-data.json';
+            appData.team = [];
             
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
+            teamNames.forEach((input, index) => {
+                const skills = teamSkills[index].value.split(',').map(s => s.trim()).filter(s => s);
+                
+                appData.team.push({
+                    id: index + 1,
+                    name: input.value,
+                    title: teamTitles[index].value,
+                    image: teamImages[index].value,
+                    location: teamLocations[index].value,
+                    github: teamGithubs[index].value,
+                    portfolio: teamPortfolios[index].value,
+                    whatsapp: teamWhatsapps[index].value,
+                    skills: skills,
+                    description: teamDescriptions[index].value
+                });
+            });
+            
+            await saveWithToken(() => {
+                renderTeamSection();
+                alert('Datos del equipo guardados correctamente');
+            });
         }
 
-        // Importar datos
-        function importData() {
-            document.getElementById('importFile').click();
+        async function saveProjectsData() {
+            // Recopilar datos de los formularios de proyectos
+            const projectTitles = document.querySelectorAll('.project-title');
+            const projectDescriptions = document.querySelectorAll('.project-description');
+            const projectImages = document.querySelectorAll('.project-image');
+            const projectTechnologies = document.querySelectorAll('.project-technologies');
+            
+            appData.projects = [];
+            
+            projectTitles.forEach((input, index) => {
+                const technologies = projectTechnologies[index].value.split(',').map(t => t.trim()).filter(t => t);
+                
+                appData.projects.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: projectDescriptions[index].value,
+                    image: projectImages[index].value,
+                    technologies: technologies
+                });
+            });
+            
+            await saveWithToken(() => {
+                renderProjectsSection();
+                alert('Proyectos guardados correctamente');
+            });
         }
 
-        document.getElementById('importFile').addEventListener('change', async function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = async function(e) {
-                    try {
-                        const importedData = JSON.parse(e.target.result);
-                        appData = importedData;
-                        const success = await saveGitHubData();
-                        if (success) {
-                            renderAllSections();
-                            loadAdminForms();
-                            alert('Datos importados correctamente');
-                        } else {
-                            alert('Error al importar los datos. Por favor, intenta nuevamente.');
-                        }
-                    } catch (error) {
-                        alert('Error al importar los datos: ' + error.message);
-                    }
-                };
-                reader.readAsText(file);
+        async function saveAboutData() {
+            appData.about.title = document.getElementById('admin-about-title').value;
+            appData.about.description1 = document.getElementById('admin-about-description1').value;
+            appData.about.description2 = document.getElementById('admin-about-description2').value;
+            appData.about.description3 = document.getElementById('admin-about-description3').value;
+            appData.about.image = document.getElementById('admin-about-image').value;
+            
+            await saveWithToken(() => {
+                renderAboutSection();
+                alert('Datos de la sección "Conócenos" guardados correctamente');
+            });
+        }
+
+        async function saveFooterData() {
+            appData.footer.address = document.getElementById('admin-footer-address').value;
+            appData.footer.phone = document.getElementById('admin-footer-phone').value;
+            appData.footer.email = document.getElementById('admin-footer-email').value;
+            appData.footer.description = document.getElementById('admin-footer-description').value;
+            
+            await saveWithToken(() => {
+                renderFooterSection();
+                alert('Datos de contacto guardados correctamente');
+            });
+        }
+
+        // Función para guardar con token
+        async function saveWithToken(successCallback) {
+            const token = document.getElementById('githubToken').value.trim();
+            
+            if (!token) {
+                alert('Por favor, ingresa tu token de GitHub para guardar los cambios.');
+                document.getElementById('githubToken').focus();
+                return;
             }
-        });
-
-        // Restablecer a valores por defecto
-        async function resetToDefault() {
-            if (confirm('¿Estás seguro de que quieres restablecer todos los datos a los valores por defecto? Se perderán todos los cambios.')) {
-                appData = { ...defaultData };
-                const success = await saveGitHubData();
-                if (success) {
-                    renderAllSections();
-                    loadAdminForms();
-                    alert('Datos restablecidos correctamente');
-                } else {
-                    alert('Error al restablecer los datos. Por favor, intenta nuevamente.');
-                }
+            
+            if (!token.startsWith('ghp_')) {
+                document.getElementById('tokenError').textContent = 'El token debe comenzar con ghp_';
+                document.getElementById('tokenError').style.display = 'block';
+                return;
+            }
+            
+            try {
+                // Mostrar loading
+                const saveButtons = document.querySelectorAll('.admin-btn');
+                saveButtons.forEach(btn => {
+                    btn.disabled = true;
+                });
+                
+                await saveGitHubData(token);
+                
+                // Éxito
+                document.getElementById('tokenError').style.display = 'none';
+                successCallback();
+                
+            } catch (error) {
+                document.getElementById('tokenError').textContent = `Error: ${error.message}`;
+                document.getElementById('tokenError').style.display = 'block';
+            } finally {
+                // Restaurar botones
+                const saveButtons = document.querySelectorAll('.admin-btn');
+                saveButtons.forEach(btn => {
+                    btn.disabled = false;
+                });
             }
         }
 
@@ -2089,43 +2176,12 @@ async function saveGitHubData() {
 
         // ==================== PANEL ADMINISTRADOR ====================
         document.getElementById('adminToggle').addEventListener('click', function() {
-            // Mostrar el modal de login en lugar del panel directamente
             document.getElementById('loginModal').classList.add('active');
             document.getElementById('adminPassword').focus();
         });
 
         document.getElementById('closeAdmin').addEventListener('click', function() {
             document.getElementById('adminPanel').classList.remove('active');
-        });
-
-        // Función para mostrar el panel administrador después del login
-        function showAdminPanel() {
-            document.getElementById('loginModal').classList.remove('active');
-            document.getElementById('adminPanel').classList.add('active');
-            loadAdminForms();
-        }
-
-        // Función para cerrar el modal de login
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active');
-            document.getElementById('adminPassword').value = '';
-            document.getElementById('loginError').classList.remove('show');
-        }
-
-        // Manejar el envío del formulario de login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const password = document.getElementById('adminPassword').value;
-            const correctPassword = '2895Tibutec';
-            
-            if (password === correctPassword) {
-                showAdminPanel();
-            } else {
-                document.getElementById('loginError').classList.add('show');
-                document.getElementById('adminPassword').value = '';
-                document.getElementById('adminPassword').focus();
-            }
         });
 
         // Pestañas del panel
@@ -2298,171 +2354,18 @@ async function saveGitHubData() {
             });
         }
 
-        // ==================== FUNCIONES DE GUARDADO ====================
-        async function saveHeroData() {
-            appData.hero.title = document.getElementById('admin-hero-title').value;
-            appData.hero.description = document.getElementById('admin-hero-description').value;
-            appData.hero.images[0] = document.getElementById('admin-hero-image1').value;
-            appData.hero.images[1] = document.getElementById('admin-hero-image2').value;
-            appData.hero.images[2] = document.getElementById('admin-hero-image3').value;
-            appData.hero.images[3] = document.getElementById('admin-hero-image4').value;
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderHeroSection();
-                alert('Datos de la sección Inicio guardados correctamente');
-            } else {
-                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
-            }
-        }
-
-        async function saveServicesData() {
-            // Recopilar datos de los formularios de servicios
-            const serviceTitles = document.querySelectorAll('.service-title');
-            const serviceDescriptions = document.querySelectorAll('.service-description');
-            const serviceFeatures = document.querySelectorAll('.service-features');
-            
-            appData.services = [];
-            
-            serviceTitles.forEach((input, index) => {
-                const features = serviceFeatures[index].value.split(',').map(f => f.trim()).filter(f => f);
-                
-                appData.services.push({
-                    id: index + 1,
-                    title: input.value,
-                    description: serviceDescriptions[index].value,
-                    features: features
-                });
-            });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderServicesSection();
-                alert('Servicios guardados correctamente');
-            } else {
-                alert('Error al guardar los servicios. Por favor, intenta nuevamente.');
-            }
-        }
-
-        async function saveTeamData() {
-            // Recopilar datos de los formularios del equipo
-            const teamNames = document.querySelectorAll('.team-name');
-            const teamTitles = document.querySelectorAll('.team-title');
-            const teamImages = document.querySelectorAll('.team-image');
-            const teamLocations = document.querySelectorAll('.team-location');
-            const teamGithubs = document.querySelectorAll('.team-github');
-            const teamPortfolios = document.querySelectorAll('.team-portfolio');
-            const teamWhatsapps = document.querySelectorAll('.team-whatsapp');
-            const teamSkills = document.querySelectorAll('.team-skills');
-            const teamDescriptions = document.querySelectorAll('.team-description');
-            
-            appData.team = [];
-            
-            teamNames.forEach((input, index) => {
-                const skills = teamSkills[index].value.split(',').map(s => s.trim()).filter(s => s);
-                
-                appData.team.push({
-                    id: index + 1,
-                    name: input.value,
-                    title: teamTitles[index].value,
-                    image: teamImages[index].value,
-                    location: teamLocations[index].value,
-                    github: teamGithubs[index].value,
-                    portfolio: teamPortfolios[index].value,
-                    whatsapp: teamWhatsapps[index].value,
-                    skills: skills,
-                    description: teamDescriptions[index].value
-                });
-            });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderTeamSection();
-                alert('Datos del equipo guardados correctamente');
-            } else {
-                alert('Error al guardar los datos del equipo. Por favor, intenta nuevamente.');
-            }
-        }
-
-        async function saveProjectsData() {
-            // Recopilar datos de los formularios de proyectos
-            const projectTitles = document.querySelectorAll('.project-title');
-            const projectDescriptions = document.querySelectorAll('.project-description');
-            const projectImages = document.querySelectorAll('.project-image');
-            const projectTechnologies = document.querySelectorAll('.project-technologies');
-            
-            appData.projects = [];
-            
-            projectTitles.forEach((input, index) => {
-                const technologies = projectTechnologies[index].value.split(',').map(t => t.trim()).filter(t => t);
-                
-                appData.projects.push({
-                    id: index + 1,
-                    title: input.value,
-                    description: projectDescriptions[index].value,
-                    image: projectImages[index].value,
-                    technologies: technologies
-                });
-            });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderProjectsSection();
-                alert('Proyectos guardados correctamente');
-            } else {
-                alert('Error al guardar los proyectos. Por favor, intenta nuevamente.');
-            }
-        }
-
-        async function saveAboutData() {
-            appData.about.title = document.getElementById('admin-about-title').value;
-            appData.about.description1 = document.getElementById('admin-about-description1').value;
-            appData.about.description2 = document.getElementById('admin-about-description2').value;
-            appData.about.description3 = document.getElementById('admin-about-description3').value;
-            appData.about.image = document.getElementById('admin-about-image').value;
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderAboutSection();
-                alert('Datos de la sección "Conócenos" guardados correctamente');
-            } else {
-                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
-            }
-        }
-
-        async function saveFooterData() {
-            appData.footer.address = document.getElementById('admin-footer-address').value;
-            appData.footer.phone = document.getElementById('admin-footer-phone').value;
-            appData.footer.email = document.getElementById('admin-footer-email').value;
-            appData.footer.description = document.getElementById('admin-footer-description').value;
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderFooterSection();
-                alert('Datos de contacto guardados correctamente');
-            } else {
-                alert('Error al guardar los datos. Por favor, intenta nuevamente.');
-            }
-        }
-
         // ==================== FUNCIONES PARA AGREGAR NUEVOS ELEMENTOS ====================
-        async function addNewService() {
+        function addNewService() {
             appData.services.push({
                 id: appData.services.length + 1,
                 title: "Nuevo Servicio",
                 description: "Descripción del nuevo servicio.",
                 features: ["Característica 1", "Característica 2"]
             });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderServicesAdmin();
-            } else {
-                alert('Error al agregar el servicio. Por favor, intenta nuevamente.');
-            }
+            renderServicesAdmin();
         }
 
-        async function addNewTeamMember() {
+        function addNewTeamMember() {
             appData.team.push({
                 id: appData.team.length + 1,
                 name: "Nuevo Miembro",
@@ -2475,16 +2378,10 @@ async function saveGitHubData() {
                 skills: ["Habilidad 1", "Habilidad 2"],
                 description: "Descripción del nuevo miembro del equipo."
             });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderTeamAdmin();
-            } else {
-                alert('Error al agregar el miembro. Por favor, intenta nuevamente.');
-            }
+            renderTeamAdmin();
         }
 
-        async function addNewProject() {
+        function addNewProject() {
             appData.projects.push({
                 id: appData.projects.length + 1,
                 title: "Nuevo Proyecto",
@@ -2492,53 +2389,84 @@ async function saveGitHubData() {
                 image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 technologies: ["Tecnología 1", "Tecnología 2"]
             });
-            
-            const success = await saveGitHubData();
-            if (success) {
-                renderProjectsAdmin();
-            } else {
-                alert('Error al agregar el proyecto. Por favor, intenta nuevamente.');
-            }
+            renderProjectsAdmin();
         }
 
         // ==================== FUNCIONES PARA ELIMINAR ELEMENTOS ====================
-        async function removeService(index) {
+        function removeService(index) {
             if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
                 appData.services.splice(index, 1);
-                const success = await saveGitHubData();
-                if (success) {
-                    renderServicesAdmin();
-                    renderServicesSection();
-                } else {
-                    alert('Error al eliminar el servicio. Por favor, intenta nuevamente.');
-                }
+                renderServicesAdmin();
             }
         }
 
-        async function removeTeamMember(index) {
+        function removeTeamMember(index) {
             if (confirm('¿Estás seguro de que quieres eliminar este miembro del equipo?')) {
                 appData.team.splice(index, 1);
-                const success = await saveGitHubData();
-                if (success) {
-                    renderTeamAdmin();
-                    renderTeamSection();
-                } else {
-                    alert('Error al eliminar el miembro. Por favor, intenta nuevamente.');
-                }
+                renderTeamAdmin();
             }
         }
 
-        async function removeProject(index) {
+        function removeProject(index) {
             if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
                 appData.projects.splice(index, 1);
-                const success = await saveGitHubData();
-                if (success) {
-                    renderProjectsAdmin();
-                    renderProjectsSection();
-                } else {
-                    alert('Error al eliminar el proyecto. Por favor, intenta nuevamente.');
-                }
+                renderProjectsAdmin();
             }
+        }
+
+        // ==================== OTRAS FUNCIONES ====================
+        // Exportar datos
+        function exportData() {
+            const dataStr = JSON.stringify(appData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'tibutec-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        // Importar datos
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        document.getElementById('importFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        appData = importedData;
+                        renderAllSections();
+                        loadAdminForms();
+                        alert('Datos importados correctamente. Recuerda guardar en GitHub para aplicar los cambios.');
+                    } catch (error) {
+                        alert('Error al importar los datos: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Restablecer a valores por defecto
+        function resetToDefault() {
+            if (confirm('¿Estás seguro de que quieres restablecer todos los datos a los valores por defecto? Se perderán todos los cambios.')) {
+                appData = { ...defaultData };
+                renderAllSections();
+                loadAdminForms();
+                alert('Datos restablecidos correctamente. Recuerda guardar en GitHub para aplicar los cambios.');
+            }
+        }
+
+        // Modal de Login
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('loginError').classList.remove('show');
         }
 
         // ==================== INICIALIZACIÓN ====================
@@ -2593,5 +2521,4 @@ async function saveGitHubData() {
         });
     </script>
 </body>
-
 </html>
