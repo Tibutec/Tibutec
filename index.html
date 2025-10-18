@@ -1716,7 +1716,7 @@
         // ==================== GESTIÓN DE DATOS ====================
         let appData = { ...defaultData };
 
-        // Cargar datos desde GitHub
+        // Cargar datos desde GitHub (VERSIÓN CORREGIDA)
         async function loadGitHubData() {
             try {
                 const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
@@ -1724,10 +1724,18 @@
                 
                 if (response.ok) {
                     const data = await response.json();
-                    const content = JSON.parse(atob(data.content));
-                    appData = content;
+                    
+                    // ✅ SOLUCIÓN: Decodificar correctamente desde Base64 a UTF-8
+                    const binaryString = atob(data.content);
+                    const bytes = new Uint8Array(binaryString.length);
+                    for (let i = 0; i < binaryString.length; i++) {
+                        bytes[i] = binaryString.charCodeAt(i);
+                    }
+                    const decoder = new TextDecoder('utf-8');
+                    const jsonString = decoder.decode(bytes);
+                    appData = JSON.parse(jsonString);
+
                 } else {
-                    // Si no existe el archivo, usar datos por defecto
                     appData = { ...defaultData };
                 }
             } catch (error) {
@@ -1738,40 +1746,35 @@
             renderAllSections();
         }
 
-        // Guardar datos en GitHub
+        // Guardar datos en GitHub (VERSIÓN CORREGIDA)
         async function saveGitHubData(token) {
             try {
                 const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`;
                 
-                console.log('Intentando guardar en GitHub...');
-                
-                // Obtener el SHA actual si el archivo existe
+                // Obtener el SHA actual del archivo si existe
                 let sha = '';
                 try {
                     const currentFile = await fetch(url, {
-                        headers: {
-                            'Authorization': `token ${token}`
-                        }
+                        headers: { 'Authorization': `token ${token}` }
                     });
-                    
                     if (currentFile.ok) {
                         const fileData = await currentFile.json();
                         sha = fileData.sha;
-                        console.log('SHA del archivo actual:', sha);
-                    } else if (currentFile.status === 404) {
-                        console.log('El archivo no existe aún, se creará uno nuevo');
-                    } else {
-                        const errorData = await currentFile.json();
-                        console.error('Error al obtener el archivo actual:', errorData);
-                        throw new Error(`Error al verificar el archivo: ${errorData.message}`);
                     }
                 } catch (e) {
-                    console.error('Error al verificar el archivo existente:', e);
-                    throw e;
+                    console.log("No se pudo obtener el SHA, se creará un archivo nuevo.");
                 }
                 
-                // Preparar los datos para guardar
-                const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
+                // ✅ SOLUCIÓN: Codificar correctamente el JSON a Base64 usando UTF-8
+                const jsonString = JSON.stringify(appData, null, 2);
+                const encoder = new TextEncoder();
+                const encodedData = encoder.encode(jsonString);
+                let binaryString = '';
+                for (let i = 0; i < encodedData.length; i++) {
+                    binaryString += String.fromCharCode(encodedData[i]);
+                }
+                const content = btoa(binaryString);
+
                 const body = {
                     message: `Actualización del sitio web - ${new Date().toLocaleString()}`,
                     content: content,
@@ -1782,9 +1785,6 @@
                     body.sha = sha;
                 }
                 
-                console.log('Enviando datos a GitHub...');
-                
-                // Enviar los datos a GitHub
                 const response = await fetch(url, {
                     method: 'PUT',
                     headers: {
@@ -1795,14 +1795,11 @@
                     body: JSON.stringify(body)
                 });
                 
-                console.log('Código de respuesta:', response.status);
-                
                 if (response.ok) {
                     console.log('✅ Datos guardados exitosamente en GitHub');
                     return true;
                 } else {
                     const errorData = await response.json();
-                    console.error('❌ Error GitHub:', errorData);
                     throw new Error(errorData.message || 'Error desconocido de GitHub');
                 }
             } catch (error) {
@@ -1812,7 +1809,6 @@
         }
 
         // ==================== MANEJADORES DE FORMULARIOS ====================
-        // Manejar el envío del formulario de login
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1846,7 +1842,6 @@
         }
 
         async function saveServicesData() {
-            // Recopilar datos de los formularios de servicios
             const serviceTitles = document.querySelectorAll('.service-title');
             const serviceDescriptions = document.querySelectorAll('.service-description');
             const serviceFeatures = document.querySelectorAll('.service-features');
@@ -1871,7 +1866,6 @@
         }
 
         async function saveTeamData() {
-            // Recopilar datos de los formularios del equipo
             const teamNames = document.querySelectorAll('.team-name');
             const teamTitles = document.querySelectorAll('.team-title');
             const teamImages = document.querySelectorAll('.team-image');
@@ -1908,7 +1902,6 @@
         }
 
         async function saveProjectsData() {
-            // Recopilar datos de los formularios de proyectos
             const projectTitles = document.querySelectorAll('.project-title');
             const projectDescriptions = document.querySelectorAll('.project-description');
             const projectImages = document.querySelectorAll('.project-image');
@@ -1975,28 +1968,20 @@
                 return;
             }
             
+            const saveButtons = document.querySelectorAll('.admin-btn');
             try {
-                // Mostrar loading
-                const saveButtons = document.querySelectorAll('.admin-btn');
-                saveButtons.forEach(btn => {
-                    btn.disabled = true;
-                });
+                saveButtons.forEach(btn => btn.disabled = true);
                 
                 await saveGitHubData(token);
                 
-                // Éxito
                 document.getElementById('tokenError').style.display = 'none';
                 successCallback();
                 
             } catch (error) {
-                document.getElementById('tokenError').textContent = `Error: ${error.message}`;
+                document.getElementById('tokenError').textContent = `Error al guardar: ${error.message}`;
                 document.getElementById('tokenError').style.display = 'block';
             } finally {
-                // Restaurar botones
-                const saveButtons = document.querySelectorAll('.admin-btn');
-                saveButtons.forEach(btn => {
-                    btn.disabled = false;
-                });
+                saveButtons.forEach(btn => btn.disabled = false);
             }
         }
 
@@ -2014,7 +1999,6 @@
             document.getElementById('hero-title').textContent = appData.hero.title;
             document.getElementById('hero-description').textContent = appData.hero.description;
             
-            // Actualizar imágenes del carrusel
             const carouselItems = document.querySelectorAll('.carousel-item');
             carouselItems.forEach((item, index) => {
                 if (appData.hero.images[index]) {
@@ -2060,21 +2044,17 @@
                             <img src="${member.image}" alt="${member.name}" class="profile-img" id="profileImg${index + 1}">
                             <h1 class="name">${member.name}</h1>
                         </div>
-
                         <div class="info-container" id="infoContainer${index + 1}">
                             <h2 class="card-title">${member.title}</h2>
-
                             <div class="location">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>${member.location}</span>
                             </div>
-
                             <div class="social-links">
                                 <a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>
                                 <a href="${member.portfolio}" target="_blank"><i class="fas fa-briefcase"></i></a>
                                 <a href="https://wa.me/${member.whatsapp}" target="_blank"><i class="fab fa-whatsapp"></i></a>
                             </div>
-
                             <div class="info-columns">
                                 <div class="info-column">
                                     <h3 class="card-subtitle">Habilidades Técnicas</h3>
@@ -2082,30 +2062,21 @@
                                         ${member.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
                                     </div>
                                 </div>
-
                                 <div class="info-column">
                                     <h3 class="card-subtitle">Acerca de mí</h3>
                                     <p>${member.description}</p>
                                 </div>
                             </div>
-
                             <div class="buttons">
-                                <a href="${member.github}" target="_blank" class="card-btn btn-primary">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                                <a href="${member.portfolio}" target="_blank" class="card-btn btn-secondary">
-                                    <i class="fas fa-briefcase"></i> Portafolio
-                                </a>
-                                <a href="https://wa.me/${member.whatsapp}" target="_blank" class="card-btn btn-whatsapp">
-                                    <i class="fab fa-whatsapp"></i> WhatsApp
-                                </a>
+                                <a href="${member.github}" target="_blank" class="card-btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="${member.portfolio}" target="_blank" class="card-btn btn-secondary"><i class="fas fa-briefcase"></i> Portafolio</a>
+                                <a href="https://wa.me/${member.whatsapp}" target="_blank" class="card-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                             </div>
                         </div>
                     </div>
                 `;
                 container.appendChild(card);
                 
-                // Configurar la funcionalidad de expandir/colapsar
                 setupCard(cardId, index + 1);
             });
         }
@@ -2122,12 +2093,8 @@
                         <img src="${project.image}" alt="${project.title}">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Ver proyecto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" title="Ver código">
-                                    <i class="fab fa-github"></i>
-                                </a>
+                                <a href="#" class="project-link" title="Ver proyecto"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Ver código"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -2162,15 +2129,12 @@
         function setupCard(cardId, cardNumber) {
             const profileCard = document.getElementById(cardId);
             const photoContainer = document.getElementById(`photoContainer${cardNumber}`);
-            const profileImg = document.getElementById(`profileImg${cardNumber}`);
 
             const toggleCard = function () {
                 profileCard.classList.toggle('expanded');
             };
 
             photoContainer.addEventListener('click', toggleCard);
-            profileImg.addEventListener('click', toggleCard);
-
             profileCard.classList.remove('expanded');
         }
 
@@ -2184,25 +2148,19 @@
             document.getElementById('adminPanel').classList.remove('active');
         });
 
-        // Pestañas del panel
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', function() {
-                // Remover clase active de todos los botones y contenidos
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
                 
-                // Agregar clase active al botón clickeado
                 this.classList.add('active');
                 
-                // Mostrar el contenido correspondiente
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(`${tabId}-tab`).classList.add('active');
             });
         });
 
-        // Cargar formularios del panel
         function loadAdminForms() {
-            // Hero/Inicio
             document.getElementById('admin-hero-title').value = appData.hero.title;
             document.getElementById('admin-hero-description').value = appData.hero.description;
             document.getElementById('admin-hero-image1').value = appData.hero.images[0] || '';
@@ -2210,30 +2168,22 @@
             document.getElementById('admin-hero-image3').value = appData.hero.images[2] || '';
             document.getElementById('admin-hero-image4').value = appData.hero.images[3] || '';
             
-            // Servicios
             renderServicesAdmin();
-            
-            // Equipo
             renderTeamAdmin();
-            
-            // Proyectos
             renderProjectsAdmin();
             
-            // Nosotros
             document.getElementById('admin-about-title').value = appData.about.title;
             document.getElementById('admin-about-description1').value = appData.about.description1;
             document.getElementById('admin-about-description2').value = appData.about.description2;
             document.getElementById('admin-about-description3').value = appData.about.description3;
             document.getElementById('admin-about-image').value = appData.about.image;
             
-            // Footer/Contacto
             document.getElementById('admin-footer-address').value = appData.footer.address;
             document.getElementById('admin-footer-phone').value = appData.footer.phone;
             document.getElementById('admin-footer-email').value = appData.footer.email;
             document.getElementById('admin-footer-description').value = appData.footer.description;
         }
 
-        // Renderizar administración de servicios
         function renderServicesAdmin() {
             const container = document.getElementById('services-list');
             container.innerHTML = '';
@@ -2243,28 +2193,15 @@
                 serviceDiv.className = 'admin-section';
                 serviceDiv.innerHTML = `
                     <h4>Servicio ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="service-title" value="${service.title}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="service-description" data-index="${index}">${service.description}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Características (separadas por coma)</label>
-                        <input type="text" class="service-features" value="${service.features.join(', ')}" data-index="${index}">
-                    </div>
-                    <button class="admin-btn secondary" onclick="removeService(${index})">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
+                    <div class="form-group"><label>Título</label><input type="text" class="service-title" value="${service.title}" data-index="${index}"></div>
+                    <div class="form-group"><label>Descripción</label><textarea class="service-description" data-index="${index}">${service.description}</textarea></div>
+                    <div class="form-group"><label>Características (separadas por coma)</label><input type="text" class="service-features" value="${service.features.join(', ')}" data-index="${index}"></div>
+                    <button class="admin-btn secondary" onclick="removeService(${index})"><i class="fas fa-trash"></i> Eliminar</button><hr>
                 `;
                 container.appendChild(serviceDiv);
             });
         }
 
-        // Renderizar administración del equipo
         function renderTeamAdmin() {
             const container = document.getElementById('team-list');
             container.innerHTML = '';
@@ -2274,52 +2211,21 @@
                 memberDiv.className = 'admin-section';
                 memberDiv.innerHTML = `
                     <h4>Miembro ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="team-name" value="${member.name}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="team-title" value="${member.title}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Imagen (URL)</label>
-                        <input type="text" class="team-image" value="${member.image}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Ubicación</label>
-                        <input type="text" class="team-location" value="${member.location}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>GitHub</label>
-                        <input type="text" class="team-github" value="${member.github}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Portafolio</label>
-                        <input type="text" class="team-portfolio" value="${member.portfolio}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>WhatsApp (solo números)</label>
-                        <input type="text" class="team-whatsapp" value="${member.whatsapp}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Habilidades (separadas por coma)</label>
-                        <input type="text" class="team-skills" value="${member.skills.join(', ')}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="team-description" data-index="${index}">${member.description}</textarea>
-                    </div>
-                    <button class="admin-btn secondary" onclick="removeTeamMember(${index})">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
+                    <div class="form-group"><label>Nombre</label><input type="text" class="team-name" value="${member.name}" data-index="${index}"></div>
+                    <div class="form-group"><label>Título</label><input type="text" class="team-title" value="${member.title}" data-index="${index}"></div>
+                    <div class="form-group"><label>Imagen (URL)</label><input type="text" class="team-image" value="${member.image}" data-index="${index}"></div>
+                    <div class="form-group"><label>Ubicación</label><input type="text" class="team-location" value="${member.location}" data-index="${index}"></div>
+                    <div class="form-group"><label>GitHub</label><input type="text" class="team-github" value="${member.github}" data-index="${index}"></div>
+                    <div class="form-group"><label>Portafolio</label><input type="text" class="team-portfolio" value="${member.portfolio}" data-index="${index}"></div>
+                    <div class="form-group"><label>WhatsApp (solo números)</label><input type="text" class="team-whatsapp" value="${member.whatsapp}" data-index="${index}"></div>
+                    <div class="form-group"><label>Habilidades (separadas por coma)</label><input type="text" class="team-skills" value="${member.skills.join(', ')}" data-index="${index}"></div>
+                    <div class="form-group"><label>Descripción</label><textarea class="team-description" data-index="${index}">${member.description}</textarea></div>
+                    <button class="admin-btn secondary" onclick="removeTeamMember(${index})"><i class="fas fa-trash"></i> Eliminar</button><hr>
                 `;
                 container.appendChild(memberDiv);
             });
         }
 
-        // Renderizar administración de proyectos
         function renderProjectsAdmin() {
             const container = document.getElementById('projects-list');
             container.innerHTML = '';
@@ -2329,70 +2235,32 @@
                 projectDiv.className = 'admin-section';
                 projectDiv.innerHTML = `
                     <h4>Proyecto ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="project-title" value="${project.title}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="project-description" data-index="${index}">${project.description}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Imagen (URL)</label>
-                        <input type="text" class="project-image" value="${project.image}" data-index="${index}">
-                    </div>
-                    <div class="form-group">
-                        <label>Tecnologías (separadas por coma)</label>
-                        <input type="text" class="project-technologies" value="${project.technologies.join(', ')}" data-index="${index}">
-                    </div>
-                    <button class="admin-btn secondary" onclick="removeProject(${index})">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
+                    <div class="form-group"><label>Título</label><input type="text" class="project-title" value="${project.title}" data-index="${index}"></div>
+                    <div class="form-group"><label>Descripción</label><textarea class="project-description" data-index="${index}">${project.description}</textarea></div>
+                    <div class="form-group"><label>Imagen (URL)</label><input type="text" class="project-image" value="${project.image}" data-index="${index}"></div>
+                    <div class="form-group"><label>Tecnologías (separadas por coma)</label><input type="text" class="project-technologies" value="${project.technologies.join(', ')}" data-index="${index}"></div>
+                    <button class="admin-btn secondary" onclick="removeProject(${index})"><i class="fas fa-trash"></i> Eliminar</button><hr>
                 `;
                 container.appendChild(projectDiv);
             });
         }
 
-        // ==================== FUNCIONES PARA AGREGAR NUEVOS ELEMENTOS ====================
+        // ==================== FUNCIONES PARA AGREGAR/ELIMINAR ELEMENTOS ====================
         function addNewService() {
-            appData.services.push({
-                id: appData.services.length + 1,
-                title: "Nuevo Servicio",
-                description: "Descripción del nuevo servicio.",
-                features: ["Característica 1", "Característica 2"]
-            });
+            appData.services.push({ id: Date.now(), title: "Nuevo Servicio", description: "Descripción.", features: [] });
             renderServicesAdmin();
         }
 
         function addNewTeamMember() {
-            appData.team.push({
-                id: appData.team.length + 1,
-                name: "Nuevo Miembro",
-                title: "Cargo del nuevo miembro",
-                image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-                location: "Ubicación",
-                github: "https://github.com/",
-                portfolio: "https://ejemplo.com/",
-                whatsapp: "573000000000",
-                skills: ["Habilidad 1", "Habilidad 2"],
-                description: "Descripción del nuevo miembro del equipo."
-            });
+            appData.team.push({ id: Date.now(), name: "Nuevo Miembro", title: "Cargo", image: "", location: "", github: "", portfolio: "", whatsapp: "", skills: [], description: "" });
             renderTeamAdmin();
         }
 
         function addNewProject() {
-            appData.projects.push({
-                id: appData.projects.length + 1,
-                title: "Nuevo Proyecto",
-                description: "Descripción del nuevo proyecto.",
-                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                technologies: ["Tecnología 1", "Tecnología 2"]
-            });
+            appData.projects.push({ id: Date.now(), title: "Nuevo Proyecto", description: "Descripción.", image: "", technologies: [] });
             renderProjectsAdmin();
         }
 
-        // ==================== FUNCIONES PARA ELIMINAR ELEMENTOS ====================
         function removeService(index) {
             if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
                 appData.services.splice(index, 1);
@@ -2415,20 +2283,16 @@
         }
 
         // ==================== OTRAS FUNCIONES ====================
-        // Exportar datos
         function exportData() {
             const dataStr = JSON.stringify(appData, null, 2);
             const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
             const exportFileDefaultName = 'tibutec-data.json';
-            
             const linkElement = document.createElement('a');
             linkElement.setAttribute('href', dataUri);
             linkElement.setAttribute('download', exportFileDefaultName);
             linkElement.click();
         }
 
-        // Importar datos
         function importData() {
             document.getElementById('importFile').click();
         }
@@ -2443,7 +2307,7 @@
                         appData = importedData;
                         renderAllSections();
                         loadAdminForms();
-                        alert('Datos importados correctamente. Recuerda guardar en GitHub para aplicar los cambios.');
+                        alert('Datos importados. Guarda en GitHub para aplicar los cambios.');
                     } catch (error) {
                         alert('Error al importar los datos: ' + error.message);
                     }
@@ -2452,17 +2316,15 @@
             }
         });
 
-        // Restablecer a valores por defecto
         function resetToDefault() {
-            if (confirm('¿Estás seguro de que quieres restablecer todos los datos a los valores por defecto? Se perderán todos los cambios.')) {
-                appData = { ...defaultData };
+            if (confirm('¿Restablecer todos los datos a los valores por defecto? Se perderán los cambios no guardados.')) {
+                appData = JSON.parse(JSON.stringify(defaultData)); // Deep copy
                 renderAllSections();
                 loadAdminForms();
-                alert('Datos restablecidos correctamente. Recuerda guardar en GitHub para aplicar los cambios.');
+                alert('Datos restablecidos. Guarda en GitHub para aplicar los cambios.');
             }
         }
 
-        // Modal de Login
         function closeLoginModal() {
             document.getElementById('loginModal').classList.remove('active');
             document.getElementById('adminPassword').value = '';
@@ -2471,28 +2333,18 @@
 
         // ==================== INICIALIZACIÓN ====================
         document.addEventListener('DOMContentLoaded', async function() {
-            // Cargar datos desde GitHub
             await loadGitHubData();
             
-            // Menú Hamburguesa
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
 
             hamburger.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
-
-                // Cambiar ícono
                 const icon = hamburger.querySelector('i');
-                if (navMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             });
 
-            // Cerrar menú al hacer clic en un enlace
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
@@ -2501,23 +2353,13 @@
                 });
             });
 
-            // Carrusel automático para el hero
             const carouselItems = document.querySelectorAll('.carousel-item');
             let currentItem = 0;
-
-            function showNextItem() {
-                // Ocultar el item actual
+            setInterval(() => {
                 carouselItems[currentItem].classList.remove('active');
-
-                // Avanzar al siguiente item
                 currentItem = (currentItem + 1) % carouselItems.length;
-
-                // Mostrar el nuevo item
                 carouselItems[currentItem].classList.add('active');
-            }
-
-            // Cambiar imagen cada 5 segundos
-            setInterval(showNextItem, 5000);
+            }, 5000);
         });
     </script>
 </body>
