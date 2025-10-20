@@ -1,1 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - TibuTec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-cog"></i> Panel Administrador - TibuTec</h1>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+
+        <!-- Panel Administrador -->
+        <div id="adminPanel" class="active">
+            <div class="admin-header">
+                <h2><i class="fas fa-user-cog"></i> Panel Administrador</h2>
+                <button class="admin-btn secondary" id="closeAdmin">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="hero">Inicio</button>
+                <button class="tab-button" data-tab="services">Servicios</button>
+                <button class="tab-button" data-tab="team">Equipo</button>
+                <button class="tab-button" data-tab="projects">Proyectos</button>
+                <button class="tab-button" data-tab="about">Nosotros</button>
+                <button class="tab-button" data-tab="footer">Contacto</button>
+            </div>
+
+            <!-- Pestaña Hero/Inicio -->
+            <div class="tab-content active" id="hero-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-home"></i> Sección Inicio</h3>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-title">Título Principal</label>
+                        <input type="text" id="admin-hero-title" value="Soluciones Tecnológicas para tu Negocio">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-description">Descripción</label>
+                        <textarea id="admin-hero-description">Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-image1">Imagen 1 del Carrusel (URL)</label>
+                        <input type="text" id="admin-hero-image1" value="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-image2">Imagen 2 del Carrusel (URL)</label>
+                        <input type="text" id="admin-hero-image2" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-image3">Imagen 3 del Carrusel (URL)</label>
+                        <input type="text" id="admin-hero-image3" value="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-hero-image4">Imagen 4 del Carrusel (URL)</label>
+                        <input type="text" id="admin-hero-image4" value="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                    </div>
+                    
+                    <button class="admin-btn" onclick="saveHeroData()">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Servicios -->
+            <div class="tab-content" id="services-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-concierge-bell"></i> Gestión de Servicios</h3>
+                    <p>Aquí puedes agregar, editar o eliminar servicios.</p>
+                    
+                    <div id="services-list">
+                        <!-- Los servicios se cargarán dinámicamente -->
+                    </div>
+                    
+                    <button class="admin-btn" onclick="addNewService()">
+                        <i class="fas fa-plus"></i> Agregar Servicio
+                    </button>
+                    
+                    <button class="admin-btn" onclick="saveServicesData()">
+                        <i class="fas fa-save"></i> Guardar Servicios
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Equipo -->
+            <div class="tab-content" id="team-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-users"></i> Gestión del Equipo</h3>
+                    <p>Administra los miembros de tu equipo.</p>
+                    
+                    <div id="team-list">
+                        <!-- Los miembros del equipo se cargarán dinámicamente -->
+                    </div>
+                    
+                    <button class="admin-btn" onclick="addNewTeamMember()">
+                        <i class="fas fa-plus"></i> Agregar Miembro
+                    </button>
+                    
+                    <button class="admin-btn" onclick="saveTeamData()">
+                        <i class="fas fa-save"></i> Guardar Equipo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Proyectos -->
+            <div class="tab-content" id="projects-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-project-diagram"></i> Gestión de Proyectos</h3>
+                    <p>Administra los proyectos que se muestran en el portafolio.</p>
+                    
+                    <div id="projects-list">
+                        <!-- Los proyectos se cargarán dinámicamente -->
+                    </div>
+                    
+                    <button class="admin-btn" onclick="addNewProject()">
+                        <i class="fas fa-plus"></i> Agregar Proyecto
+                    </button>
+                    
+                    <button class="admin-btn" onclick="saveProjectsData()">
+                        <i class="fas fa-save"></i> Guardar Proyectos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Nosotros -->
+            <div class="tab-content" id="about-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-info-circle"></i> Sección "Conócenos"</h3>
+                    
+                    <div class="form-group">
+                        <label for="admin-about-title">Título</label>
+                        <input type="text" id="admin-about-title" value="Tu socio tecnológico en Tibú">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-about-description1">Descripción 1</label>
+                        <textarea id="admin-about-description1">En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-about-description2">Descripción 2</label>
+                        <textarea id="admin-about-description2">Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-about-description3">Descripción 3</label>
+                        <textarea id="admin-about-description3">Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-about-image">Imagen (URL)</label>
+                        <input type="text" id="admin-about-image" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                    </div>
+                    
+                    <button class="admin-btn" onclick="saveAboutData()">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Footer/Contacto -->
+            <div class="tab-content" id="footer-tab">
+                <div class="admin-section">
+                    <h3><i class="fas fa-address-book"></i> Información de Contacto</h3>
+                    
+                    <div class="form-group">
+                        <label for="admin-footer-address">Dirección</label>
+                        <input type="text" id="admin-footer-address" value="Tibú, Norte de Santander">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-footer-phone">Teléfono</label>
+                        <input type="text" id="admin-footer-phone" value="+57 322 376 2998">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-footer-email">Email</label>
+                        <input type="text" id="admin-footer-email" value="contacto.tibutec@gmail.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-footer-description">Descripción del Footer</label>
+                        <textarea id="admin-footer-description">Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</textarea>
+                    </div>
+                    
+                    <button class="admin-btn" onclick="saveFooterData()">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sección de Gestión de Datos -->
+            <div class="admin-section">
+                <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
+                <p>Importar o exportar la configuración del sitio.</p>
+                
+                <button class="admin-btn" onclick="exportData()">
+                    <i class="fas fa-download"></i> Exportar Datos
+                </button>
+                
+                <button class="admin-btn" onclick="importData()">
+                    <i class="fas fa-upload"></i> Importar Datos
+                </button>
+                
+                <input type="file" id="importFile" style="display: none;" accept=".json">
+                
+                <button class="admin-btn secondary" onclick="resetToDefault()">
+                    <i class="fas fa-undo"></i> Restablecer Valores
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="active">
+        <div class="login-container">
+            <div class="login-header">
+                <h2><i class="fas fa-lock"></i> Acceso Administrador</h2>
+                <p>Ingresa tus credenciales para acceder al panel</p>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="adminEmail" placeholder="Correo electrónico" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="adminPassword" placeholder="Contraseña" required>
+                </div>
+                
+                <div class="login-buttons">
+                    <button type="submit" class="login-btn primary">Iniciar Sesión</button>
+                </div>
+                
+                <div class="login-error" id="loginError">
+                    Credenciales incorrectas. Por favor, intenta nuevamente.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Importar configuración y servicios de Firebase
+        import { app } from './firebase-config.js';
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            doc, 
+            getDoc, 
+            setDoc 
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+        import { 
+            getStorage,
+            ref,
+            uploadBytes,
+            getDownloadURL
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
+
+        // Inicializar servicios de Firebase
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // ==================== DATOS POR DEFECTO ====================
+        const defaultData = {
+            hero: {
+                title: "Soluciones Tecnológicas para tu Negocio",
+                description: "Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.",
+                images: [
+                    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+                    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+                ]
+            },
+            services: [
+                {
+                    id: 1,
+                    title: "Desarrollo Web",
+                    description: "Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda, utilizando las últimas tecnologías del mercado.",
+                    features: ["Diseño personalizado", "Desarrollo a medida", "Optimización SEO", "Integración con redes sociales"]
+                },
+                {
+                    id: 2,
+                    title: "Branding Digital",
+                    description: "Desarrollo de identidad de marca y estrategias de marketing digital para posicionar tu negocio en el entorno digital.",
+                    features: ["Diseño de identidad visual", "Estrategias de contenido", "Gestión de redes sociales", "Campañas publicitarias"]
+                },
+                {
+                    id: 3,
+                    title: "Base de Datos",
+                    description: "Diseño, implementación y administración de bases de datos robustas y seguras para gestionar la información de tu negocio.",
+                    features: ["Diseño de bases de datos", "Optimización de consultas", "Respaldo y recuperación", "Seguridad de datos"]
+                }
+            ],
+            team: [
+                {
+                    id: 1,
+                    name: "JHORMAN JESÚS CASTELLANOS MORALES",
+                    title: "Desarrollador FullStack Junior",
+                    image: "https://res.cloudinary.com/dipv76dpn/image/upload/v1757879378/Rosy/mea9yccx3mwf78mwqocs.png",
+                    location: "Tibú, Norte de Santander",
+                    github: "https://github.com/Jhormancastella",
+                    portfolio: "https://jhormancastella.github.io/portafolio/",
+                    whatsapp: "573223762998",
+                    skills: ["Java", "PHP", "JavaScript", "HTML", "CSS", "MySQL", "PostgreSQL", "Fotografía", "Edición", "Resolución de Problemas", "Técnico en Sistemas"],
+                    description: "Soy un desarrollador junior fullstack con formación en Campusland Tibu. Combino mis habilidades técnicas con mi creatividad como fotógrafo y mi experiencia como técnico de sistemas. Me destaco por mi capacidad para resolver problemas y mi pasión por aprender nuevas tecnologías."
+                }
+            ],
+            projects: [
+                {
+                    id: 1,
+                    title: "Dashboard Empresarial",
+                    description: "Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.",
+                    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    technologies: ["React", "Node.js", "MongoDB"]
+                }
+            ],
+            about: {
+                title: "Tu socio tecnológico en Tibú",
+                description1: "En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.",
+                description2: "Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.",
+                description3: "Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            footer: {
+                address: "Tibú, Norte de Santander",
+                phone: "+57 322 376 2998",
+                email: "contacto.tibutec@gmail.com",
+                description: "Soluciones tecnológicas para potenciar tu negocio en el mundo digital."
+            }
+        };
+
+        let appData = { ...defaultData };
+
+        // ==================== AUTENTICACIÓN ====================
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                document.getElementById('loginModal').classList.remove('active');
+                loadAdminData();
+            } catch (error) {
+                document.getElementById('loginError').classList.add('show');
+                console.error('Error de autenticación:', error);
+            }
+        });
+
+        // Verificar estado de autenticación
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                document.getElementById('loginModal').classList.add('active');
+            } else {
+                document.getElementById('loginModal').classList.remove('active');
+                loadAdminData();
+            }
+        });
+
+        // Cerrar sesión
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth);
+        });
+
+        // ==================== GESTIÓN DE DATOS ====================
+        async function loadAdminData() {
+            try {
+                const docRef = doc(db, 'website', 'content');
+                const docSnap = await getDoc(docRef);
+                
+                if (docSnap.exists()) {
+                    appData = docSnap.data();
+                    loadAdminForms();
+                    console.log('✅ Datos cargados en admin');
+                } else {
+                    await setDoc(docRef, defaultData);
+                    appData = { ...defaultData };
+                    loadAdminForms();
+                    console.log('📝 Documento creado con datos por defecto');
+                }
+            } catch (error) {
+                console.error('❌ Error cargando datos en admin:', error);
+                appData = { ...defaultData };
+                loadAdminForms();
+            }
+        }
+
+        // ==================== FUNCIONES DE GUARDADO ====================
+        async function saveHeroData() {
+            appData.hero.title = document.getElementById('admin-hero-title').value;
+            appData.hero.description = document.getElementById('admin-hero-description').value;
+            appData.hero.images[0] = document.getElementById('admin-hero-image1').value;
+            appData.hero.images[1] = document.getElementById('admin-hero-image2').value;
+            appData.hero.images[2] = document.getElementById('admin-hero-image3').value;
+            appData.hero.images[3] = document.getElementById('admin-hero-image4').value;
+            
+            await saveToFirebase();
+            alert('Datos de la sección Inicio guardados correctamente');
+        }
+
+        async function saveServicesData() {
+            const serviceTitles = document.querySelectorAll('.service-title');
+            const serviceDescriptions = document.querySelectorAll('.service-description');
+            const serviceFeatures = document.querySelectorAll('.service-features');
+            
+            appData.services = [];
+            
+            serviceTitles.forEach((input, index) => {
+                const features = serviceFeatures[index].value.split(',').map(f => f.trim()).filter(f => f);
+                
+                appData.services.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: serviceDescriptions[index].value,
+                    features: features
+                });
+            });
+            
+            await saveToFirebase();
+            alert('Servicios guardados correctamente');
+        }
+
+        async function saveTeamData() {
+            const teamNames = document.querySelectorAll('.team-name');
+            const teamTitles = document.querySelectorAll('.team-title');
+            const teamImages = document.querySelectorAll('.team-image');
+            const teamLocations = document.querySelectorAll('.team-location');
+            const teamGithubs = document.querySelectorAll('.team-github');
+            const teamPortfolios = document.querySelectorAll('.team-portfolio');
+            const teamWhatsapps = document.querySelectorAll('.team-whatsapp');
+            const teamSkills = document.querySelectorAll('.team-skills');
+            const teamDescriptions = document.querySelectorAll('.team-description');
+            
+            appData.team = [];
+            
+            teamNames.forEach((input, index) => {
+                const skills = teamSkills[index].value.split(',').map(s => s.trim()).filter(s => s);
+                
+                appData.team.push({
+                    id: index + 1,
+                    name: input.value,
+                    title: teamTitles[index].value,
+                    image: teamImages[index].value,
+                    location: teamLocations[index].value,
+                    github: teamGithubs[index].value,
+                    portfolio: teamPortfolios[index].value,
+                    whatsapp: teamWhatsapps[index].value,
+                    skills: skills,
+                    description: teamDescriptions[index].value
+                });
+            });
+            
+            await saveToFirebase();
+            alert('Datos del equipo guardados correctamente');
+        }
+
+        async function saveProjectsData() {
+            const projectTitles = document.querySelectorAll('.project-title');
+            const projectDescriptions = document.querySelectorAll('.project-description');
+            const projectImages = document.querySelectorAll('.project-image');
+            const projectTechnologies = document.querySelectorAll('.project-technologies');
+            
+            appData.projects = [];
+            
+            projectTitles.forEach((input, index) => {
+                const technologies = projectTechnologies[index].value.split(',').map(t => t.trim()).filter(t => t);
+                
+                appData.projects.push({
+                    id: index + 1,
+                    title: input.value,
+                    description: projectDescriptions[index].value,
+                    image: projectImages[index].value,
+                    technologies: technologies
+                });
+            });
+            
+            await saveToFirebase();
+            alert('Proyectos guardados correctamente');
+        }
+
+        async function saveAboutData() {
+            appData.about.title = document.getElementById('admin-about-title').value;
+            appData.about.description1 = document.getElementById('admin-about-description1').value;
+            appData.about.description2 = document.getElementById('admin-about-description2').value;
+            appData.about.description3 = document.getElementById('admin-about-description3').value;
+            appData.about.image = document.getElementById('admin-about-image').value;
+            
+            await saveToFirebase();
+            alert('Datos de la sección "Conócenos" guardados correctamente');
+        }
+
+        async function saveFooterData() {
+            appData.footer.address = document.getElementById('admin-footer-address').value;
+            appData.footer.phone = document.getElementById('admin-footer-phone').value;
+            appData.footer.email = document.getElementById('admin-footer-email').value;
+            appData.footer.description = document.getElementById('admin-footer-description').value;
+            
+            await saveToFirebase();
+            alert('Datos de contacto guardados correctamente');
+        }
+
+        async function saveToFirebase() {
+            try {
+                await setDoc(doc(db, 'website', 'content'), appData);
+                console.log('✅ Datos guardados en Firebase');
+                return true;
+            } catch (error) {
+                console.error('❌ Error guardando datos:', error);
+                alert('Error al guardar los datos: ' + error.message);
+                return false;
+            }
+        }
+
+        // ==================== FUNCIONES DE CARGA DE FORMULARIOS ====================
+        function loadAdminForms() {
+            // Hero Section
+            document.getElementById('admin-hero-title').value = appData.hero.title;
+            document.getElementById('admin-hero-description').value = appData.hero.description;
+            document.getElementById('admin-hero-image1').value = appData.hero.images[0] || '';
+            document.getElementById('admin-hero-image2').value = appData.hero.images[1] || '';
+            document.getElementById('admin-hero-image3').value = appData.hero.images[2] || '';
+            document.getElementById('admin-hero-image4').value = appData.hero.images[3] || '';
+            
+            // Services
+            renderServicesAdmin();
+            
+            // Team
+            renderTeamAdmin();
+            
+            // Projects
+            renderProjectsAdmin();
+            
+            // About
+            document.getElementById('admin-about-title').value = appData.about.title;
+            document.getElementById('admin-about-description1').value = appData.about.description1;
+            document.getElementById('admin-about-description2').value = appData.about.description2;
+            document.getElementById('admin-about-description3').value = appData.about.description3;
+            document.getElementById('admin-about-image').value = appData.about.image;
+            
+            // Footer
+            document.getElementById('admin-footer-address').value = appData.footer.address;
+            document.getElementById('admin-footer-phone').value = appData.footer.phone;
+            document.getElementById('admin-footer-email').value = appData.footer.email;
+            document.getElementById('admin-footer-description').value = appData.footer.description;
+        }
+
+        function renderServicesAdmin() {
+            const container = document.getElementById('services-list');
+            container.innerHTML = '';
+            
+            appData.services.forEach((service, index) => {
+                const serviceDiv = document.createElement('div');
+                serviceDiv.className = 'admin-section';
+                serviceDiv.innerHTML = `
+                    <h4>Servicio ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="service-title" value="${service.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="service-description" data-index="${index}">${service.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Características (separadas por coma)</label>
+                        <input type="text" class="service-features" value="${service.features.join(', ')}" data-index="${index}">
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeService(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(serviceDiv);
+            });
+        }
+
+        function renderTeamAdmin() {
+            const container = document.getElementById('team-list');
+            container.innerHTML = '';
+            
+            appData.team.forEach((member, index) => {
+                const memberDiv = document.createElement('div');
+                memberDiv.className = 'admin-section';
+                memberDiv.innerHTML = `
+                    <h4>Miembro ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="team-name" value="${member.name}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="team-title" value="${member.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen (URL)</label>
+                        <input type="text" class="team-image" value="${member.image}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Ubicación</label>
+                        <input type="text" class="team-location" value="${member.location}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub</label>
+                        <input type="text" class="team-github" value="${member.github}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Portafolio</label>
+                        <input type="text" class="team-portfolio" value="${member.portfolio}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp (solo números)</label>
+                        <input type="text" class="team-whatsapp" value="${member.whatsapp}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Habilidades (separadas por coma)</label>
+                        <input type="text" class="team-skills" value="${member.skills.join(', ')}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="team-description" data-index="${index}">${member.description}</textarea>
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeTeamMember(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(memberDiv);
+            });
+        }
+
+        function renderProjectsAdmin() {
+            const container = document.getElementById('projects-list');
+            container.innerHTML = '';
+            
+            appData.projects.forEach((project, index) => {
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'admin-section';
+                projectDiv.innerHTML = `
+                    <h4>Proyecto ${index + 1}</h4>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="project-title" value="${project.title}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="project-description" data-index="${index}">${project.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen (URL)</label>
+                        <input type="text" class="project-image" value="${project.image}" data-index="${index}">
+                    </div>
+                    <div class="form-group">
+                        <label>Tecnologías (separadas por coma)</label>
+                        <input type="text" class="project-technologies" value="${project.technologies.join(', ')}" data-index="${index}">
+                    </div>
+                    <button class="admin-btn secondary" onclick="removeProject(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <hr>
+                `;
+                container.appendChild(projectDiv);
+            });
+        }
+
+        // ==================== FUNCIONES PARA AGREGAR/ELIMINAR ELEMENTOS ====================
+        function addNewService() {
+            appData.services.push({ 
+                id: Date.now(), 
+                title: "Nuevo Servicio", 
+                description: "Descripción del nuevo servicio.", 
+                features: [] 
+            });
+            renderServicesAdmin();
+        }
+
+        function addNewTeamMember() {
+            appData.team.push({ 
+                id: Date.now(), 
+                name: "Nuevo Miembro", 
+                title: "Cargo", 
+                image: "", 
+                location: "", 
+                github: "", 
+                portfolio: "", 
+                whatsapp: "", 
+                skills: [], 
+                description: "" 
+            });
+            renderTeamAdmin();
+        }
+
+        function addNewProject() {
+            appData.projects.push({ 
+                id: Date.now(), 
+                title: "Nuevo Proyecto", 
+                description: "Descripción del nuevo proyecto.", 
+                image: "", 
+                technologies: [] 
+            });
+            renderProjectsAdmin();
+        }
+
+        function removeService(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+                appData.services.splice(index, 1);
+                renderServicesAdmin();
+            }
+        }
+
+        function removeTeamMember(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este miembro del equipo?')) {
+                appData.team.splice(index, 1);
+                renderTeamAdmin();
+            }
+        }
+
+        function removeProject(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
+                appData.projects.splice(index, 1);
+                renderProjectsAdmin();
+            }
+        }
+
+        // ==================== OTRAS FUNCIONES ====================
+        function exportData() {
+            const dataStr = JSON.stringify(appData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const exportFileDefaultName = 'tibutec-data.json';
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        document.getElementById('importFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        appData = importedData;
+                        loadAdminForms();
+                        alert('Datos importados. Guarda en Firebase para aplicar los cambios.');
+                    } catch (error) {
+                        alert('Error al importar los datos: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function resetToDefault() {
+            if (confirm('¿Restablecer todos los datos a los valores por defecto? Se perderán los cambios no guardados.')) {
+                appData = JSON.parse(JSON.stringify(defaultData));
+                loadAdminForms();
+                alert('Datos restablecidos. Guarda en Firebase para aplicar los cambios.');
+            }
+        }
+
+        // ==================== FUNCIONALIDAD DE PESTAÑAS ====================
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                this.classList.add('active');
+                
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // ==================== INICIALIZACIÓN ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // El estado de autenticación se maneja automáticamente con onAuthStateChanged
+        });
+    </script>
+</body>
+</html>
