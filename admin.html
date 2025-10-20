@@ -42,35 +42,35 @@
                     
                     <div class="form-group">
                         <label for="admin-hero-title">Título Principal</label>
-                        <input type="text" id="admin-hero-title" value="Soluciones Tecnológicas para tu Negocio">
+                        <input type="text" id="admin-hero-title">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-hero-description">Descripción</label>
-                        <textarea id="admin-hero-description">Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</textarea>
+                        <textarea id="admin-hero-description"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-hero-image1">Imagen 1 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image1" value="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                        <input type="text" id="admin-hero-image1">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-hero-image2">Imagen 2 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image2" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                        <input type="text" id="admin-hero-image2">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-hero-image3">Imagen 3 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image3" value="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                        <input type="text" id="admin-hero-image3">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-hero-image4">Imagen 4 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image4" value="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80">
+                        <input type="text" id="admin-hero-image4">
                     </div>
                     
-                    <button class="admin-btn" onclick="saveHeroData()">
+                    <button class="admin-btn" id="saveHeroBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
@@ -86,11 +86,11 @@
                         <!-- Los servicios se cargarán dinámicamente -->
                     </div>
                     
-                    <button class="admin-btn" onclick="addNewService()">
+                    <button class="admin-btn" id="addServiceBtn">
                         <i class="fas fa-plus"></i> Agregar Servicio
                     </button>
                     
-                    <button class="admin-btn" onclick="saveServicesData()">
+                    <button class="admin-btn" id="saveServicesBtn">
                         <i class="fas fa-save"></i> Guardar Servicios
                     </button>
                 </div>
@@ -106,11 +106,11 @@
                         <!-- Los miembros del equipo se cargarán dinámicamente -->
                     </div>
                     
-                    <button class="admin-btn" onclick="addNewTeamMember()">
+                    <button class="admin-btn" id="addTeamMemberBtn">
                         <i class="fas fa-plus"></i> Agregar Miembro
                     </button>
                     
-                    <button class="admin-btn" onclick="saveTeamData()">
+                    <button class="admin-btn" id="saveTeamBtn">
                         <i class="fas fa-save"></i> Guardar Equipo
                     </button>
                 </div>
@@ -126,11 +126,11 @@
                         <!-- Los proyectos se cargarán dinámicamente -->
                     </div>
                     
-                    <button class="admin-btn" onclick="addNewProject()">
+                    <button class="admin-btn" id="addProjectBtn">
                         <i class="fas fa-plus"></i> Agregar Proyecto
                     </button>
                     
-                    <button class="admin-btn" onclick="saveProjectsData()">
+                    <button class="admin-btn" id="saveProjectsBtn">
                         <i class="fas fa-save"></i> Guardar Proyectos
                     </button>
                 </div>
@@ -143,30 +143,30 @@
                     
                     <div class="form-group">
                         <label for="admin-about-title">Título</label>
-                        <input type="text" id="admin-about-title" value="Tu socio tecnológico en Tibú">
+                        <input type="text" id="admin-about-title">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-about-description1">Descripción 1</label>
-                        <textarea id="admin-about-description1">En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</textarea>
+                        <textarea id="admin-about-description1"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-about-description2">Descripción 2</label>
-                        <textarea id="admin-about-description2">Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</textarea>
+                        <textarea id="admin-about-description2"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-about-description3">Descripción 3</label>
-                        <textarea id="admin-about-description3">Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</textarea>
+                        <textarea id="admin-about-description3"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-about-image">Imagen (URL)</label>
-                        <input type="text" id="admin-about-image" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                        <input type="text" id="admin-about-image">
                     </div>
                     
-                    <button class="admin-btn" onclick="saveAboutData()">
+                    <button class="admin-btn" id="saveAboutBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
@@ -179,25 +179,25 @@
                     
                     <div class="form-group">
                         <label for="admin-footer-address">Dirección</label>
-                        <input type="text" id="admin-footer-address" value="Tibú, Norte de Santander">
+                        <input type="text" id="admin-footer-address">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-footer-phone">Teléfono</label>
-                        <input type="text" id="admin-footer-phone" value="+57 322 376 2998">
+                        <input type="text" id="admin-footer-phone">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-footer-email">Email</label>
-                        <input type="text" id="admin-footer-email" value="contacto.tibutec@gmail.com">
+                        <input type="text" id="admin-footer-email">
                     </div>
                     
                     <div class="form-group">
                         <label for="admin-footer-description">Descripción del Footer</label>
-                        <textarea id="admin-footer-description">Soluciones tecnológicas para potenciar tu negocio en el mundo digital.</textarea>
+                        <textarea id="admin-footer-description"></textarea>
                     </div>
                     
-                    <button class="admin-btn" onclick="saveFooterData()">
+                    <button class="admin-btn" id="saveFooterBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
@@ -208,17 +208,17 @@
                 <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
                 <p>Importar o exportar la configuración del sitio.</p>
                 
-                <button class="admin-btn" onclick="exportData()">
+                <button class="admin-btn" id="exportDataBtn">
                     <i class="fas fa-download"></i> Exportar Datos
                 </button>
                 
-                <button class="admin-btn" onclick="importData()">
+                <button class="admin-btn" id="importDataBtn">
                     <i class="fas fa-upload"></i> Importar Datos
                 </button>
                 
                 <input type="file" id="importFile" style="display: none;" accept=".json">
                 
-                <button class="admin-btn secondary" onclick="resetToDefault()">
+                <button class="admin-btn secondary" id="resetDataBtn">
                     <i class="fas fa-undo"></i> Restablecer Valores
                 </button>
             </div>
@@ -268,17 +268,10 @@
             getDoc, 
             setDoc 
         } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
-        import { 
-            getStorage,
-            ref,
-            uploadBytes,
-            getDownloadURL
-        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
 
         // Inicializar servicios de Firebase
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const storage = getStorage(app);
 
         // ==================== DATOS POR DEFECTO ====================
         const defaultData = {
@@ -536,8 +529,8 @@
         // ==================== FUNCIONES DE CARGA DE FORMULARIOS ====================
         function loadAdminForms() {
             // Hero Section
-            document.getElementById('admin-hero-title').value = appData.hero.title;
-            document.getElementById('admin-hero-description').value = appData.hero.description;
+            document.getElementById('admin-hero-title').value = appData.hero.title || '';
+            document.getElementById('admin-hero-description').value = appData.hero.description || '';
             document.getElementById('admin-hero-image1').value = appData.hero.images[0] || '';
             document.getElementById('admin-hero-image2').value = appData.hero.images[1] || '';
             document.getElementById('admin-hero-image3').value = appData.hero.images[2] || '';
@@ -553,17 +546,17 @@
             renderProjectsAdmin();
             
             // About
-            document.getElementById('admin-about-title').value = appData.about.title;
-            document.getElementById('admin-about-description1').value = appData.about.description1;
-            document.getElementById('admin-about-description2').value = appData.about.description2;
-            document.getElementById('admin-about-description3').value = appData.about.description3;
-            document.getElementById('admin-about-image').value = appData.about.image;
+            document.getElementById('admin-about-title').value = appData.about.title || '';
+            document.getElementById('admin-about-description1').value = appData.about.description1 || '';
+            document.getElementById('admin-about-description2').value = appData.about.description2 || '';
+            document.getElementById('admin-about-description3').value = appData.about.description3 || '';
+            document.getElementById('admin-about-image').value = appData.about.image || '';
             
             // Footer
-            document.getElementById('admin-footer-address').value = appData.footer.address;
-            document.getElementById('admin-footer-phone').value = appData.footer.phone;
-            document.getElementById('admin-footer-email').value = appData.footer.email;
-            document.getElementById('admin-footer-description').value = appData.footer.description;
+            document.getElementById('admin-footer-address').value = appData.footer.address || '';
+            document.getElementById('admin-footer-phone').value = appData.footer.phone || '';
+            document.getElementById('admin-footer-email').value = appData.footer.email || '';
+            document.getElementById('admin-footer-description').value = appData.footer.description || '';
         }
 
         function renderServicesAdmin() {
@@ -577,22 +570,30 @@
                     <h4>Servicio ${index + 1}</h4>
                     <div class="form-group">
                         <label>Título</label>
-                        <input type="text" class="service-title" value="${service.title}" data-index="${index}">
+                        <input type="text" class="service-title" value="${service.title || ''}">
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
-                        <textarea class="service-description" data-index="${index}">${service.description}</textarea>
+                        <textarea class="service-description">${service.description || ''}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Características (separadas por coma)</label>
-                        <input type="text" class="service-features" value="${service.features.join(', ')}" data-index="${index}">
+                        <input type="text" class="service-features" value="${service.features ? service.features.join(', ') : ''}">
                     </div>
-                    <button class="admin-btn secondary" onclick="removeService(${index})">
+                    <button class="admin-btn secondary remove-service" data-index="${index}">
                         <i class="fas fa-trash"></i> Eliminar
                     </button>
                     <hr>
                 `;
                 container.appendChild(serviceDiv);
+            });
+
+            // Agregar event listeners para los botones de eliminar
+            document.querySelectorAll('.remove-service').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeService(index);
+                });
             });
         }
 
@@ -607,46 +608,54 @@
                     <h4>Miembro ${index + 1}</h4>
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" class="team-name" value="${member.name}" data-index="${index}">
+                        <input type="text" class="team-name" value="${member.name || ''}">
                     </div>
                     <div class="form-group">
                         <label>Título</label>
-                        <input type="text" class="team-title" value="${member.title}" data-index="${index}">
+                        <input type="text" class="team-title" value="${member.title || ''}">
                     </div>
                     <div class="form-group">
                         <label>Imagen (URL)</label>
-                        <input type="text" class="team-image" value="${member.image}" data-index="${index}">
+                        <input type="text" class="team-image" value="${member.image || ''}">
                     </div>
                     <div class="form-group">
                         <label>Ubicación</label>
-                        <input type="text" class="team-location" value="${member.location}" data-index="${index}">
+                        <input type="text" class="team-location" value="${member.location || ''}">
                     </div>
                     <div class="form-group">
                         <label>GitHub</label>
-                        <input type="text" class="team-github" value="${member.github}" data-index="${index}">
+                        <input type="text" class="team-github" value="${member.github || ''}">
                     </div>
                     <div class="form-group">
                         <label>Portafolio</label>
-                        <input type="text" class="team-portfolio" value="${member.portfolio}" data-index="${index}">
+                        <input type="text" class="team-portfolio" value="${member.portfolio || ''}">
                     </div>
                     <div class="form-group">
                         <label>WhatsApp (solo números)</label>
-                        <input type="text" class="team-whatsapp" value="${member.whatsapp}" data-index="${index}">
+                        <input type="text" class="team-whatsapp" value="${member.whatsapp || ''}">
                     </div>
                     <div class="form-group">
                         <label>Habilidades (separadas por coma)</label>
-                        <input type="text" class="team-skills" value="${member.skills.join(', ')}" data-index="${index}">
+                        <input type="text" class="team-skills" value="${member.skills ? member.skills.join(', ') : ''}">
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
-                        <textarea class="team-description" data-index="${index}">${member.description}</textarea>
+                        <textarea class="team-description">${member.description || ''}</textarea>
                     </div>
-                    <button class="admin-btn secondary" onclick="removeTeamMember(${index})">
+                    <button class="admin-btn secondary remove-team" data-index="${index}">
                         <i class="fas fa-trash"></i> Eliminar
                     </button>
                     <hr>
                 `;
                 container.appendChild(memberDiv);
+            });
+
+            // Agregar event listeners para los botones de eliminar
+            document.querySelectorAll('.remove-team').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeTeamMember(index);
+                });
             });
         }
 
@@ -661,26 +670,34 @@
                     <h4>Proyecto ${index + 1}</h4>
                     <div class="form-group">
                         <label>Título</label>
-                        <input type="text" class="project-title" value="${project.title}" data-index="${index}">
+                        <input type="text" class="project-title" value="${project.title || ''}">
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
-                        <textarea class="project-description" data-index="${index}">${project.description}</textarea>
+                        <textarea class="project-description">${project.description || ''}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Imagen (URL)</label>
-                        <input type="text" class="project-image" value="${project.image}" data-index="${index}">
+                        <input type="text" class="project-image" value="${project.image || ''}">
                     </div>
                     <div class="form-group">
                         <label>Tecnologías (separadas por coma)</label>
-                        <input type="text" class="project-technologies" value="${project.technologies.join(', ')}" data-index="${index}">
+                        <input type="text" class="project-technologies" value="${project.technologies ? project.technologies.join(', ') : ''}">
                     </div>
-                    <button class="admin-btn secondary" onclick="removeProject(${index})">
+                    <button class="admin-btn secondary remove-project" data-index="${index}">
                         <i class="fas fa-trash"></i> Eliminar
                     </button>
                     <hr>
                 `;
                 container.appendChild(projectDiv);
+            });
+
+            // Agregar event listeners para los botones de eliminar
+            document.querySelectorAll('.remove-project').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeProject(index);
+                });
             });
         }
 
@@ -784,22 +801,43 @@
             }
         }
 
-        // ==================== FUNCIONALIDAD DE PESTAÑAS ====================
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                
-                this.classList.add('active');
-                
-                const tabId = this.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
-            });
-        });
-
-        // ==================== INICIALIZACIÓN ====================
+        // ==================== EVENT LISTENERS PARA BOTONES ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // El estado de autenticación se maneja automáticamente con onAuthStateChanged
+            // Botones de guardado
+            document.getElementById('saveHeroBtn').addEventListener('click', saveHeroData);
+            document.getElementById('saveServicesBtn').addEventListener('click', saveServicesData);
+            document.getElementById('saveTeamBtn').addEventListener('click', saveTeamData);
+            document.getElementById('saveProjectsBtn').addEventListener('click', saveProjectsData);
+            document.getElementById('saveAboutBtn').addEventListener('click', saveAboutData);
+            document.getElementById('saveFooterBtn').addEventListener('click', saveFooterData);
+            
+            // Botones de agregar
+            document.getElementById('addServiceBtn').addEventListener('click', addNewService);
+            document.getElementById('addTeamMemberBtn').addEventListener('click', addNewTeamMember);
+            document.getElementById('addProjectBtn').addEventListener('click', addNewProject);
+            
+            // Botones de gestión de datos
+            document.getElementById('exportDataBtn').addEventListener('click', exportData);
+            document.getElementById('importDataBtn').addEventListener('click', importData);
+            document.getElementById('resetDataBtn').addEventListener('click', resetToDefault);
+            
+            // Funcionalidad de pestañas
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+
+            // Cerrar panel
+            document.getElementById('closeAdmin').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
         });
     </script>
 </body>
