@@ -1,7 +1,7 @@
 // firebase-config.js
 // Configuración compartida de Firebase
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA_eIHjEUx9vPt_6FMmuTMEr9A2yNnv1RE",

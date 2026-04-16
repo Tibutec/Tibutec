@@ -5,230 +5,326 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - TibuTec</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 
-<body>
-    <div class="admin-container">
-        <div class="admin-header">
-            <h1><i class="fas fa-cog"></i> Panel Administrador - TibuTec</h1>
-            <button class="logout-btn" id="logoutBtn">
-                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+<body class="admin-body">
+    <!-- Sidebar de navegación -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <img src="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/" alt="TibuTec Logo">
+            <h2>TibuTec Admin</h2>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-section="hero">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" data-section="services">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Servicios</span>
+            </button>
+            <button class="nav-item" data-section="team">
+                <i class="fas fa-users"></i>
+                <span>Equipo</span>
+            </button>
+            <button class="nav-item" data-section="projects">
+                <i class="fas fa-project-diagram"></i>
+                <span>Proyectos</span>
+            </button>
+            <button class="nav-item" data-section="about">
+                <i class="fas fa-info-circle"></i>
+                <span>Nosotros</span>
+            </button>
+            <button class="nav-item" data-section="footer">
+                <i class="fas fa-address-book"></i>
+                <span>Contacto</span>
+            </button>
+            <button class="nav-item" data-section="data">
+                <i class="fas fa-database"></i>
+                <span>Gestión de Datos</span>
+            </button>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver al sitio</span>
+            </a>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
             </button>
         </div>
+    </aside>
 
-        <!-- Panel Administrador -->
-        <div id="adminPanel" class="active">
-            <div class="admin-header">
-                <h2><i class="fas fa-user-cog"></i> Panel Administrador</h2>
-                <button class="admin-btn secondary" id="closeAdmin">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+    <!-- Botón hamburguesa para móvil -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-            <div class="tab-buttons">
-                <button class="tab-button active" data-tab="hero">Inicio</button>
-                <button class="tab-button" data-tab="services">Servicios</button>
-                <button class="tab-button" data-tab="team">Equipo</button>
-                <button class="tab-button" data-tab="projects">Proyectos</button>
-                <button class="tab-button" data-tab="about">Nosotros</button>
-                <button class="tab-button" data-tab="footer">Contacto</button>
-            </div>
+    <!-- Contenido principal -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Secciones del panel -->
 
-            <!-- Pestaña Hero/Inicio -->
-            <div class="tab-content active" id="hero-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-home"></i> Sección Inicio</h3>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-title">Título Principal</label>
-                        <input type="text" id="admin-hero-title">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-description">Descripción</label>
-                        <textarea id="admin-hero-description"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-image1">Imagen 1 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image1">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-image2">Imagen 2 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image2">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-image3">Imagen 3 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image3">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-hero-image4">Imagen 4 del Carrusel (URL)</label>
-                        <input type="text" id="admin-hero-image4">
-                    </div>
-                    
-                    <button class="admin-btn" id="saveHeroBtn">
+
+            <!-- Sección Hero/Inicio -->
+            <section class="admin-section active" id="hero-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-home"></i> Sección Inicio</h2>
+                    <button class="btn-save" id="saveHeroBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
-            </div>
-
-            <!-- Pestaña Servicios -->
-            <div class="tab-content" id="services-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-concierge-bell"></i> Gestión de Servicios</h3>
-                    <p>Aquí puedes agregar, editar o eliminar servicios.</p>
+                
+                <div class="section-content">
                     
-                    <div id="services-list">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-hero-title">
+                                <i class="fas fa-heading"></i> Título Principal
+                            </label>
+                            <input type="text" id="admin-hero-title" placeholder="Ingresa el título principal">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-hero-description">
+                                <i class="fas fa-align-left"></i> Descripción
+                            </label>
+                            <textarea id="admin-hero-description" rows="4" placeholder="Ingresa la descripción"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-subsection">
+                        <div class="carousel-images-header">
+                            <h4><i class="fas fa-images"></i> Imágenes del Carrusel</h4>
+                            <button class="btn-add-image" id="addCarouselImageBtn" type="button">
+                                <i class="fas fa-plus"></i> Agregar imagen
+                            </button>
+                        </div>
+                        <div id="carousel-images-list" class="carousel-images-list">
+                            <!-- Se generan dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Servicios -->
+            <section class="admin-section" id="services-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-concierge-bell"></i> Gestión de Servicios</h2>
+                    <div class="header-actions">
+                        <button class="btn-add" id="addServiceBtn">
+                            <i class="fas fa-plus"></i> Agregar Servicio
+                        </button>
+                        <button class="btn-save" id="saveServicesBtn">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div id="services-list" class="items-grid">
                         <!-- Los servicios se cargarán dinámicamente -->
                     </div>
-                    
-                    <button class="admin-btn" id="addServiceBtn">
-                        <i class="fas fa-plus"></i> Agregar Servicio
-                    </button>
-                    
-                    <button class="admin-btn" id="saveServicesBtn">
-                        <i class="fas fa-save"></i> Guardar Servicios
-                    </button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Pestaña Equipo -->
-            <div class="tab-content" id="team-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-users"></i> Gestión del Equipo</h3>
-                    <p>Administra los miembros de tu equipo.</p>
-                    
-                    <div id="team-list">
+            <!-- Sección Equipo -->
+            <section class="admin-section" id="team-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Gestión del Equipo</h2>
+                    <div class="header-actions">
+                        <button class="btn-add" id="addTeamMemberBtn">
+                            <i class="fas fa-plus"></i> Agregar Miembro
+                        </button>
+                        <button class="btn-save" id="saveTeamBtn">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div id="team-list" class="items-grid">
                         <!-- Los miembros del equipo se cargarán dinámicamente -->
                     </div>
-                    
-                    <button class="admin-btn" id="addTeamMemberBtn">
-                        <i class="fas fa-plus"></i> Agregar Miembro
-                    </button>
-                    
-                    <button class="admin-btn" id="saveTeamBtn">
-                        <i class="fas fa-save"></i> Guardar Equipo
-                    </button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Pestaña Proyectos -->
-            <div class="tab-content" id="projects-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-project-diagram"></i> Gestión de Proyectos</h3>
-                    <p>Administra los proyectos que se muestran en el portafolio.</p>
-                    
-                    <div id="projects-list">
+            <!-- Sección Proyectos -->
+            <section class="admin-section" id="projects-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-project-diagram"></i> Gestión de Proyectos</h2>
+                    <div class="header-actions">
+                        <button class="btn-add" id="addProjectBtn">
+                            <i class="fas fa-plus"></i> Agregar Proyecto
+                        </button>
+                        <button class="btn-save" id="saveProjectsBtn">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div id="projects-list" class="items-grid">
                         <!-- Los proyectos se cargarán dinámicamente -->
                     </div>
-                    
-                    <button class="admin-btn" id="addProjectBtn">
-                        <i class="fas fa-plus"></i> Agregar Proyecto
-                    </button>
-                    
-                    <button class="admin-btn" id="saveProjectsBtn">
-                        <i class="fas fa-save"></i> Guardar Proyectos
-                    </button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Pestaña Nosotros -->
-            <div class="tab-content" id="about-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-info-circle"></i> Sección "Conócenos"</h3>
-                    
-                    <div class="form-group">
-                        <label for="admin-about-title">Título</label>
-                        <input type="text" id="admin-about-title">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-about-description1">Descripción 1</label>
-                        <textarea id="admin-about-description1"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-about-description2">Descripción 2</label>
-                        <textarea id="admin-about-description2"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-about-description3">Descripción 3</label>
-                        <textarea id="admin-about-description3"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-about-image">Imagen (URL)</label>
-                        <input type="text" id="admin-about-image">
-                    </div>
-                    
-                    <button class="admin-btn" id="saveAboutBtn">
+            <!-- Sección Nosotros -->
+            <section class="admin-section" id="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> Sección "Conócenos"</h2>
+                    <button class="btn-save" id="saveAboutBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
-            </div>
+                
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-about-title">
+                                <i class="fas fa-heading"></i> Título
+                            </label>
+                            <input type="text" id="admin-about-title" placeholder="Título de la sección">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-about-description1">
+                                <i class="fas fa-paragraph"></i> Descripción 1
+                            </label>
+                            <textarea id="admin-about-description1" rows="3" placeholder="Primer párrafo"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-about-description2">
+                                <i class="fas fa-paragraph"></i> Descripción 2
+                            </label>
+                            <textarea id="admin-about-description2" rows="3" placeholder="Segundo párrafo"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-about-description3">
+                                <i class="fas fa-paragraph"></i> Descripción 3
+                            </label>
+                            <textarea id="admin-about-description3" rows="3" placeholder="Tercer párrafo"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="admin-about-image">
+                                <i class="fas fa-image"></i> Imagen (URL)
+                            </label>
+                            <input type="url" id="admin-about-image" placeholder="https://...">
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Pestaña Footer/Contacto -->
-            <div class="tab-content" id="footer-tab">
-                <div class="admin-section">
-                    <h3><i class="fas fa-address-book"></i> Información de Contacto</h3>
-                    
-                    <div class="form-group">
-                        <label for="admin-footer-address">Dirección</label>
-                        <input type="text" id="admin-footer-address">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-footer-phone">Teléfono</label>
-                        <input type="text" id="admin-footer-phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-footer-email">Email</label>
-                        <input type="text" id="admin-footer-email">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="admin-footer-description">Descripción del Footer</label>
-                        <textarea id="admin-footer-description"></textarea>
-                    </div>
-                    
-                    <button class="admin-btn" id="saveFooterBtn">
+            <!-- Sección Footer/Contacto -->
+            <section class="admin-section" id="footer-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-address-book"></i> Información de Contacto</h2>
+                    <button class="btn-save" id="saveFooterBtn">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
                 </div>
-            </div>
+                
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="admin-footer-address">
+                                <i class="fas fa-map-marker-alt"></i> Dirección
+                            </label>
+                            <input type="text" id="admin-footer-address" placeholder="Ciudad, País">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-footer-phone">
+                                <i class="fas fa-phone"></i> Teléfono
+                            </label>
+                            <input type="tel" id="admin-footer-phone" placeholder="+57 123 456 7890">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="admin-footer-email">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" id="admin-footer-email" placeholder="contacto@ejemplo.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-footer-description">
+                                <i class="fas fa-align-left"></i> Descripción del Footer
+                            </label>
+                            <textarea id="admin-footer-description" rows="3" placeholder="Descripción breve"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Sección de Gestión de Datos -->
-            <div class="admin-section">
-                <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
-                <p>Importar o exportar la configuración del sitio.</p>
+            <section class="admin-section" id="data-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-database"></i> Gestión de Datos</h2>
+                </div>
                 
-                <button class="admin-btn" id="exportDataBtn">
-                    <i class="fas fa-download"></i> Exportar Datos
-                </button>
-                
-                <button class="admin-btn" id="importDataBtn">
-                    <i class="fas fa-upload"></i> Importar Datos
-                </button>
-                
-                <input type="file" id="importFile" style="display: none;" accept=".json">
-                
-                <button class="admin-btn secondary" id="resetDataBtn">
-                    <i class="fas fa-undo"></i> Restablecer Valores
-                </button>
-            </div>
+                <div class="section-content">
+                    <div class="data-actions">
+                        <div class="action-card">
+                            <i class="fas fa-download"></i>
+                            <h4>Exportar Datos</h4>
+                            <p>Descarga una copia de seguridad de toda la configuración del sitio en formato JSON.</p>
+                            <button class="btn-action" id="exportDataBtn">
+                                <i class="fas fa-download"></i> Exportar
+                            </button>
+                        </div>
+                        
+                        <div class="action-card">
+                            <i class="fas fa-upload"></i>
+                            <h4>Importar Datos</h4>
+                            <p>Carga un archivo JSON con la configuración del sitio para restaurar o actualizar datos.</p>
+                            <button class="btn-action" id="importDataBtn">
+                                <i class="fas fa-upload"></i> Importar
+                            </button>
+                            <input type="file" id="importFile" style="display: none;" accept=".json">
+                        </div>
+                        
+                        <div class="action-card danger">
+                            <i class="fas fa-undo"></i>
+                            <h4>Restablecer Valores</h4>
+                            <p>Restaura todos los datos a los valores predeterminados. Esta acción no se puede deshacer.</p>
+                            <button class="btn-action btn-danger" id="resetDataBtn">
+                                <i class="fas fa-undo"></i> Restablecer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
 
     <!-- Modal de Login -->
     <div id="loginModal" class="active">
         <div class="login-container">
             <div class="login-header">
+                <button class="login-close" id="loginClose" title="Volver al sitio" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
                 <h2><i class="fas fa-lock"></i> Acceso Administrador</h2>
                 <p>Ingresa tus credenciales para acceder al panel</p>
             </div>
@@ -261,13 +357,13 @@
             signInWithEmailAndPassword, 
             signOut, 
             onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+        } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
         import { 
             getFirestore, 
             doc, 
             getDoc, 
             setDoc 
-        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+        } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
         // Inicializar servicios de Firebase
         const auth = getAuth(app);
@@ -348,10 +444,8 @@
         // ==================== AUTENTICACIÓN ====================
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const email = document.getElementById('adminEmail').value;
             const password = document.getElementById('adminPassword').value;
-            
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 document.getElementById('loginModal').classList.remove('active');
@@ -360,6 +454,11 @@
                 document.getElementById('loginError').classList.add('show');
                 console.error('Error de autenticación:', error);
             }
+        });
+
+        // Cerrar modal → volver al sitio sin iniciar sesión
+        document.getElementById('loginClose').addEventListener('click', () => {
+            window.location.href = 'index.html';
         });
 
         // Verificar estado de autenticación
@@ -372,9 +471,10 @@
             }
         });
 
-        // Cerrar sesión
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            signOut(auth);
+        // Cerrar sesión → cierra la sesión y redirige a index
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await signOut(auth);
+            window.location.href = 'index.html';
         });
 
         // ==================== GESTIÓN DE DATOS ====================
@@ -404,13 +504,15 @@
         async function saveHeroData() {
             appData.hero.title = document.getElementById('admin-hero-title').value;
             appData.hero.description = document.getElementById('admin-hero-description').value;
-            appData.hero.images[0] = document.getElementById('admin-hero-image1').value;
-            appData.hero.images[1] = document.getElementById('admin-hero-image2').value;
-            appData.hero.images[2] = document.getElementById('admin-hero-image3').value;
-            appData.hero.images[3] = document.getElementById('admin-hero-image4').value;
-            
+
+            // Recoger todas las URLs del carrusel dinámico
+            const inputs = document.querySelectorAll('.carousel-image-input');
+            appData.hero.images = Array.from(inputs)
+                .map(i => i.value.trim())
+                .filter(v => v !== '');
+
             await saveToFirebase();
-            alert('Datos de la sección Inicio guardados correctamente');
+            showToast('Sección Inicio guardada correctamente');
         }
 
         async function saveServicesData() {
@@ -432,7 +534,7 @@
             });
             
             await saveToFirebase();
-            alert('Servicios guardados correctamente');
+            showToast('Servicios guardados correctamente');
         }
 
         async function saveTeamData() {
@@ -466,7 +568,7 @@
             });
             
             await saveToFirebase();
-            alert('Datos del equipo guardados correctamente');
+            showToast('Datos del equipo guardados correctamente');
         }
 
         async function saveProjectsData() {
@@ -490,7 +592,7 @@
             });
             
             await saveToFirebase();
-            alert('Proyectos guardados correctamente');
+            showToast('Proyectos guardados correctamente');
         }
 
         async function saveAboutData() {
@@ -501,7 +603,7 @@
             appData.about.image = document.getElementById('admin-about-image').value;
             
             await saveToFirebase();
-            alert('Datos de la sección "Conócenos" guardados correctamente');
+            showToast('Sección "Conócenos" guardada correctamente');
         }
 
         async function saveFooterData() {
@@ -511,7 +613,7 @@
             appData.footer.description = document.getElementById('admin-footer-description').value;
             
             await saveToFirebase();
-            alert('Datos de contacto guardados correctamente');
+            showToast('Datos de contacto guardados correctamente');
         }
 
         async function saveToFirebase() {
@@ -521,22 +623,82 @@
                 return true;
             } catch (error) {
                 console.error('❌ Error guardando datos:', error);
-                alert('Error al guardar los datos: ' + error.message);
+                showToast('Error al guardar: ' + error.message, 'error');
                 return false;
             }
         }
 
-        // ==================== FUNCIONES DE CARGA DE FORMULARIOS ====================
+        // ==================== CARRUSEL DINÁMICO ====================
+        function renderCarouselImages() {
+            const list = document.getElementById('carousel-images-list');
+            list.innerHTML = '';
+            const images = (appData.hero.images && appData.hero.images.length)
+                ? appData.hero.images
+                : [''];
+            images.forEach((url, i) => {
+                list.appendChild(createImageRow(url, i));
+            });
+        }
+
+        function createImageRow(url, index) {
+            const row = document.createElement('div');
+            row.className = 'carousel-image-row';
+            row.innerHTML = `
+                <span class="carousel-image-num">${index + 1}</span>
+                <input type="url" class="carousel-image-input" value="${url || ''}" placeholder="https://imagen.com/foto.jpg">
+                <div class="carousel-image-preview-wrap">
+                    ${url ? `<img class="carousel-image-thumb" src="${url}" alt="preview">` : ''}
+                </div>
+                <button class="btn-remove-img" type="button" title="Eliminar"><i class="fas fa-trash"></i></button>
+            `;
+            // Preview al escribir
+            const input = row.querySelector('.carousel-image-input');
+            const preview = row.querySelector('.carousel-image-preview-wrap');
+            input.addEventListener('input', () => {
+                const v = input.value.trim();
+                preview.innerHTML = v ? `<img class="carousel-image-thumb" src="${v}" alt="preview">` : '';
+            });
+            // Eliminar fila
+            row.querySelector('.btn-remove-img').addEventListener('click', () => {
+                row.remove();
+                renumberRows();
+            });
+            return row;
+        }
+
+        function renumberRows() {
+            document.querySelectorAll('.carousel-image-row .carousel-image-num')
+                .forEach((el, i) => el.textContent = i + 1);
+        }
+
+        function addCarouselImage() {
+            const list = document.getElementById('carousel-images-list');
+            const count = list.querySelectorAll('.carousel-image-row').length;
+            list.appendChild(createImageRow('', count));
+        }
+
+        // ==================== TOAST ====================
+        function showToast(msg, type = 'success') {
+            let toast = document.getElementById('adminToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'adminToast';
+                document.body.appendChild(toast);
+            }
+            toast.className = `admin-toast ${type}`;
+            toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${msg}`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3200);
+        }
+
+        
         function loadAdminForms() {
             // Hero Section
             document.getElementById('admin-hero-title').value = appData.hero.title || '';
             document.getElementById('admin-hero-description').value = appData.hero.description || '';
-            document.getElementById('admin-hero-image1').value = appData.hero.images[0] || '';
-            document.getElementById('admin-hero-image2').value = appData.hero.images[1] || '';
-            document.getElementById('admin-hero-image3').value = appData.hero.images[2] || '';
-            document.getElementById('admin-hero-image4').value = appData.hero.images[3] || '';
-            
-            // Services
+            renderCarouselImages();
+
+            // Services / Team / Projects / About / Footer
             renderServicesAdmin();
             
             // Team
@@ -565,34 +727,39 @@
             
             appData.services.forEach((service, index) => {
                 const serviceDiv = document.createElement('div');
-                serviceDiv.className = 'admin-section';
+                serviceDiv.className = 'item-card';
                 serviceDiv.innerHTML = `
-                    <h4>Servicio ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="service-title" value="${service.title || ''}">
+                    <div class="item-card-header">
+                        <h4><i class="fas fa-concierge-bell"></i> Servicio ${index + 1}</h4>
+                        <button class="btn-remove remove-service" data-index="${index}" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="service-description">${service.description || ''}</textarea>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Título</label>
+                            <input type="text" class="service-title" value="${service.title || ''}" placeholder="Nombre del servicio">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Características (separadas por coma)</label>
-                        <input type="text" class="service-features" value="${service.features ? service.features.join(', ') : ''}">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Descripción</label>
+                            <textarea class="service-description" rows="3" placeholder="Descripción del servicio">${service.description || ''}</textarea>
+                        </div>
                     </div>
-                    <button class="admin-btn secondary remove-service" data-index="${index}">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Características <span class="hint">(separadas por coma)</span></label>
+                            <input type="text" class="service-features" value="${service.features ? service.features.join(', ') : ''}" placeholder="Característica 1, Característica 2, ...">
+                        </div>
+                    </div>
                 `;
                 container.appendChild(serviceDiv);
             });
 
-            // Agregar event listeners para los botones de eliminar
             document.querySelectorAll('.remove-service').forEach(button => {
                 button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    removeService(index);
+                    removeService(parseInt(this.getAttribute('data-index')));
                 });
             });
         }
@@ -603,58 +770,67 @@
             
             appData.team.forEach((member, index) => {
                 const memberDiv = document.createElement('div');
-                memberDiv.className = 'admin-section';
+                memberDiv.className = 'item-card';
                 memberDiv.innerHTML = `
-                    <h4>Miembro ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="team-name" value="${member.name || ''}">
+                    <div class="item-card-header">
+                        <h4><i class="fas fa-user"></i> ${member.name || 'Miembro ' + (index + 1)}</h4>
+                        <button class="btn-remove remove-team" data-index="${index}" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="team-title" value="${member.title || ''}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="team-name" value="${member.name || ''}" placeholder="Nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo / Título</label>
+                            <input type="text" class="team-title" value="${member.title || ''}" placeholder="Ej: Desarrollador FullStack">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Imagen (URL)</label>
-                        <input type="text" class="team-image" value="${member.image || ''}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Imagen (URL)</label>
+                            <input type="url" class="team-image" value="${member.image || ''}" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>Ubicación</label>
+                            <input type="text" class="team-location" value="${member.location || ''}" placeholder="Ciudad, País">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Ubicación</label>
-                        <input type="text" class="team-location" value="${member.location || ''}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>GitHub (URL)</label>
+                            <input type="url" class="team-github" value="${member.github || ''}" placeholder="https://github.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label>Portafolio (URL)</label>
+                            <input type="url" class="team-portfolio" value="${member.portfolio || ''}" placeholder="https://...">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>GitHub</label>
-                        <input type="text" class="team-github" value="${member.github || ''}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>WhatsApp <span class="hint">(solo números)</span></label>
+                            <input type="text" class="team-whatsapp" value="${member.whatsapp || ''}" placeholder="573001234567">
+                        </div>
+                        <div class="form-group">
+                            <label>Habilidades <span class="hint">(separadas por coma)</span></label>
+                            <input type="text" class="team-skills" value="${member.skills ? member.skills.join(', ') : ''}" placeholder="JavaScript, HTML, CSS, ...">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Portafolio</label>
-                        <input type="text" class="team-portfolio" value="${member.portfolio || ''}">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Descripción</label>
+                            <textarea class="team-description" rows="3" placeholder="Descripción del miembro">${member.description || ''}</textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>WhatsApp (solo números)</label>
-                        <input type="text" class="team-whatsapp" value="${member.whatsapp || ''}">
-                    </div>
-                    <div class="form-group">
-                        <label>Habilidades (separadas por coma)</label>
-                        <input type="text" class="team-skills" value="${member.skills ? member.skills.join(', ') : ''}">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="team-description">${member.description || ''}</textarea>
-                    </div>
-                    <button class="admin-btn secondary remove-team" data-index="${index}">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
                 `;
                 container.appendChild(memberDiv);
             });
 
-            // Agregar event listeners para los botones de eliminar
             document.querySelectorAll('.remove-team').forEach(button => {
                 button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    removeTeamMember(index);
+                    removeTeamMember(parseInt(this.getAttribute('data-index')));
                 });
             });
         }
@@ -665,38 +841,43 @@
             
             appData.projects.forEach((project, index) => {
                 const projectDiv = document.createElement('div');
-                projectDiv.className = 'admin-section';
+                projectDiv.className = 'item-card';
                 projectDiv.innerHTML = `
-                    <h4>Proyecto ${index + 1}</h4>
-                    <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" class="project-title" value="${project.title || ''}">
+                    <div class="item-card-header">
+                        <h4><i class="fas fa-folder"></i> ${project.title || 'Proyecto ' + (index + 1)}</h4>
+                        <button class="btn-remove remove-project" data-index="${index}" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="project-description">${project.description || ''}</textarea>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" class="project-title" value="${project.title || ''}" placeholder="Nombre del proyecto">
+                        </div>
+                        <div class="form-group">
+                            <label>Tecnologías <span class="hint">(separadas por coma)</span></label>
+                            <input type="text" class="project-technologies" value="${project.technologies ? project.technologies.join(', ') : ''}" placeholder="React, Node.js, ...">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Imagen (URL)</label>
-                        <input type="text" class="project-image" value="${project.image || ''}">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Imagen (URL)</label>
+                            <input type="url" class="project-image" value="${project.image || ''}" placeholder="https://...">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Tecnologías (separadas por coma)</label>
-                        <input type="text" class="project-technologies" value="${project.technologies ? project.technologies.join(', ') : ''}">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Descripción</label>
+                            <textarea class="project-description" rows="3" placeholder="Descripción del proyecto">${project.description || ''}</textarea>
+                        </div>
                     </div>
-                    <button class="admin-btn secondary remove-project" data-index="${index}">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                    <hr>
                 `;
                 container.appendChild(projectDiv);
             });
 
-            // Agregar event listeners para los botones de eliminar
             document.querySelectorAll('.remove-project').forEach(button => {
                 button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    removeProject(index);
+                    removeProject(parseInt(this.getAttribute('data-index')));
                 });
             });
         }
@@ -812,6 +993,7 @@
             document.getElementById('saveFooterBtn').addEventListener('click', saveFooterData);
             
             // Botones de agregar
+            document.getElementById('addCarouselImageBtn').addEventListener('click', addCarouselImage);
             document.getElementById('addServiceBtn').addEventListener('click', addNewService);
             document.getElementById('addTeamMemberBtn').addEventListener('click', addNewTeamMember);
             document.getElementById('addProjectBtn').addEventListener('click', addNewProject);
@@ -821,22 +1003,29 @@
             document.getElementById('importDataBtn').addEventListener('click', importData);
             document.getElementById('resetDataBtn').addEventListener('click', resetToDefault);
             
-            // Funcionalidad de pestañas
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            // Navegación del sidebar
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
                     
+                    // Actualizar nav activo
+                    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                    // Mostrar sección correspondiente
+                    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+                    document.getElementById(`${section}-section`).classList.add('active');
+                    
+                    // Cerrar sidebar en móvil
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('adminSidebar').classList.remove('open');
+                    }
                 });
             });
 
-            // Cerrar panel
-            document.getElementById('closeAdmin').addEventListener('click', function() {
-                window.location.href = 'index.html';
+            // Toggle sidebar en móvil
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                document.getElementById('adminSidebar').classList.toggle('open');
             });
         });
     </script>

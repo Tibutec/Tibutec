@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TibuTec - Soluciones Tecnológicas</title>
+    <title>TibuTec - Soluciones Tecnológicas en Tibú</title>
+    <meta name="description" content="TibuTec ofrece desarrollo web, branding digital y bases de datos para impulsar tu negocio en Tibú, Norte de Santander.">
+    <meta property="og:title" content="TibuTec - Soluciones Tecnológicas">
+    <meta property="og:description" content="Desarrollo web, branding digital y bases de datos para empresas en Tibú.">
+    <meta property="og:image" content="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/">
+    <meta property="og:type" content="website">
     <link rel="icon" href="https://ucarecdn.com/974691eb-5ea3-4d73-b51e-9c2ea77be845/-/format/auto/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -29,6 +38,7 @@
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#conocenos">Conócenos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="admin.html" class="nav-admin-link" title="Panel de administración"><i class="fas fa-cog"></i></a></li>
             </ul>
         </div>
     </header>
@@ -53,54 +63,65 @@
         </div>
 
         <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-bolt"></i> Soluciones tecnológicas</div>
             <h2 id="hero-title">Soluciones Tecnológicas para tu Negocio</h2>
             <p id="hero-description">Somos una empresa de tecnología con experiencia en el desarrollo web y backend en proyectos para ayudar a empresas a tener huella digital a través de la creación de webs y redes sociales llamativas y dinámicas.</p>
-            <a href="#servicios" class="btn">Nuestros Servicios</a>
+            <div class="hero-actions">
+                <a href="#servicios" class="btn-hero-primary"><i class="fas fa-rocket"></i> Nuestros Servicios</a>
+                <a href="#conocenos" class="btn-hero-ghost">Conócenos</a>
+            </div>
+        </div>
+        <!-- Indicadores -->
+        <div class="carousel-indicators" id="carouselIndicators">
+            <button class="carousel-dot active" data-index="0" aria-label="Imagen 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Imagen 2"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Imagen 3"></button>
+            <button class="carousel-dot" data-index="3" aria-label="Imagen 4"></button>
         </div>
     </section>
 
     <!-- Sección de Servicios -->
-    <section id="servicios">
+    <div class="section-wrap alt" id="servicios">
+      <div class="section-inner">
         <div class="section-title">
+            <span class="section-label">Lo que hacemos</span>
             <h2>Nuestros Servicios</h2>
             <p>Ofrecemos soluciones tecnológicas completas para potenciar tu presencia digital</p>
         </div>
-
-        <div class="services-grid" id="services-container">
-            <!-- Las tarjetas de servicios se generarán dinámicamente -->
-        </div>
-    </section>
+        <div class="services-grid" id="services-container"></div>
+      </div>
+    </div>
 
     <!-- Sección de Equipo -->
-    <section id="equipo">
+    <div class="section-wrap" id="equipo">
+      <div class="section-inner">
         <div class="section-title">
+            <span class="section-label">Conoce al equipo</span>
             <h2>Nuestro Equipo</h2>
             <p>Conoce a nuestro talentoso equipo de profesionales</p>
         </div>
-
-        <!-- Grid de tarjetas interactivas -->
-        <div class="team-grid" id="team-container">
-            <!-- Las tarjetas del equipo se generarán dinámicamente -->
-        </div>
-        <p class="instruction">Haz clic en la foto para ver la información</p>
-    </section>
+        <div class="team-grid" id="team-container"></div>
+        <p class="instruction"><i class="fas fa-hand-pointer"></i> Haz clic en la foto para ver la información</p>
+      </div>
+    </div>
 
     <!-- Sección proyectos -->
-    <section id="proyectos">
+    <div class="section-wrap alt" id="proyectos">
+      <div class="section-inner">
         <div class="section-title">
+            <span class="section-label">Nuestro trabajo</span>
             <h2>Nuestros Proyectos</h2>
             <p>Explora algunos de los proyectos en los que hemos trabajado</p>
         </div>
-        
-        <!-- Galería completa de proyectos con imágenes y detalles -->
-        <div class="projects-gallery" id="projects-container">
-            <!-- Los proyectos se generarán dinámicamente -->
-        </div>
-    </section>
+        <div class="projects-gallery" id="projects-container"></div>
+      </div>
+    </div>
 
     <!-- Sección Conócenos -->
-    <section id="conocenos">
+    <div class="section-wrap" id="conocenos">
+      <div class="section-inner">
         <div class="section-title">
+            <span class="section-label">Sobre nosotros</span>
             <h2>Conócenos</h2>
             <p>Descubre más sobre TibuTec y nuestro equipo de expertos</p>
         </div>
@@ -110,12 +131,18 @@
                 <p id="about-description-1">En TibuTec nos especializamos en ofrecer soluciones digitales completas para empresas y emprendedores. Nuestro objetivo es ayudarte a establecer una presencia digital sólida y efectiva.</p>
                 <p id="about-description-2">Contamos con un equipo de profesionales apasionados por la tecnología y comprometidos con ofrecer resultados de calidad que impulsen el crecimiento de tu negocio.</p>
                 <p id="about-description-3">Desde desarrollo web hasta estrategias de redes sociales, estamos aquí para transformar tu visión digital en realidad.</p>
+                <div class="about-stats">
+                    <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Años de experiencia</div></div>
+                    <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Proyectos entregados</div></div>
+                    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Clientes satisfechos</div></div>
+                </div>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo de TibuTec" id="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo de TibuTec" id="about-image" loading="lazy">
             </div>
         </div>
-    </section>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer id="contacto">
@@ -157,22 +184,15 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 TibuTec - Todos los derechos reservados</p>
+            <p>&copy; <span id="footer-year"></span> TibuTec. Todos los derechos reservados.</p>
+            <p>Tibú, Norte de Santander, Colombia</p>
         </div>
     </footer>
 
- 
-    <!-- Enlace al Panel de Administración -->
-    <a href="admin.html" class="admin-toggle" style="text-decoration: none;">
-        <i class="fas fa-cog"></i>
-    </a>
-
     <script type="module">
-        // Importar configuración de Firebase
         import { app } from './firebase-config.js';
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-        // Inicializar Firestore
         const db = getFirestore(app);
 
         // ==================== DATOS POR DEFECTO ====================
@@ -342,69 +362,74 @@
         function renderHeroSection() {
             document.getElementById('hero-title').textContent = appData.hero.title;
             document.getElementById('hero-description').textContent = appData.hero.description;
-            
-            const carouselItems = document.querySelectorAll('.carousel-item');
-            carouselItems.forEach((item, index) => {
-                if (appData.hero.images[index]) {
-                    item.style.backgroundImage = `url('${appData.hero.images[index]}')`;
-                }
-            });
+
+            const images = appData.hero.images || [];
+            const carouselInner = document.querySelector('.carousel-inner');
+            const indicators = document.getElementById('carouselIndicators');
+
+            // Reconstruir items y dots según la cantidad real de imágenes
+            carouselInner.innerHTML = images.map((url, i) => `
+                <div class="carousel-item ${i === 0 ? 'active' : ''}"
+                     style="background-image: url('${url}')"></div>
+            `).join('');
+
+            indicators.innerHTML = images.map((_, i) => `
+                <button class="carousel-dot ${i === 0 ? 'active' : ''}"
+                        data-index="${i}" aria-label="Imagen ${i + 1}"></button>
+            `).join('');
         }
 
         function renderServicesSection() {
             const container = document.getElementById('services-container');
             container.innerHTML = '';
-            
-            appData.services.forEach(service => {
-                const serviceCard = document.createElement('div');
-                serviceCard.className = 'service-card';
-                serviceCard.innerHTML = `
+            const icons = ['fas fa-code', 'fas fa-bullhorn', 'fas fa-database'];
+            appData.services.forEach((service, i) => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
                     <div class="card-header">
+                        <i class="${icons[i] || 'fas fa-cog'} service-icon"></i>
                         <h3>${service.title}</h3>
                     </div>
                     <div class="card-body">
                         <p>${service.description}</p>
                         <ul class="icon-list">
-                            ${service.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                            ${service.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
                         </ul>
                     </div>
                 `;
-                container.appendChild(serviceCard);
+                container.appendChild(card);
             });
         }
 
         function renderTeamSection() {
             const container = document.getElementById('team-container');
             container.innerHTML = '';
-            
-            appData.team.forEach((member, index) => {
-                const cardId = `profileCard${index + 1}`;
+            appData.team.forEach((member) => {
                 const card = document.createElement('div');
                 card.className = 'interactive-card';
-                card.id = cardId;
                 card.innerHTML = `
                     <div class="card-content">
-                        <div class="photo-container" id="photoContainer${index + 1}">
-                            <img src="${member.image}" alt="${member.name}" class="profile-img" id="profileImg${index + 1}">
-                            <h1 class="name">${member.name}</h1>
+                        <div class="photo-container">
+                            <img src="${member.image}" alt="Foto de ${member.name}" class="profile-img" loading="lazy">
+                            <div class="expand-hint"><i class="fas fa-chevron-down"></i> Ver perfil</div>
+                            <h2 class="name">${member.name}</h2>
                         </div>
-                        <div class="info-container" id="infoContainer${index + 1}">
-                            <h2 class="card-title">${member.title}</h2>
+                        <div class="info-container">
+                            <p class="card-title">${member.title}</p>
                             <div class="location">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>${member.location}</span>
                             </div>
                             <div class="social-links">
-                                <a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>
-                                <a href="${member.portfolio}" target="_blank"><i class="fas fa-briefcase"></i></a>
-                                <a href="https://wa.me/${member.whatsapp}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="${member.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="${member.portfolio}" target="_blank" rel="noopener noreferrer" aria-label="Portafolio"><i class="fas fa-briefcase"></i></a>
+                                <a href="https://wa.me/${member.whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             </div>
                             <div class="info-columns">
                                 <div class="info-column">
-                                    <h3 class="card-subtitle">Habilidades Técnicas</h3>
-                                    <div class="skills">
-                                        ${member.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
-                                    </div>
+                                    <h3 class="card-subtitle">Habilidades</h3>
+                                    <div class="skills">${member.skills.map(s => `<span class="skill">${s}</span>`).join('')}</div>
                                 </div>
                                 <div class="info-column">
                                     <h3 class="card-subtitle">Acerca de mí</h3>
@@ -412,19 +437,20 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <a href="${member.github}" target="_blank" class="card-btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="${member.portfolio}" target="_blank" class="card-btn btn-secondary"><i class="fas fa-briefcase"></i> Portafolio</a>
-                                <a href="https://wa.me/${member.whatsapp}" target="_blank" class="card-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                <a href="${member.github}" target="_blank" rel="noopener noreferrer" class="card-btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="${member.portfolio}" target="_blank" rel="noopener noreferrer" class="card-btn btn-secondary"><i class="fas fa-briefcase"></i> Portafolio</a>
+                                <a href="https://wa.me/${member.whatsapp}" target="_blank" rel="noopener noreferrer" class="card-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                             </div>
                         </div>
                     </div>
                 `;
                 container.appendChild(card);
-                
-                // Configurar la funcionalidad de la tarjeta
-                const photoContainer = document.getElementById(`photoContainer${index + 1}`);
-                photoContainer.addEventListener('click', function() {
-                    card.classList.toggle('expanded');
+                card.querySelector('.photo-container').addEventListener('click', () => {
+                    const expanded = card.classList.toggle('expanded');
+                    const hint = card.querySelector('.expand-hint');
+                    hint.innerHTML = expanded
+                        ? '<i class="fas fa-chevron-up"></i> Cerrar'
+                        : '<i class="fas fa-chevron-down"></i> Ver perfil';
                 });
             });
         }
@@ -432,13 +458,12 @@
         function renderProjectsSection() {
             const container = document.getElementById('projects-container');
             container.innerHTML = '';
-            
             appData.projects.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
-                projectCard.innerHTML = `
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
                     <div class="project-image">
-                        <img src="${project.image}" alt="${project.title}">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link" title="Ver proyecto"><i class="fas fa-external-link-alt"></i></a>
@@ -450,11 +475,11 @@
                         <h3>${project.title}</h3>
                         <p>${project.description}</p>
                         <div class="project-tech">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            ${project.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
                     </div>
                 `;
-                container.appendChild(projectCard);
+                container.appendChild(card);
             });
         }
 
@@ -473,38 +498,64 @@
             document.getElementById('footer-description').textContent = appData.footer.description;
         }
 
-        // ==================== INICIALIZACIÓN ====================
         document.addEventListener('DOMContentLoaded', async function() {
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+            // Carrusel con flechas y dots (se inicializa DESPUÉS del render)
+            function initCarousel() {
+                const carouselItems = document.querySelectorAll('.carousel-item');
+                const dots = document.querySelectorAll('.carousel-dot');
+                if (!carouselItems.length) return;
+                let current = 0;
+
+                function goTo(index) {
+                    carouselItems[current].classList.remove('active');
+                    dots[current] && dots[current].classList.remove('active');
+                    current = (index + carouselItems.length) % carouselItems.length;
+                    carouselItems[current].classList.add('active');
+                    dots[current] && dots[current].classList.add('active');
+                }
+
+                setInterval(() => goTo(current + 1), 5000);
+
+                document.getElementById('carouselIndicators').addEventListener('click', (e) => {
+                    const dot = e.target.closest('.carousel-dot');
+                    if (dot) goTo(+dot.dataset.index);
+                });
+            }
+
             await loadFirebaseData();
-            
-            // Funcionalidad del menú hamburguesa
+            initCarousel();
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
-
             hamburger.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 const icon = hamburger.querySelector('i');
                 icon.classList.toggle('fa-bars');
                 icon.classList.toggle('fa-times');
             });
-
-            // Cerrar menú al hacer clic en enlaces
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
-                    hamburger.querySelector('i').classList.remove('fa-times');
-                    hamburger.querySelector('i').classList.add('fa-bars');
+                    hamburger.querySelector('i').classList.replace('fa-times', 'fa-bars');
                 });
             });
 
-            // Carrusel automático
-            const carouselItems = document.querySelectorAll('.carousel-item');
-            let currentItem = 0;
-            setInterval(() => {
-                carouselItems[currentItem].classList.remove('active');
-                currentItem = (currentItem + 1) % carouselItems.length;
-                carouselItems[currentItem].classList.add('active');
-            }, 5000);
+            // Carrusel con flechas y dots
+            // Nav activo por scroll
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        navLinks.forEach(l => {
+                            l.classList.remove('active');
+                            if (l.getAttribute('href') === `#${e.target.id}`) l.classList.add('active');
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            sections.forEach(s => obs.observe(s));
         });
     </script>
 </body>
