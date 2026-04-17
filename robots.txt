@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tibutec.github.io/Tibutec/sitemap.xml
