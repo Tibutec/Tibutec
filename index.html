@@ -339,42 +339,54 @@
                     title: "Dashboard Empresarial",
                     description: "Sistema de gestión empresarial con análisis de datos en tiempo real y reportes automatizados.",
                     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["React", "Node.js", "MongoDB"]
+                    technologies: ["React", "Node.js", "MongoDB"],
+                    liveUrl: "https://ejemplo-dashboard.com",
+                    githubUrl: "https://github.com/tibutec/dashboard-empresarial"
                 },
                 {
                     id: 2,
                     title: "Plataforma E-commerce",
                     description: "Tienda online completa con carrito de compras, pagos integrados y panel de administración.",
                     image: "https://images.unsplash.com/photo-1556742049-bebda4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["Vue.js", "Laravel", "MySQL"]
+                    technologies: ["Vue.js", "Laravel", "MySQL"],
+                    liveUrl: "https://ejemplo-ecommerce.com",
+                    githubUrl: "https://github.com/tibutec/ecommerce"
                 },
                 {
                     id: 3,
                     title: "Aplicación Móvil",
                     description: "App nativa para gestión de tareas con sincronización en la nube y notificaciones push.",
                     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["React Native", "Firebase", "Redux"]
+                    technologies: ["React Native", "Firebase", "Redux"],
+                    liveUrl: "https://ejemplo-app.com",
+                    githubUrl: "https://github.com/tibutec/app-movil"
                 },
                 {
                     id: 4,
                     title: "Sistema CRM",
                     description: "Plataforma de gestión de relaciones con clientes con automatización de ventas y seguimiento.",
                     image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["Angular", "Python", "PostgreSQL"]
+                    technologies: ["Angular", "Python", "PostgreSQL"],
+                    liveUrl: "https://ejemplo-crm.com",
+                    githubUrl: "https://github.com/tibutec/crm"
                 },
                 {
                     id: 5,
                     title: "Blog Corporativo",
                     description: "Sitio web corporativo con blog integrado, SEO optimizado y panel de administración de contenido.",
                     image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["WordPress", "PHP", "MySQL"]
+                    technologies: ["WordPress", "PHP", "MySQL"],
+                    liveUrl: "https://ejemplo-blog.com",
+                    githubUrl: "https://github.com/tibutec/blog"
                 },
                 {
                     id: 6,
                     title: "API REST Empresarial",
                     description: "API robusta para integración de sistemas empresariales con documentación completa y autenticación.",
                     image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    technologies: ["Express.js", "JWT", "Docker"]
+                    technologies: ["Express.js", "JWT", "Docker"],
+                    liveUrl: "https://ejemplo-api.com",
+                    githubUrl: "https://github.com/tibutec/api-rest"
                 }
             ],
             about: {
@@ -534,8 +546,8 @@
                         <img src="${project.image}" alt="${project.title}" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Ver proyecto"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Ver código"><i class="fab fa-github"></i></a>
+                                ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link" title="Ver proyecto"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                                ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link" title="Ver código"><i class="fab fa-github"></i></a>` : ''}
                             </div>
                         </div>
                     </div>
